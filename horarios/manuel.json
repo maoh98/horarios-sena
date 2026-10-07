@@ -1,0 +1,309 @@
+{
+  "schema": 1,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "profile": {
+    "name": "manuel",
+    "cargo": "instructor",
+    "centro": "cias",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 2,
+    "maxProgramas": 2
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "redes",
+        "phva": "P"
+      },
+      {
+        "n": 2,
+        "name": "desarrollo",
+        "phva": "H"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "cableado",
+        "comp": 1,
+        "nc": 1
+      },
+      {
+        "n": 2,
+        "name": "algoritmos",
+        "comp": 2,
+        "nc": 1
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3439360",
+        "grado": "10",
+        "programa": 1
+      },
+      {
+        "n": 2,
+        "name": "3439369",
+        "grado": "11",
+        "programa": 1
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "teleinformaticos"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-01",
+      "start": 6,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-01",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-01",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 6,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-08",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-09",
+      "start": 6,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-09",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-09",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    }
+  ],
+  "log": [
+    {
+      "t": "2026-10-07T14:26:55.675Z",
+      "a": "Inicio",
+      "d": "Programación creada"
+    },
+    {
+      "t": "2026-10-07T14:30:22.888Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-07T14:30:31.985Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-07T14:30:34.056Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-07T14:30:42.422Z",
+      "a": "Editar programa",
+      "d": "#1: teleinformaticos"
+    },
+    {
+      "t": "2026-10-07T14:30:48.047Z",
+      "a": "Editar ficha",
+      "d": "#1: 3439360"
+    },
+    {
+      "t": "2026-10-07T14:30:56.074Z",
+      "a": "Editar competencia",
+      "d": "#1: redes"
+    },
+    {
+      "t": "2026-10-07T14:31:01.835Z",
+      "a": "Editar RAP",
+      "d": "#1: cableado"
+    },
+    {
+      "t": "2026-10-07T14:31:09.509Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 06:00–10:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-07T14:31:11.456Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-07T14:31:12.984Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-07T14:31:24.320Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 06:00–10:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-07T14:31:25.747Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-07T14:31:26.735Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-07T14:31:44.849Z",
+      "a": "Editar ficha",
+      "d": "#2: 3439369"
+    },
+    {
+      "t": "2026-10-07T14:31:44.930Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 2: 11°"
+    },
+    {
+      "t": "2026-10-07T14:31:58.979Z",
+      "a": "Editar competencia",
+      "d": "#2: desarrollo"
+    },
+    {
+      "t": "2026-10-07T14:31:59.053Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Hacer"
+    },
+    {
+      "t": "2026-10-07T14:32:00.126Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Verificar"
+    },
+    {
+      "t": "2026-10-07T14:32:00.768Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Actuar"
+    },
+    {
+      "t": "2026-10-07T14:32:00.813Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Actuar"
+    },
+    {
+      "t": "2026-10-07T14:32:02.618Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Hacer"
+    },
+    {
+      "t": "2026-10-07T14:32:19.550Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-07T14:32:36.555Z",
+      "a": "Editar RAP",
+      "d": "#3: algoritmos"
+    },
+    {
+      "t": "2026-10-07T14:32:44.337Z",
+      "a": "Quitar RAP",
+      "d": "#2: "
+    },
+    {
+      "t": "2026-10-07T14:32:57.230Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 06:00–10:00 Formación F2 C2 R2"
+    },
+    {
+      "t": "2026-10-07T14:32:58.771Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-07T14:32:59.864Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-07T14:34:18.406Z",
+      "a": "Sellar",
+      "d": "Horario sellado con contraseña"
+    }
+  ],
+  "exported": "2026-10-07T14:34:30.731Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETT8AH87OpimIVm4x/2WMS9cUHnrxpVUHSchheamo9EzVPBUewzgOZfRMk5Wzs4EUN6djhecNrWigXxjQ0yWyAA==",
+    "fp": "8BF5 2DE9 0544 9822",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "FdT2dcQWeh3mPfbUVyvMBQ=="
+    },
+    "iv": "epELS25jfh3OnuA+",
+    "key": "qkaKrOIMxPHJ6F+4VeXtohbsASn7JEwgFMwO4Jh8IwMbxuFi8ILTru7ObCZ1QCXrjI+CEn0LRD5jcJSKk7Qu2vMeAuuISwHsW6h3KNrMBRAvOPPG0m4VJc3BEX4ACYSZ/2j3vUNwmgMvgrZraigqK7SvCFp7ijY1Uamh+W1lVHPk4b6R5+k3AEp7tdVUvnwTzGb5Tly/nLwnnw==",
+    "sig": "m1Xa/wZGuYvVBpl3BUcOUIDtKD5wqQqG+cm11mjy4IEZqkaHpar9CHH41WRFWCa67X1HM1Or4efwz9T5oFySIQ==",
+    "at": "2026-10-07T14:34:18.414Z"
+  }
+}
