@@ -89,6 +89,33 @@
       "ficha": null
     },
     {
+      "date": "2026-10-07",
+      "start": 6,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 7,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 11,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
       "date": "2026-10-08",
       "start": 6,
       "hours": 4,
@@ -135,6 +162,33 @@
     },
     {
       "date": "2026-10-09",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-14",
+      "start": 6,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-14",
+      "start": 7,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-14",
       "start": 11,
       "hours": 1,
       "type": "seguimiento",
@@ -313,9 +367,54 @@
       "t": "2026-10-07T15:46:45.977Z",
       "a": "Sellar",
       "d": "Horario sellado de nuevo"
+    },
+    {
+      "t": "2026-10-07T15:53:17.538Z",
+      "a": "Desbloquear",
+      "d": "Edición habilitada con la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-07T15:53:29.890Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 11:00–16:00 Formación F2 C2 R2"
+    },
+    {
+      "t": "2026-10-07T15:53:31.877Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 06:00–07:00 Planeación"
+    },
+    {
+      "t": "2026-10-07T15:53:32.689Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-07T15:53:44.157Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 07:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-07T15:53:47.189Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-07T15:53:48.198Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 06:00–07:00 Planeación"
+    },
+    {
+      "t": "2026-10-07T15:53:54.831Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-07T15:53:57.751Z",
+      "a": "Sellar",
+      "d": "Horario sellado de nuevo"
     }
   ],
-  "exported": "2026-10-07T15:47:03.648Z",
+  "exported": "2026-10-07T15:54:01.378Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -328,7 +427,7 @@
     },
     "iv": "epELS25jfh3OnuA+",
     "key": "qkaKrOIMxPHJ6F+4VeXtohbsASn7JEwgFMwO4Jh8IwMbxuFi8ILTru7ObCZ1QCXrjI+CEn0LRD5jcJSKk7Qu2vMeAuuISwHsW6h3KNrMBRAvOPPG0m4VJc3BEX4ACYSZ/2j3vUNwmgMvgrZraigqK7SvCFp7ijY1Uamh+W1lVHPk4b6R5+k3AEp7tdVUvnwTzGb5Tly/nLwnnw==",
-    "sig": "UZd1isBAD9qDxy4TXefL8x4uKFko9HDLNZez7EiAFJGXhx9SqEeWGUIW2fdHTk7/FYM8KelcsRRZjzS02u2Egg==",
-    "at": "2026-10-07T15:46:45.978Z"
+    "sig": "nDbHy2QVmvqqKdK0B16sWLvKJa/orRTOSJRSOV9l4soAFi/BhtKDHo9RDZMAGBmSvN3l8FP5rggNMXmB0xwltg==",
+    "at": "2026-10-07T15:53:57.752Z"
   }
 }
