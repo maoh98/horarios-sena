@@ -1,0 +1,11 @@
+# Cloudflare Worker · Horario SENA (envíos sin cuenta de GitHub)
+name = "horario-sena-envios"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+REPO = "maoh98/horarios-sena"          # <- cámbialo
+RAMA = "main"
+ORIGEN = "https://maoh98.github.io"  # <- cámbialo (solo este sitio puede enviar)
+CODIGO = ""                           # opcional: código de grupo para los instructores
+# El token NO va aquí. Se guarda como secreto:   npx wrangler secret put GITHUB_TOKEN
