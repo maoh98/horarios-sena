@@ -1,0 +1,22 @@
+# Se ejecuta en cada push y en cada Pull Request: rechaza archivos de instructores
+# alterados, sin sellar, o firmados con una llave distinta a la original.
+name: Verificar sellos
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Verificar horarios sellados
+        env:
+          BASE_REF: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: node scripts/verificar.mjs horarios
