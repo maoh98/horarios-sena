@@ -6,7 +6,8 @@ const RULES={START:6,END:22};
 const TIPOS_INST={
   A:{nombre:'Académica',plural:'Académicas',horas:11},
   T:{nombre:'Técnica',plural:'Técnicas',horas:5},
-  P:{nombre:'Privada',plural:'Privadas',horas:2}
+  P:{nombre:'Privada',plural:'Privadas',horas:2},
+  S:{nombre:'SENA',plural:'SENA',horas:null}  /* solo para fichas de especialidad: se dictan en el SENA, no en una institución educativa */
 };
 /* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
 const INSTITUCIONES=[
@@ -24,12 +25,16 @@ const INSTITUCIONES=[
   {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
   {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
   {tipo:'P',nombre:'Colegio Santa Teresita'},
-  {tipo:'P',nombre:'Liceo Pestalozzi'}
+  {tipo:'P',nombre:'Liceo Pestalozzi'},
+  {tipo:'S',nombre:'SENA'}
 ];
 const normInst=t=>String(t==null?'':t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+/* Especialidades: se eligen cuando la ficha no es de grado 10° ni 11°. Para agregar una, añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
+const ESPECIALIDADES={R:'Regular',C:'Campesena',M:'Complementaria'};
+const espValida=c=>Object.prototype.hasOwnProperty.call(ESPECIALIDADES,c);
 /** Devuelve la institución oficial que coincide con el nombre (sin importar mayúsculas ni tildes) o null. */
 const instFija=n=>{const k=normInst(n);return k?INSTITUCIONES.find(i=>normInst(i.nombre)===k)||null:null};
-const tipoValido=t=>t==='A'||t==='T'||t==='P';
+const tipoValido=t=>t==='A'||t==='T'||t==='P'||t==='S';
 const TYPES={formacion:'Formación',planeacion:'Planeación',seguimiento:'Seguimiento'};
 const PHVA={P:'Planear',H:'Hacer',V:'Verificar',A:'Actuar'};
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -131,9 +136,12 @@ function auditar(blocks,o){
     o.fichas.forEach((f,i)=>{
       if(f.inst&&!tipoValido(f.tipo))out.push(`La ficha ${i+1} tiene institución pero no tipo (académica, técnica o privada).`);
       if(o.schema>=2&&used2.has(f.id)&&!f.inst)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene institución educativa.`);
+      if(o.schema>=2&&f.grado==='E'&&f.tipo!=='S')out.push(`La ficha ${i+1} es de especialidad: solo se dicta en el SENA (elige el tipo SENA).`);
+      if(o.schema>=2&&f.tipo==='S'&&f.grado!=='E')out.push(`La ficha ${i+1} está marcada como SENA pero no es de especialidad.`);
+      if(o.schema>=2&&used2.has(f.id)&&f.grado==='E'&&!espValida(f.esp))out.push(`La ficha ${i+1} es de especialidad pero no dice cuál (Regular, Campesena o Complementaria).`);
     });
   }
   return out;
 }
 
-export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst};
+export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst, ESPECIALIDADES, espValida};

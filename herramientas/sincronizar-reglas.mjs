@@ -13,7 +13,7 @@ const fuente = readFileSync(process.argv[2] || 'horario-sena.html', 'utf8');
 const m = fuente.match(/\/\/ <LOGIC>([\s\S]*?)\/\/ <\/LOGIC>/);
 if (!m) { console.error('No encontré el bloque // <LOGIC> en el archivo. ¿Es la copia legible (no la reducida)?'); process.exit(1); }
 const logica = m[1];
-const EXPORTS = 'gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst';
+const EXPORTS = 'gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst, ESPECIALIDADES, espValida';
 
 writeFileSync(join(raiz, 'scripts/reglas.mjs'),
 `// GENERADO por herramientas/sincronizar-reglas.mjs a partir de horario-sena.html. No editar a mano.

@@ -1,6 +1,6 @@
 // Horario SENA · núcleo de verificación SIN dependencias de Node (sirve en Node 18+ y en Cloudflare Workers)
 // Creado por el Ing. Manuel Alejandro Ordóñez Hernández
-import {gradoHoras, auditar, instFija, tipoValido} from './reglas.mjs';
+import {gradoHoras, auditar, instFija, tipoValido, ESPECIALIDADES, espValida} from './reglas.mjs';
 
 export const canon = v => {
   if (v === null || typeof v !== 'object') return JSON.stringify(v);
@@ -35,12 +35,13 @@ export function resumen(j, archivo) {
     if (t[b.type] === undefined || !Number.isInteger(b.hours) || typeof b.date !== 'string') continue;
     t[b.type] += b.hours; dias.add(b.date); meses.add(b.date.slice(0, 7));
   }
-  const fchs = (cat.fichas || []).map(f => ({id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst}));
+  const fchs = (cat.fichas || []).map(f => ({id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst, grado: f.grado, esp: f.esp}));
   const G = gradoHoras(blocks, fchs);
   const horasFicha = {};
   for (const b of blocks) if (b.type === 'formacion' && b.ficha) horasFicha[b.ficha] = (horasFicha[b.ficha] || 0) + b.hours;
   const fichas = (cat.fichas || []).map(f => ({
-    n: f.n, nombre: f.name, grado: f.grado === '11' ? '11' : '10', programa: f.programa || null,
+    n: f.n, nombre: f.name, grado: f.grado === '11' ? '11' : f.grado === 'E' ? 'E' : (f.grado === '' || f.grado === null) ? '' : '10',
+    esp: f.grado === 'E' && espValida(f.esp) ? f.esp : null, programa: f.programa || null,
     tipo: tipoValido(f.tipo) ? f.tipo : null, inst: typeof f.inst === 'string' ? f.inst : '',
     instNueva: !!f.inst && !instFija(f.inst), horas: horasFicha[f.n] || 0
   }));

@@ -15,14 +15,17 @@ var INSTITUCIONES = [
   { tipo: "T", nombre: "I.E.T. Jos\xE9 Joaqu\xEDn Ortiz" },
   { tipo: "T", nombre: "I.E.T. Nuestra Se\xF1ora de la Paz" },
   { tipo: "P", nombre: "Colegio Santa Teresita" },
-  { tipo: "P", nombre: "Liceo Pestalozzi" }
+  { tipo: "P", nombre: "Liceo Pestalozzi" },
+  { tipo: "S", nombre: "SENA" }
 ];
 var normInst = (t) => String(t == null ? "" : t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+var ESPECIALIDADES = { R: "Regular", C: "Campesena", M: "Complementaria" };
+var espValida = (c) => Object.prototype.hasOwnProperty.call(ESPECIALIDADES, c);
 var instFija = (n) => {
   const k = normInst(n);
   return k ? INSTITUCIONES.find((i) => normInst(i.nombre) === k) || null : null;
 };
-var tipoValido = (t) => t === "A" || t === "T" || t === "P";
+var tipoValido = (t) => t === "A" || t === "T" || t === "P" || t === "S";
 var TYPES = { formacion: "Formaci\xF3n", planeacion: "Planeaci\xF3n", seguimiento: "Seguimiento" };
 var DAY = 864e5;
 var pad = (n) => String(n).padStart(2, "0");
@@ -146,6 +149,9 @@ function auditar(blocks, o) {
     o.fichas.forEach((f, i) => {
       if (f.inst && !tipoValido(f.tipo)) out.push(`La ficha ${i + 1} tiene instituci\xF3n pero no tipo (acad\xE9mica, t\xE9cnica o privada).`);
       if (o.schema >= 2 && used2.has(f.id) && !f.inst) out.push(`La ficha ${i + 1} tiene horas de formaci\xF3n pero no tiene instituci\xF3n educativa.`);
+      if (o.schema >= 2 && f.grado === "E" && f.tipo !== "S") out.push(`La ficha ${i + 1} es de especialidad: solo se dicta en el SENA (elige el tipo SENA).`);
+      if (o.schema >= 2 && f.tipo === "S" && f.grado !== "E") out.push(`La ficha ${i + 1} est\xE1 marcada como SENA pero no es de especialidad.`);
+      if (o.schema >= 2 && used2.has(f.id) && f.grado === "E" && !espValida(f.esp)) out.push(`La ficha ${i + 1} es de especialidad pero no dice cu\xE1l (Regular, Campesena o Complementaria).`);
     });
   }
   return out;
@@ -187,14 +193,15 @@ function resumen(j, archivo) {
     dias.add(b.date);
     meses.add(b.date.slice(0, 7));
   }
-  const fchs = (cat.fichas || []).map((f) => ({ id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst }));
+  const fchs = (cat.fichas || []).map((f) => ({ id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst, grado: f.grado, esp: f.esp }));
   const G = gradoHoras(blocks, fchs);
   const horasFicha = {};
   for (const b of blocks) if (b.type === "formacion" && b.ficha) horasFicha[b.ficha] = (horasFicha[b.ficha] || 0) + b.hours;
   const fichas = (cat.fichas || []).map((f) => ({
     n: f.n,
     nombre: f.name,
-    grado: f.grado === "11" ? "11" : "10",
+    grado: f.grado === "11" ? "11" : f.grado === "E" ? "E" : f.grado === "" || f.grado === null ? "" : "10",
+    esp: f.grado === "E" && espValida(f.esp) ? f.esp : null,
     programa: f.programa || null,
     tipo: tipoValido(f.tipo) ? f.tipo : null,
     inst: typeof f.inst === "string" ? f.inst : "",

@@ -23,7 +23,7 @@
   --bg:#f5f2ec;--surface:#fffdf9;--surface2:#efebe3;--ink:#1c2530;--muted:#66727f;--line:#ded8cc;
   --form:#1f9d6b;--plan:#3b82d6;--seg:#e39a1b;
   --P:#7b61ff;--H:#0fb5ae;--V:#d6409f;--A:#f0562c;
-  --iA:#1f9d6b;--iT:#3b82d6;--iP:#e4741f;
+  --iA:#1f9d6b;--iT:#3b82d6;--iP:#e4741f;--iS:#8b5cf6;
   --track:#e7e2d7;--face:#fbf8f2;--danger:#c93c3c;
   --shadow:0 1px 2px rgba(20,30,40,.06),0 10px 28px rgba(20,30,40,.08);
 }
@@ -201,6 +201,8 @@ th{position:sticky;top:0;background:var(--surface);color:var(--muted);font-weigh
 .toast{position:fixed;left:50%;top:70px;transform:translateX(-50%);background:var(--ink);color:var(--surface);padding:9px 16px;border-radius:12px;z-index:70;box-shadow:var(--shadow);animation:fade .2s}
 .gb{height:22px;min-width:34px;padding:0 6px;border-radius:6px;border:1px solid var(--line);background:var(--bg);font-size:11px;font-weight:700;color:var(--muted)}
 .gb.on{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.esb{height:22px;padding:0 10px;border-radius:6px;border:1px solid var(--line);background:var(--bg);font-size:11.5px;font-weight:600;color:var(--muted)}
+.esb.on{background:var(--form);color:#fff;border-color:transparent}
 .chip .fi{font-weight:600;opacity:.85}
 .tabs{display:flex;gap:2px;background:var(--surface2);padding:3px;border-radius:12px;margin-left:14px}
 .tabs button{border:0;background:transparent;padding:6px 14px;border-radius:9px;font-weight:600;color:var(--muted)}
@@ -267,7 +269,7 @@ body.hasBanner{--top:92px}
 .lockbtn.bad{border-color:var(--danger);color:var(--danger)}
 .lockbtn.open{border-color:var(--seg);color:var(--seg)}
 body.ro .side button:disabled,body.ro .side select:disabled{opacity:.6;cursor:not-allowed}
-body.ro .side .pb.on,body.ro .side .gb.on{opacity:1}
+body.ro .side .pb.on,body.ro .side .gb.on,body.ro .side .esb.on{opacity:1}
 body.ro .side .ctext{cursor:text}
 body.ro .side .in[readonly]{background:transparent;border-color:transparent}
 body.ro #typeSeg,body.ro #fForm,body.ro label[for=sStart],body.ro #sStart,body.ro .pr .st,body.ro #addBlock,body.ro #clearDays,body.ro #dayBlocks button{display:none!important}
@@ -292,6 +294,8 @@ body.viewer .pr::before{content:'Solo lectura · modo consulta'}
 .crow[data-k=fichas] .prow,.crow[data-k=raps] .prow{padding:8px 0 0;margin:0;border-top:1px dashed var(--line)}
 .crow[data-k=fichas] .prow small,.crow[data-k=raps] .prow small{flex:0 0 100%;margin:0 0 2px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
 .crow[data-k=fichas] .prow small span{text-transform:none;letter-spacing:0;font-weight:500}
+.crow[data-k=fichas] .prow small,.crow[data-k=raps] .prow small{white-space:normal;overflow-wrap:anywhere}
+.crow[data-k=fichas] .prow small.nh,.crow[data-k=raps] .prow small.nh{text-transform:none;letter-spacing:0;font-weight:500;font-size:11.5px}
 .crow[data-k=fichas] .irow + .irow{border-top:0;padding-top:0}
 .pgx{margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}.pgx:last-child{border-bottom:0;margin-bottom:0}
 .fx{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:3px 0 3px 4px;min-width:0}
@@ -306,12 +310,14 @@ body.viewer .pr::before{content:'Solo lectura · modo consulta'}
 .irow{flex-wrap:wrap}
 .itb{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:0;padding:3px 4px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-size:11px;line-height:1.15;color:var(--muted);white-space:nowrap}
 .itb b{font-weight:700}.itb em{font-style:normal;font-size:10px;opacity:.85}
+.itb.tS.on{background:var(--iS);border-color:var(--iS);color:#fff}.itb.tS:not(.on){border-color:color-mix(in srgb,var(--iS) 55%,var(--line))}
+.itb:disabled,.gb:disabled{opacity:.35;cursor:not-allowed}
 .itb.tA.on{background:var(--iA);border-color:var(--iA);color:#fff}.itb.tT.on{background:var(--iT);border-color:var(--iT);color:#fff}.itb.tP.on{background:var(--iP);border-color:var(--iP);color:#fff}
 .itb.tA:not(.on){border-color:color-mix(in srgb,var(--iA) 55%,var(--line))}.itb.tT:not(.on){border-color:color-mix(in srgb,var(--iT) 55%,var(--line))}.itb.tP:not(.on){border-color:color-mix(in srgb,var(--iP) 55%,var(--line))}
 body.ro .side .itb.on{opacity:1}
 .isel{flex:1;min-width:0;height:26px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:12px;padding:0 4px}
 .iin{flex:1;min-width:0;height:26px;border:1px solid var(--line);border-radius:8px;background:var(--bg);font-size:12px;padding:0 8px}
-.crow.itA{box-shadow:inset 3px 0 0 var(--iA)}.crow.itT{box-shadow:inset 3px 0 0 var(--iT)}.crow.itP{box-shadow:inset 3px 0 0 var(--iP)}
+.crow.itS{box-shadow:inset 3px 0 0 var(--iS)}.crow.itA{box-shadow:inset 3px 0 0 var(--iA)}.crow.itT{box-shadow:inset 3px 0 0 var(--iT)}.crow.itP{box-shadow:inset 3px 0 0 var(--iP)}
 .idot{display:inline-block;width:.6em;height:.6em;border-radius:50%;margin-right:.35em;vertical-align:baseline}
 .tgrow{display:flex;gap:6px;flex-wrap:wrap;margin:0 0 10px}
 .tg{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:3px 9px;border-radius:99px;border:1px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent)}
@@ -521,7 +527,8 @@ const RULES={START:6,END:22};
 const TIPOS_INST={
   A:{nombre:'Académica',plural:'Académicas',horas:11},
   T:{nombre:'Técnica',plural:'Técnicas',horas:5},
-  P:{nombre:'Privada',plural:'Privadas',horas:2}
+  P:{nombre:'Privada',plural:'Privadas',horas:2},
+  S:{nombre:'SENA',plural:'SENA',horas:null}  /* solo para fichas de especialidad: se dictan en el SENA, no en una institución educativa */
 };
 /* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
 const INSTITUCIONES=[
@@ -539,12 +546,16 @@ const INSTITUCIONES=[
   {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
   {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
   {tipo:'P',nombre:'Colegio Santa Teresita'},
-  {tipo:'P',nombre:'Liceo Pestalozzi'}
+  {tipo:'P',nombre:'Liceo Pestalozzi'},
+  {tipo:'S',nombre:'SENA'}
 ];
 const normInst=t=>String(t==null?'':t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+/* Especialidades: se eligen cuando la ficha no es de grado 10° ni 11°. Para agregar una, añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
+const ESPECIALIDADES={R:'Regular',C:'Campesena',M:'Complementaria'};
+const espValida=c=>Object.prototype.hasOwnProperty.call(ESPECIALIDADES,c);
 /** Devuelve la institución oficial que coincide con el nombre (sin importar mayúsculas ni tildes) o null. */
 const instFija=n=>{const k=normInst(n);return k?INSTITUCIONES.find(i=>normInst(i.nombre)===k)||null:null};
-const tipoValido=t=>t==='A'||t==='T'||t==='P';
+const tipoValido=t=>t==='A'||t==='T'||t==='P'||t==='S';
 const TYPES={formacion:'Formación',planeacion:'Planeación',seguimiento:'Seguimiento'};
 const PHVA={P:'Planear',H:'Hacer',V:'Verificar',A:'Actuar'};
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -646,6 +657,9 @@ function auditar(blocks,o){
     o.fichas.forEach((f,i)=>{
       if(f.inst&&!tipoValido(f.tipo))out.push(`La ficha ${i+1} tiene institución pero no tipo (académica, técnica o privada).`);
       if(o.schema>=2&&used2.has(f.id)&&!f.inst)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene institución educativa.`);
+      if(o.schema>=2&&f.grado==='E'&&f.tipo!=='S')out.push(`La ficha ${i+1} es de especialidad: solo se dicta en el SENA (elige el tipo SENA).`);
+      if(o.schema>=2&&f.tipo==='S'&&f.grado!=='E')out.push(`La ficha ${i+1} está marcada como SENA pero no es de especialidad.`);
+      if(o.schema>=2&&used2.has(f.id)&&f.grado==='E'&&!espValida(f.esp))out.push(`La ficha ${i+1} es de especialidad pero no dice cuál (Regular, Campesena o Complementaria).`);
     });
   }
   return out;
@@ -772,7 +786,7 @@ const short = (e) => {
     V: "medir y comparar con lo esperado",
     A: "corregir y mejorar para el siguiente ciclo",
   };
-const ICOL = { A: "var(--iA)", T: "var(--iT)", P: "var(--iP)" },
+const ICOL = { A: "var(--iA)", T: "var(--iT)", P: "var(--iP)", S: "var(--iS)" },
   instTipo = (f) => (f && tipoValido(f.tipo) ? f.tipo : null),
   instOpts = (f) => {
     const ficha = f.tipo,
@@ -790,7 +804,7 @@ const ICOL = { A: "var(--iA)", T: "var(--iT)", P: "var(--iP)" },
 function fichaTxt(e) {
   const a = fichaIdx(e.ficha),
     t = state.fichas[a];
-  return t ? `${t.grado}° · Ficha ${t.name || a + 1}` : "Ficha ?";
+  return t ? `${gTxt(t)} · Ficha ${t.name || a + 1}` : "Ficha ?";
 }
 function progShort(e) {
   if (state.programas.length < 2) return "";
@@ -961,7 +975,10 @@ const CAT = {
     raps: "RAP",
     fichas: "ficha",
   },
-  GRADOS = { 10: "décimo", 11: "once" },
+  GRADOS = { 10: "décimo", 11: "once", E: "especialidad" },
+  /* texto corto y largo del grado / especialidad de una ficha */
+  gTxt = (f) => (!f ? "?" : "10" === f.grado || "11" === f.grado ? f.grado + "°" : "E" === f.grado ? ESPECIALIDADES[f.esp] || "Especialidad" : "Sin grado"),
+  gLong = (f) => ("10" === f.grado || "11" === f.grado ? `grado ${GRADOS[f.grado]} (${f.grado}°)` : "E" === f.grado ? `especialidad ${ESPECIALIDADES[f.esp] || "sin definir"}` : "sin grado"),
   PLACE = {
     programas: "Nombre del programa de formación",
     comps: "Nombre de la competencia",
@@ -985,13 +1002,20 @@ function phvaBtns(e) {
     )
     .join("")}</div>`;
 }
-function gradoBtns(e) {
+function gradoBtns(f) {
   return `<div class="ph">${Object.keys(GRADOS)
     .map(
       (a) =>
-        `<button class="gb ${e === a ? "on" : ""}" data-g="${a}" title="Grado ${GRADOS[a]}" aria-label="Grado ${GRADOS[a]}" aria-pressed="${e === a}">${a}°</button>`,
+        `<button class="gb ${f.grado === a ? "on" : ""}" data-g="${a}" title="${"E" === a ? "Especialidad: Regular, Campesena o Complementaria (si no es de 10° ni 11°)" : "Grado " + GRADOS[a]}" aria-label="${"E" === a ? "Especialidad" : "Grado " + GRADOS[a]}" aria-pressed="${f.grado === a}" ${"E" === f.grado && "E" !== a ? "disabled data-off" : ""}>${"E" === a ? "Esp." : a + "°"}</button>`,
     )
     .join("")}</div>`;
+}
+function espRow(f) {
+  return "E" === f.grado
+    ? `<div class="prow"><small>Especialidad</small>${Object.keys(ESPECIALIDADES)
+        .map((c) => `<button class="esb ${f.esp === c ? "on" : ""}" data-es="${c}" aria-pressed="${f.esp === c}">${ESPECIALIDADES[c]}</button>`)
+        .join("")}</div>`
+    : "";
 }
 function renderCat(e) {
   const a = boxOf(e),
@@ -1001,7 +1025,7 @@ function renderCat(e) {
       ? t
           .map(
             (a, t) =>
-              `<div class="crow${"fichas" === e && instTipo(a) ? " it" + a.tipo : ""}" data-k="${e}" data-id="${a.id}"><span class="cn">${"raps" === e ? rapNo(a.id) : t + 1}</span><textarea rows="1" class="ctext" aria-label="${LABEL[e]} ${t + 1}" placeholder="${PLACE[e]}">${esc(a.name)}</textarea>${"comps" === e ? phvaBtns(a.phva) : "fichas" === e ? gradoBtns(a.grado) : ""}<button class="cdel" title="Quitar" aria-label="Quitar">✕</button>${"fichas" === e ? progRow(a) + instRow(a) : "raps" === e ? compRow(a) : ""}</div>`,
+              `<div class="crow${"fichas" === e && instTipo(a) ? " it" + a.tipo : ""}" data-k="${e}" data-id="${a.id}"><span class="cn">${"raps" === e ? rapNo(a.id) : t + 1}</span><textarea rows="1" class="ctext" aria-label="${LABEL[e]} ${t + 1}" placeholder="${PLACE[e]}">${esc(a.name)}</textarea>${"comps" === e ? phvaBtns(a.phva) : "fichas" === e ? gradoBtns(a) : ""}<button class="cdel" title="Quitar" aria-label="Quitar">✕</button>${"fichas" === e ? espRow(a) + progRow(a) + instRow(a) : "raps" === e ? compRow(a) : ""}</div>`,
           )
           .join("")
       : `<p class="empty">${EMPTY[e]}</p>`),
@@ -1019,19 +1043,19 @@ function instRow(f) {
   const tipos = Object.keys(TIPOS_INST)
       .map(
         (k) =>
-          `<button class="itb t${k} ${f.tipo === k ? "on" : ""}" data-tp="${k}" title="${TIPOS_INST[k].nombre}: ${TIPOS_INST[k].horas} h de formación diaria (dato informativo)" aria-pressed="${f.tipo === k}"><b>${TIPOS_INST[k].nombre}</b><em>${TIPOS_INST[k].horas} h/día</em></button>`,
+          `<button class="itb t${k} ${f.tipo === k ? "on" : ""}" data-tp="${k}" title="${"S" === k ? "SENA: solo para fichas de especialidad (se activa con el botón Esp.)" : TIPOS_INST[k].nombre + ": " + TIPOS_INST[k].horas + " h de formación diaria (dato informativo)"}" aria-pressed="${f.tipo === k}" ${("S" === k ? "E" !== f.grado : "E" === f.grado) ? "disabled data-off" : ""}><b>${TIPOS_INST[k].nombre}</b><em>${null == TIPOS_INST[k].horas ? "especialidad" : TIPOS_INST[k].horas + " h/día"}</em></button>`,
       )
       .join(""),
     cab = `<div class="prow irow"><small style="flex:0 0 100%">Institución educativa <span title="Horas de formación diaria por tipo de institución (solo informativo)">· horas de formación/día</span></small>${tipos}</div>`;
   if (!instTipo(f))
-    return cab + '<div class="prow irow"><small>Elige el tipo para ver las instituciones de esa lista</small></div>';
+    return cab + '<div class="prow irow"><small class="nh">Elige el tipo para ver las instituciones de esa lista</small></div>';
   const { fijas, extra } = instOpts(f),
     otra = f.otra || (f.inst && !fijas.includes(f.inst) && !extra.includes(f.inst));
   const opt = (n, nueva) =>
     `<option value="${esc(n)}" ${f.inst === n && !f.otra ? "selected" : ""}>${esc(n)}${nueva ? " (nueva)" : ""}</option>`;
   return (
     cab +
-    `<div class="prow irow"><select class="isel" aria-label="Institución educativa de la ficha"><option value="" ${!f.inst && !f.otra ? "selected" : ""}>— elige la institución —</option>${fijas.map((n) => opt(n)).join("")}${extra.map((n) => opt(n, !0)).join("")}<option value="__otra__" ${f.otra ? "selected" : ""}>+ Otra institución…</option></select></div>` +
+    `<div class="prow irow"><select class="isel" aria-label="Institución educativa de la ficha"><option value="" ${!f.inst && !f.otra ? "selected" : ""}>— elige la institución —</option>${fijas.map((n) => opt(n)).join("")}${extra.map((n) => opt(n, !0)).join("")}${"S" === f.tipo ? "" : `<option value="__otra__" ${f.otra ? "selected" : ""}>+ Otra institución…</option>`}</select></div>` +
     (otra
       ? `<div class="prow irow"><input class="iin" maxlength="120" placeholder="Nombre completo de la nueva institución" value="${esc(f.inst || "")}" aria-label="Nombre de la nueva institución"></div>`
       : "")
@@ -1056,7 +1080,7 @@ function compRow(e) {
 function progRow(e) {
   return state.programas.length
     ? `<div class="prow"><small>Programa</small>${state.programas.map((a, t) => `<button class="pgb ${e.programa === a.id ? "on" : ""}" data-pg="${a.id}" title="${esc(a.name || "Programa " + (t + 1))}" aria-pressed="${e.programa === a.id}">P${t + 1}</button>`).join("")}</div>`
-    : '<div class="prow"><small>Agrega un programa arriba para asignarlo a esta ficha</small></div>';
+    : '<div class="prow"><small class="nh">Agrega un programa arriba para asignarlo a esta ficha</small></div>';
 }
 const msgProg = () =>
   `Máximo ${state.settings.maxProgramas} programas de formación${state.settings.maxProgramas < 3 ? ". Si necesitas uno más, sube el máximo a 3 (es el tope)." : " (es el tope)."}`;
@@ -1078,6 +1102,7 @@ function addItem(e, a = "", t = null) {
     "comps" === e && (o.phva = "P"),
     "fichas" === e &&
       ((o.grado = "10"),
+      (o.esp = null),
       (o.tipo = null),
       (o.inst = ""),
       (o.programa =
@@ -1301,6 +1326,7 @@ function renderIndicators() {
       const o = state[e].findIndex((e) => e.id === t.dataset.id),
         s = a.target.closest(".pb"),
         r = a.target.closest(".gb"),
+        es = a.target.closest(".esb"),
         n = a.target.closest(".pgb"),
         i = a.target.closest(".cpb");
       if (s)
@@ -1316,11 +1342,23 @@ function renderIndicators() {
           L("Tipo de institución", `Ficha ${o + 1}: ${TIPOS_INST[k].nombre}`);
           (renderCat("fichas"), renderAll(!0));
         }
-      } else if (r)
-        ((state.fichas[o].grado = r.dataset.g),
-          L("Grado de ficha", `Ficha ${o + 1}: ${r.dataset.g}°`),
-          renderCat("fichas"),
-          renderAll(!0));
+      } else if (es) {
+        const f = state.fichas[o];
+        f.esp = f.esp === es.dataset.es ? null : es.dataset.es;
+        L("Especialidad de ficha", `Ficha ${o + 1}: ${gTxt(f)}`);
+        renderCat("fichas");
+        renderAll(!0);
+      } else if (r) {
+        const f = state.fichas[o],
+          g = r.dataset.g;
+        f.grado = f.grado === g ? "" : g;
+        "E" !== f.grado && (f.esp = null);
+        if ("E" === f.grado) ((f.tipo = "S"), (f.inst = "SENA"), (f.otra = !1));
+        else "S" === f.tipo && ((f.tipo = null), (f.inst = ""), (f.otra = !1));
+        L("Grado de ficha", `Ficha ${o + 1}: ${gTxt(f)}`);
+        renderCat("fichas");
+        renderAll(!0);
+      }
       else if (n) {
         const e = state.fichas[o];
         e.programa = e.programa === n.dataset.pg ? null : n.dataset.pg;
@@ -1461,7 +1499,7 @@ const TCOL = {
     planeacion: "var(--plan)",
     seguimiento: "var(--seg)",
   },
-  GCOL = { 10: "#2fb3d6", 11: "#b5895a" },
+  GCOL = { 10: "#2fb3d6", 11: "#b5895a", E: "#8a96a3", "": "#8a96a3" },
   pct = (e, a) => (a ? Math.round((e / a) * 100) : 0),
   /* porcentajes que siempre suman 100 (método del mayor residuo) */
   pcs = (v, t) => {
@@ -1565,7 +1603,7 @@ function matrix(e) {
   const fs = state.fichas.filter((f) => porF[f.id]);
   if (!fs.length) return '<p class="hint">Aún no hay horas de formación para cruzar.</p>';
   const t = Math.max(1, ...Object.values(a), 1);
-  return `<div class="mx"><table><thead><tr><th>Competencia</th>${fs.map((e) => `<th title="${esc(e.name)}">${esc(e.name || "(sin número)")}<br><small style="color:${GCOL[e.grado]}">${e.grado}°</small></th>`).join("")}<th>Total</th></tr></thead><tbody>${state.comps
+  return `<div class="mx"><table><thead><tr><th>Competencia</th>${fs.map((e) => `<th title="${esc(e.name)}">${esc(e.name || "(sin número)")}<br><small style="color:${GCOL[e.grado] || "var(--muted)"}">${gTxt(e)}</small></th>`).join("")}<th>Total</th></tr></thead><tbody>${state.comps
     .map((e, o) => {
       const tot = fs.reduce((s, f) => s + (a[e.id + "|" + f.id] || 0), 0);
       return `<tr><td><i class="dot" style="background:${COLORS[e.phva]}"></i>${o + 1}. ${esc((e.name || "(sin nombre)").slice(0, 34))}</td>${fs
@@ -1585,7 +1623,7 @@ function instStats(porFicha, total) {
       c = f && instTipo(f) ? f.tipo : "?";
     (m[k] = m[k] || { h: 0, c })["h"] += h;
   });
-  const porTipo = { A: 0, T: 0, P: 0 };
+  const porTipo = { A: 0, T: 0, P: 0, S: 0 };
   Object.values(m).forEach((x) => porTipo[x.c] !== undefined && (porTipo[x.c] += x.h));
   const filas = Object.entries(m)
     .sort((a, b) => b[1].h - a[1].h)
@@ -1618,7 +1656,7 @@ function progFicha(e) {
         const ins = f.inst
           ? `<span class="fi"><i class="dot" style="background:${tp ? ICOL[tp] : "var(--muted)"}"></i>${esc(f.inst)}</span>`
           : '<span class="fi pend">sin institución</span>';
-        return `<div class="fx${h ? "" : " z"}"><span class="g" style="color:${GCOL[f.grado] || "var(--muted)"}">${f.grado || "?"}°</span><span class="fn">${esc(f.name || "(sin número)")}</span>${ins}<b>${h} h</b></div>`;
+        return `<div class="fx${h ? "" : " z"}"><span class="g" style="color:${GCOL[f.grado] || "var(--muted)"}">${gTxt(f)}</span><span class="fn">${esc(f.name || "(sin número)")}</span>${ins}<b>${h} h</b></div>`;
       }).join("");
     return `<div class="pgx"><div class="bar"><div class="bl"><span><b>${esc(g.nombre)}</b></span><b>${r} h</b></div><div class="bt stk">${n(s[10], GCOL[10], "Grado 10°")}${n(s[11], GCOL[11], "Grado 11°")}${n(s["?"], "var(--muted)", "Sin grado")}</div><div class="sub2"><span style="color:${GCOL[10]}">● 10°: ${s[10]} h</span> · <span style="color:${GCOL[11]}">● 11°: ${s[11]} h</span>${s["?"] ? ` · sin grado: ${s["?"]} h` : ""}</div></div>${fichas}</div>`;
   }).join("");
@@ -1816,7 +1854,7 @@ function hotApply(e) {
         const a = fichaIdx(e.dataset.ficha),
           t = state.fichas[a];
         return t
-          ? `<br>Ficha ${esc(t.name || a + 1)} · grado ${GRADOS[t.grado]} (${t.grado}°)`
+          ? `<br>Ficha ${esc(t.name || a + 1)} · ${gLong(t)}`
           : "";
       };
     if ("comp" === o) {
@@ -1837,7 +1875,7 @@ function hotApply(e) {
         a = state.fichas[e];
       if (!a) return;
       ((s = GCOL[a.grado]),
-        (r = `Ficha ${e + 1}: ${esc(a.name)} · grado ${GRADOS[a.grado]} (${a.grado}°)`));
+        (r = `Ficha ${e + 1}: ${esc(a.name)} · ${gLong(a)}`));
     }
     (a.style.setProperty("--hlc", s), a.classList.add("hlon"));
     const c = { comp: "comps", rap: "raps", ficha: "fichas" }[o];
@@ -2004,7 +2042,7 @@ function renderPanel() {
       ? state.fichas
           .map(
             (e, a) =>
-              `<option value="${e.id}" ${e.id === ui.ficha ? "selected" : ""}>${a + 1} · ${esc((e.name || "(sin nombre)").slice(0, 60))} · ${e.grado}°${progIdx(e.programa) >= 0 ? " · P" + (progIdx(e.programa) + 1) : ""}${e.inst ? " · " + (e.tipo || "") + " " + esc(e.inst.slice(0, 40)) : ""}</option>`,
+              `<option value="${e.id}" ${e.id === ui.ficha ? "selected" : ""}>${a + 1} · ${esc((e.name || "(sin nombre)").slice(0, 60))} · ${gTxt(e)}${progIdx(e.programa) >= 0 ? " · P" + (progIdx(e.programa) + 1) : ""}${e.inst ? " · " + (e.tipo || "") + " " + esc(e.inst.slice(0, 40)) : ""}</option>`,
           )
           .join("")
       : '<option value="">— primero agrega tus fichas en el panel izquierdo —</option>'));
@@ -2196,7 +2234,7 @@ function rowsFor(e) {
       Tipo: typeLabel(e.type),
       "N° ficha": o >= 0 ? o + 1 : "",
       Ficha: safe(n ? n.name : ""),
-      Grado: n ? n.grado : "",
+      Grado: n ? ("E" === n.grado ? gTxt(n) : n.grado) : "",
       "Tipo institución": n && tipoValido(n.tipo) ? TIPOS_INST[n.tipo].nombre : "",
       Institución: safe(n ? n.inst || "" : ""),
       Programa: safe(
@@ -2267,6 +2305,7 @@ function coreDoc(e) {
           grado: e.grado,
           programa: progIdx(e.programa) + 1 || null,
         };
+        "E" === e.grado && (f.esp = espValida(e.esp) ? e.esp : null);
         return (v2 && ((f.tipo = instTipo(e)), (f.inst = e.inst || "")), f);
       }),
       programas: state.programas.map((e, a) => ({ n: a + 1, name: e.name })),
@@ -2350,10 +2389,10 @@ function summaryAOA(e) {
     const t = fichaIdx(e),
       o = state.fichas[t];
     s.push([
-      safe(`${t + 1}. ${o ? o.name + " · " + o.grado + "°" : "Sin ficha"}`),
+      safe(`${t + 1}. ${o ? o.name + " · " + gTxt(o) : "Sin ficha"}`),
       a,
     ]);
-    const n = o ? o.grado : "?";
+    const n = o && ("10" === o.grado || "11" === o.grado) ? o.grado : "?";
     r[n] = (r[n] || 0) + a;
   }),
     s.push([], ["Horas por institución", "Horas"]),
@@ -2370,13 +2409,13 @@ function summaryAOA(e) {
     Object.entries(r)
       .sort()
       .forEach(([e, a]) =>
-        s.push(["?" === e ? "Sin grado" : `Grado ${e}°`, a]),
+        s.push(["?" === e ? "Especialidad / sin grado" : `Grado ${e}°`, a]),
       ));
   {
     const e = gradoHoras(a, state.fichas);
     (s.push(
       [],
-      ["Horas por programa", "Grado 10°", "Grado 11°", "Sin grado", "Total"],
+      ["Horas por programa", "Grado 10°", "Grado 11°", "Especialidad / sin grado", "Total"],
     ),
       [
         ...state.programas.map((e, a) => [
@@ -2460,7 +2499,7 @@ async function doExport(e) {
             a + 1,
             safe(e.name),
             "",
-            e.grado,
+            "E" === e.grado ? gTxt(e) : e.grado,
             progIdx(e.programa) >= 0 ? progIdx(e.programa) + 1 : "",
             "",
             "",
@@ -2596,7 +2635,20 @@ function parseTipoInst(e) {
       ? "T"
       : a.startsWith("priv") || "p" === a
         ? "P"
-        : null;
+        : a.startsWith("sena") || "s" === a
+          ? "S"
+          : null;
+}
+/* grado de una ficha leído de un archivo: '11', 'E' (especialidad), '' (sin grado) o '10' por defecto */
+const gradoDoc = (e) => ("11" === e.grado ? "11" : "E" === e.grado ? "E" : "" === e.grado || null === e.grado ? "" : "10");
+/* texto de una celda de grado (CSV / Excel): 10, 11, vacío o el nombre de una especialidad */
+function parseGradoEsp(v) {
+  const t = String(v == null ? "" : v).trim(),
+    g = parseGrado(t);
+  if (g) return { grado: g };
+  if (!t) return { grado: "10" };
+  const c = Object.keys(ESPECIALIDADES).find((k) => norm(ESPECIALIDADES[k]) === norm(t));
+  return c ? { grado: "E", esp: c } : { grado: "" };
 }
 function parseGrado(e) {
   const a = norm(e);
@@ -2710,7 +2762,7 @@ async function parseFile(e) {
             : n.startsWith("fich") &&
               (r[o - 1] = {
                 name: unq(t.nombre),
-                grado: parseGrado(t.grado) || "10",
+                ...parseGradoEsp(t.grado),
                 programa: parseInt(t.programan, 10) || null,
                 tipo: parseTipoInst(t.tipoinstitucion),
                 inst: unq(t.institucion || ""),
@@ -2835,7 +2887,8 @@ function applyImport() {
         (state.fichas = e.catalog.fichas.map((e) => ({
           id: uid(),
           name: e.name,
-          grado: "11" === e.grado ? "11" : "10",
+          grado: gradoDoc(e),
+          esp: "E" === e.grado && espValida(e.esp) ? e.esp : null,
           programa: state.programas[(e.programa || 0) - 1]?.id || null,
           tipo: tipoValido(e.tipo) ? e.tipo : null,
           inst: str(e.inst, 120),
@@ -3089,6 +3142,8 @@ function sealProblems() {
       programa: e.programa,
       tipo: e.tipo,
       inst: e.inst,
+      grado: e.grado,
+      esp: e.esp,
     })),
   });
 }
@@ -3227,7 +3282,8 @@ function docToState(e) {
     (a.fichas = (t.fichas || []).map((e) => ({
       id: uid(),
       name: str(e.name, 300),
-      grado: "11" === e.grado ? "11" : "10",
+      grado: gradoDoc(e),
+      esp: "E" === e.grado && espValida(e.esp) ? e.esp : null,
       programa: o(a.programas, e.programa),
       tipo: tipoValido(e.tipo) ? e.tipo : null,
       inst: str(e.inst, 120),
@@ -3388,7 +3444,7 @@ function applyLock() {
   (document.body.classList.toggle("ro", a),
     document.body.classList.toggle("viewer", "viewer" === e),
     $$(".side input,.side textarea").forEach((e) => (e.readOnly = a)),
-    $$(".side select,.side button").forEach((e) => (e.disabled = a)),
+    $$(".side select,.side button").forEach((e) => (e.disabled = a || e.hasAttribute("data-off"))),
     ($("#photoBtn").disabled = $("#avatar").disabled = a));
   const t = $("#btnLock"),
     o = $("#banner");

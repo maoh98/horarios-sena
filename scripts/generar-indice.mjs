@@ -7,6 +7,8 @@
 import {writeFileSync, mkdirSync} from 'node:fs';
 import {join} from 'node:path';
 import {archivos, leer, verificar, resumen} from './lib.mjs';
+import {ESPECIALIDADES} from './reglas.mjs';
+const gt = f => f.grado === '10' || f.grado === '11' ? f.grado + '°' : f.grado === 'E' ? (ESPECIALIDADES[f.esp] || 'Especialidad') : 'Sin grado';
 
 const dir = process.argv[2] || 'horarios', salida = process.argv[3] || '.';
 mkdirSync(salida, {recursive: true});
@@ -23,14 +25,14 @@ writeFileSync(join(dir, 'index.json'), JSON.stringify({generado: new Date().toIS
 
 const COLS = ['N°', 'Instructor', 'Cargo', 'Centro', 'Programas de formación', 'N° programas', 'Fichas', 'Instituciones', 'Horas grado 10°', 'Horas grado 11°', 'Horas formación', 'Horas planeación', 'Horas seguimiento', 'Horas totales', 'Días programados', 'Meses', 'Revisión de reglas', 'Estado del sello', 'Sellado el (UTC)', 'Huella', 'Archivo'];
 const ESTADO = {valido: 'Sellado y verificado', roto: 'SELLO ROTO', 'sin-sello': 'Sin sellar'};
-const TN = {A: 'Académica', T: 'Técnica', P: 'Privada'};
+const TN = {A: 'Académica', T: 'Técnica', P: 'Privada', S: 'SENA'};
 const progNombres = x => x.programas.filter(p => p.n).map(p => `P${p.n}. ${p.nombre}`).join(' | ');
-const filas = lista.map(x => [x.n, x.nombre, x.cargo, x.centro, progNombres(x), x.programas.filter(p => p.n).length, x.fichas.map(f => `${f.nombre} (${f.grado}°${f.programa ? ' · P' + f.programa : ''}${f.inst ? ' · ' + (TN[f.tipo] || '?') + ': ' + f.inst : ''})`).join(' | '),
+const filas = lista.map(x => [x.n, x.nombre, x.cargo, x.centro, progNombres(x), x.programas.filter(p => p.n).length, x.fichas.map(f => `${f.nombre} (${gt(f)}${f.programa ? ' · P' + f.programa : ''}${f.inst ? ' · ' + (TN[f.tipo] || '?') + ': ' + f.inst : ''})`).join(' | '),
   x.instituciones.filter(i => i.nombre !== 'Sin institución').map(i => `${TN[i.tipo] || '?'}: ${i.nombre}${i.nueva ? ' (nueva)' : ''}`).join(' | '),
   x.grados['10'], x.grados['11'], x.horas.formacion, x.horas.planeacion, x.horas.seguimiento, x.horas.total, x.dias, x.meses.join(', '),
   x.reglas.ok ? 'Encaja' : `${x.reglas.problemas.length} problema(s): ${x.reglas.problemas.slice(0, 3).join(' / ')}`,
   ESTADO[x.estado] || x.estado, x.selladoEn ? x.selladoEn.slice(0, 16).replace('T', ' ') : '', x.huella, `${dir}/${x.archivo}`]);
-const COLS_P = ['Instructor', 'N° programa', 'Programa de formación', 'Horas grado 10°', 'Horas grado 11°', 'Horas sin grado', 'Horas totales'];
+const COLS_P = ['Instructor', 'N° programa', 'Programa de formación', 'Horas grado 10°', 'Horas grado 11°', 'Horas especialidad / sin grado', 'Horas totales'];
 const COLS_I = ['Instructor', 'Tipo de institución', 'Institución', 'Nueva (fuera de la lista oficial)', 'N° fichas', 'Horas de formación'];
 const filasI = lista.flatMap(x => x.instituciones.map(i => [x.nombre, TN[i.tipo] || '', i.nombre, i.nueva ? 'Sí' : '', i.fichas, i.horas]));
 const filasP = lista.flatMap(x => x.programas.map(p => [x.nombre, p.n ?? '', p.nombre, p.h10, p.h11, p.hSin, p.total]));
@@ -42,7 +44,7 @@ const tot = k => lista.reduce((s, x) => s + x.horas[k], 0), totG = g => lista.re
 const resumenHoja = [['Indicador', 'Valor'], ['Total de instructores', lista.length], ['Sellados y verificados', lista.filter(x => x.estado === 'valido').length], ['Con sello roto', lista.filter(x => x.estado === 'roto').length], ['Sin sellar', lista.filter(x => x.estado === 'sin-sello').length],
   ['Horarios que no encajan con las reglas', lista.filter(x => !x.reglas.ok).length],
   ['Instituciones nuevas por revisar', new Set(lista.flatMap(x => x.fichas.filter(f => f.instNueva).map(f => f.inst))).size],
-  ['Horas de formación grado 10°', totG('10')], ['Horas de formación grado 11°', totG('11')], ['Horas de formación sin grado', totG('sin')],
+  ['Horas de formación grado 10°', totG('10')], ['Horas de formación grado 11°', totG('11')], ['Horas de formación especialidad / sin grado', totG('sin')],
   ['Horas de formación', tot('formacion')], ['Horas de planeación', tot('planeacion')], ['Horas de seguimiento', tot('seguimiento')], ['Horas totales', tot('total')], ['Generado', new Date().toISOString().slice(0, 16).replace('T', ' ')], ['Creado por', 'Ing. Manuel Alejandro Ordóñez Hernández · Horario SENA']];
 try {
   const X = (await import('xlsx')).default;
