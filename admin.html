@@ -55,6 +55,14 @@ td .sub{color:var(--muted);font-size:12.5px}
 .g{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--surface2);margin-right:4px}
 .hrs{display:flex;gap:3px;height:6px;border-radius:4px;overflow:hidden;margin-top:5px;background:var(--surface2);width:110px}
 .hrs i{display:block}
+.mt{min-width:190px}.mt .tot{font-size:20px;font-weight:700;line-height:1}.mt .tot small{font-size:12px;font-weight:400;color:var(--muted)}
+.sbar{display:flex;height:9px;border-radius:5px;overflow:hidden;background:var(--surface2);margin:7px 0 6px;gap:2px}.sbar i{display:block;min-width:3px}
+.slg{display:grid;gap:2px;font-size:12.5px}
+.slg span{display:flex;align-items:center;gap:6px;color:var(--muted);white-space:nowrap}
+.slg span::before{content:'';flex:none;width:9px;height:9px;border-radius:3px;background:var(--c)}
+.slg b{color:var(--ink);font-weight:600;min-width:2.2em;text-align:right}.slg em{font-style:normal;margin-left:auto;padding-left:8px;font-size:11.5px}
+.ins.X{background:transparent;border-style:dashed;color:var(--muted)}
+.kpi.t{border-left:4px solid var(--c)}.kpi.t b{font-size:24px}
 code{font:12px ui-monospace,Consolas,monospace}
 .empty{padding:34px 20px;text-align:center;color:var(--muted)}
 .note{font-size:12.5px;color:var(--muted);margin:12px 2px}
@@ -106,7 +114,7 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
   <div class="wrap"><table>
     <thead><tr>
       <th data-s="n" class="num">N°</th><th data-s="nombre">Instructor</th><th data-s="centro">Centro</th><th data-s="programas">Programas y fichas</th>
-      <th data-s="h10" class="num g10">10°</th><th data-s="h11" class="num g11">11°</th><th data-s="total" class="num">Horas</th><th data-s="dias" class="num">Días</th><th data-s="estado">Sello y reglas</th><th data-s="selladoEn">Sellado (UTC)</th>
+      <th data-s="h10">Formación por grado</th><th data-s="total">Horas por tipo</th><th data-s="dias" class="num">Días</th><th data-s="estado">Sello y reglas</th><th data-s="selladoEn">Sellado (UTC)</th>
     </tr></thead>
     <tbody id="rows"></tbody>
   </table><div class="empty" id="empty" hidden></div></div>
@@ -424,19 +432,37 @@ function visibles(){
   return[...a].sort((x,y)=>{const A=g(x),B=g(y);return(typeof A==='number'&&typeof B==='number'?A-B:String(A??'').localeCompare(String(B??''),'es'))*sortDir});
 }
 const TN={A:'Académica',T:'Técnica',P:'Privada'};
-const insChip=f=>f.inst?`<span class="ins ${f.tipo||'X'}" title="${esc((TN[f.tipo]||'Tipo sin definir')+(f.instNueva?' · institución nueva (no está en la lista oficial)':''))}"><i></i>${esc(f.inst)}${f.instNueva?' <em>nueva</em>':''}</span>`:'<span class="ins X" title="Sin institución"><i></i>sin institución</span>';
+const pc=(v,t)=>t?Math.round(v/t*100):0;
+function linea(c,txt,h,t){return`<span style="--c:${c}${h?'':';opacity:.45'}">${txt}<em>${pc(h,t)} %</em></span>`}
+function tipoCelda(x){
+  const h=x.horas,t=h.total||1;
+  const seg=[['var(--form)','Formación',h.formacion],['var(--plan)','Planeación',h.planeacion],['var(--seg)','Seguimiento',h.seguimiento]];
+  return`<div class="tot">${h.total} <small>h en total</small></div>
+    <div class="sbar" role="img" aria-label="Formación ${h.formacion} h, planeación ${h.planeacion} h, seguimiento ${h.seguimiento} h">${seg.map(([c,,v])=>v?`<i style="width:${v/t*100}%;background:${c}"></i>`:'').join('')}</div>
+    <div class="slg">${seg.map(([c,n,v])=>linea(c,`<b>${v}</b> h ${n}`,v,t)).join('')}</div>`;
+}
+function gradoCelda(x){
+  const g=x.grados,f=x.horas.formacion||0,sin=g.sin||0;
+  if(!f)return'<span class="sub">Sin horas de formación</span>';
+  const seg=[['#2fb3d6','Décimo (10°)',g['10']],['#b5895a','Once (11°)',g['11']]];if(sin)seg.push(['#8a96a3','Sin grado',sin]);
+  return`<div class="tot">${f} <small>h de formación</small></div>
+    <div class="sbar" role="img" aria-label="Décimo ${g['10']} h, once ${g['11']} h">${seg.map(([c,,v])=>v?`<i style="width:${v/f*100}%;background:${c}"></i>`:'').join('')}</div>
+    <div class="slg">${seg.map(([c,n,v])=>linea(c,`<b>${v}</b> h ${n}`,v,f)).join('')}</div>`;
+}
+const insChip=f=>f.inst?`<span class="ins ${f.tipo||'X'}" title="${esc((TN[f.tipo]||'Tipo sin definir')+(f.instNueva?' · institución nueva (no está en la lista oficial)':''))}"><i></i>${esc(f.inst)}${f.instNueva?' <em>nueva</em>':''}</span>`:'<span class="ins X" title="Aún sin institución. Se completa cuando el instructor vuelva a sellar su horario."><i></i>institución pendiente</span>';
 function progCelda(x){
   if(!x.programas.length&&!x.fichas.length)return'<span class="sub">—</span>';
+  const varios=x.programas.filter(q=>q.n).length>1;
   const porProg={};x.fichas.forEach(f=>(porProg[f.programa??'?']=porProg[f.programa??'?']||[]).push(f));
   const bloques=x.programas.map(p=>{const fs=porProg[p.n??'?']||[];
-    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b><span class="sub"><span class="g10">10°: ${p.h10} h</span> · <span class="g11">11°: ${p.h11} h</span>${p.hSin?` · sin grado: ${p.hSin} h`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</span>`).join('')}</div>`}).join('');
+    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b> <span class="sub" style="display:inline">· ${p.total} h${varios?` (<span class="g10">10°: ${p.h10}</span> · <span class="g11">11°: ${p.h11}</span>${p.hSin?` · sin grado: ${p.hSin}`:''})`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</span>`).join('')}</div>`}).join('');
   const sueltas=x.programas.some(p=>p.n==null)?'':(porProg['?']||[]).map(f=>`<div class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</div>`).join('');
   return bloques+sueltas;
 }
 function render(){
   llenarInst();
   const L=LIST,n=L.length,c=k=>L.filter(x=>x.estado===k).length,sum=f=>L.reduce((s,x)=>s+f(x),0),noEnc=L.filter(x=>x.reglas&&!x.reglas.ok).length;
-  $('#kpis').innerHTML=`<div class="kpi"><small>Instructores</small><b>${n}</b></div><div class="kpi ok"><small>Sellados y verificados</small><b>${c('valido')}</b></div><div class="kpi ${c('roto')?'bad':''}"><small>Con sello roto</small><b>${c('roto')}</b></div><div class="kpi ${noEnc?'bad':''}"><small>No encajan con las reglas</small><b>${noEnc}</b></div><div class="kpi"><small>Horas grado 10°</small><b class="g10">${sum(x=>x.grados['10'])}</b></div><div class="kpi"><small>Horas grado 11°</small><b class="g11">${sum(x=>x.grados['11'])}</b></div><div class="kpi"><small>Horas programadas</small><b>${sum(x=>x.horas.total)}</b></div>`;
+  $('#kpis').innerHTML=`<div class="kpi"><small>Instructores</small><b>${n}</b></div><div class="kpi ok"><small>Sellados y verificados</small><b>${c('valido')}</b></div><div class="kpi ${c('roto')?'bad':''}"><small>Con sello roto</small><b>${c('roto')}</b></div><div class="kpi ${noEnc?'bad':''}"><small>No encajan con las reglas</small><b>${noEnc}</b></div><div class="kpi"><small>Horas grado 10°</small><b class="g10">${sum(x=>x.grados['10'])}</b></div><div class="kpi"><small>Horas grado 11°</small><b class="g11">${sum(x=>x.grados['11'])}</b></div><div class="kpi"><small>Horas programadas</small><b>${sum(x=>x.horas.total)}</b></div>${['A','T','P'].map(k=>`<div class="kpi t" style="--c:var(--i${k})"><small>Formación en ${TN[k].toLowerCase()}s</small><b>${sum(x=>x.fichas.filter(f=>f.tipo===k).reduce((a,f)=>a+f.horas,0))} h</b></div>`).join('')}${(()=>{const v=sum(x=>x.fichas.filter(f=>!f.inst).reduce((a,f)=>a+f.horas,0));return v?`<div class="kpi t" style="--c:var(--muted)"><small>Formación sin institución</small><b>${v} h</b></div>`:''})()}`;
   const rows=visibles();
   $('#rows').innerHTML=rows.map(x=>{
     const t=x.horas.total||1,link=MODE==='repo'?`${APP}?ver=${encodeURIComponent('horarios/'+x.archivo).replace(/%2F/g,'/')}`:null;
@@ -445,9 +471,9 @@ function render(){
       <td>${link?`<a class="who" href="${esc(link)}" target="_blank" rel="noopener">${esc(x.nombre)}</a>`:`<b>${esc(x.nombre)}</b>`}<div class="sub">${esc(x.cargo)}</div></td>
       <td>${esc(x.centro)}</td>
       <td>${progCelda(x)}</td>
-      <td class="num g10"><b>${x.grados['10']}</b></td><td class="num g11"><b>${x.grados['11']}</b></td>
-      <td class="num"><b>${x.horas.total}</b><div class="hrs" title="Formación ${x.horas.formacion} h · Planeación ${x.horas.planeacion} h · Seguimiento ${x.horas.seguimiento} h"><i style="width:${x.horas.formacion/t*100}%;background:var(--form)"></i><i style="width:${x.horas.planeacion/t*100}%;background:var(--plan)"></i><i style="width:${x.horas.seguimiento/t*100}%;background:var(--seg)"></i></div></td>
-      <td class="num">${x.dias}</td>
+      <td class="mt">${gradoCelda(x)}</td>
+      <td class="mt">${tipoCelda(x)}</td>
+      <td class="num"><b>${x.dias}</b><div class="sub">${x.dias?(x.horas.total/x.dias).toFixed(1).replace('.',','):'0'} h/día</div></td>
       <td><span class="tag ${esc(x.estado)}">${ESTADO[x.estado]||esc(x.estado)}</span>${x.huella?`<div class="sub"><code>${esc(x.huella)}</code></div>`:''}
         <div style="margin-top:4px">${r.ok?'<span class="tag ok">Encaja ✓</span>':`<span class="tag warn" title="${esc(r.problemas.slice(0,6).join('\n'))}">${r.problemas.length} problema(s)</span>`}</div></td>
       <td class="sub">${esc(String(x.selladoEn||'').slice(0,16).replace('T',' '))}</td></tr>`}).join('');
