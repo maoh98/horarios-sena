@@ -286,8 +286,23 @@ body.viewer .pr::before{content:'Solo lectura · modo consulta'}
 .sealbox .chk{display:flex;gap:8px;align-items:flex-start;font-size:13px}
 .cnt{margin-left:auto;margin-right:8px;font-size:11.5px;letter-spacing:0;text-transform:none;color:var(--muted)}
 .crow[data-k=fichas],.crow[data-k=raps]{flex-wrap:wrap}
-.prow{flex:0 0 100%;display:flex;gap:4px;align-items:center;padding-left:28px;margin-top:-2px}
-.prow small{font-size:11px;color:var(--muted);margin-right:2px}
+/* cada ficha / RAP es una tarjeta con secciones separadas y rotuladas */
+.crow[data-k=fichas],.crow[data-k=raps]{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:10px;margin:0 0 12px;gap:8px 6px}
+.crow[data-k=fichas]:hover,.crow[data-k=raps]:hover{background:var(--surface)}
+.crow[data-k=fichas] .prow,.crow[data-k=raps] .prow{padding:8px 0 0;margin:0;border-top:1px dashed var(--line)}
+.crow[data-k=fichas] .prow small,.crow[data-k=raps] .prow small{flex:0 0 100%;margin:0 0 2px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase}
+.crow[data-k=fichas] .prow small span{text-transform:none;letter-spacing:0;font-weight:500}
+.crow[data-k=fichas] .irow + .irow{border-top:0;padding-top:0}
+.pgx{margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}.pgx:last-child{border-bottom:0;margin-bottom:0}
+.fx{display:flex;align-items:center;gap:8px;font-size:12.5px;padding:3px 0 3px 4px;min-width:0}
+.fx.z{opacity:.55}
+.fx .g{flex:none;font-size:10.5px;font-weight:700;padding:0 6px;border-radius:5px;background:var(--surface2)}
+.fx .fn{flex:none;font-weight:600}
+.fx .fi{flex:1;min-width:0;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fx .fi.pend{font-style:italic}
+.fx b{flex:none;margin-left:auto}
+.prow{flex:0 0 100%;display:flex;flex-wrap:wrap;gap:4px;align-items:center;padding-left:28px;margin-top:-2px;min-width:0}
+.prow small{font-size:11px;color:var(--muted);margin-right:2px;white-space:nowrap}
 .irow{flex-wrap:wrap}
 .itb{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:0;padding:3px 4px;border-radius:10px;border:1px solid var(--line);background:var(--bg);font-size:11px;line-height:1.15;color:var(--muted);white-space:nowrap}
 .itb b{font-weight:700}.itb em{font-style:normal;font-size:10px;opacity:.85}
@@ -1448,6 +1463,14 @@ const TCOL = {
   },
   GCOL = { 10: "#2fb3d6", 11: "#b5895a" },
   pct = (e, a) => (a ? Math.round((e / a) * 100) : 0),
+  /* porcentajes que siempre suman 100 (método del mayor residuo) */
+  pcs = (v, t) => {
+    if (!t) return v.map(() => 0);
+    const raw = v.map((x) => (x / t) * 100), fl = raw.map(Math.floor);
+    let r = 100 - fl.reduce((x, y) => x + y, 0);
+    raw.map((x, i) => [x - fl[i], i]).sort((x, y) => y[0] - x[0]).forEach(([, i]) => { if (r > 0 && v[i] > 0) { fl[i]++; r--; } });
+    return fl;
+  },
   sh = (e) => (12 === e ? "12m" : e < 12 ? e + "a" : e - 12 + "p");
 function statBlocks() {
   const e = `${view.y}-${pad(view.m)}`;
@@ -1487,42 +1510,12 @@ function columns(e, a) {
     })
     .join("")}</div>`;
 }
-function radar(e, a) {
-  const t = e.length,
-    o = Math.max(1, ...e),
-    s = (e, a) => {
-      const o = -Math.PI / 2 + (2 * e * Math.PI) / t;
-      return [100 + a * Math.cos(o), 100 + a * Math.sin(o)];
-    };
-  let r = "";
-  ([0.33, 0.66, 1].forEach((a) => {
-    r += `<polygon points="${e.map((e, t) => s(t, 68 * a).join(",")).join(" ")}" fill="none" stroke="var(--line)"/>`;
-  }),
-    e.forEach((e, a) => {
-      const t = s(a, 68);
-      r += `<line x1="100" y1="100" x2="${t[0]}" y2="${t[1]}" stroke="var(--line)"/>`;
-    }));
-  const n = e.map((e, a) => s(a, (68 * e) / o).join(",")).join(" "),
-    i = e
-      .map((e, t) => {
-        const o = s(t, 86);
-        return `<text x="${o[0]}" y="${o[1] + 4}">${a[t]} · ${e} h</text>`;
-      })
-      .join(""),
-    c = e
-      .map((e, t) => {
-        const r = s(t, (68 * e) / o);
-        return `<circle cx="${r[0]}" cy="${r[1]}" r="4.5" fill="var(--form)" data-tip="${a[t]}: ${e} h"/>`;
-      })
-      .join("");
-  return `<svg viewBox="-24 0 248 200" class="radar" role="img" aria-label="Horas por día de la semana">${r}<polygon class="rpoly" points="${n}" fill="color-mix(in srgb,var(--form) 28%,transparent)" stroke="var(--form)" stroke-width="2"/>${c}${i}</svg>`;
-}
 function ring(e, a) {
   const t = 2 * Math.PI * 22;
   return `<svg viewBox="0 0 54 54"><circle cx="27" cy="27" r="22" fill="none" stroke="var(--track)" stroke-width="7"/><circle cx="27" cy="27" r="22" fill="none" stroke="${a}" stroke-width="7" stroke-linecap="round" stroke-dasharray="${(t * e) / 100} ${t}" transform="rotate(-90 27 27)"/></svg>`;
 }
 const heatBg = (e) =>
-  `background:color-mix(in srgb,var(--form) ${Math.max(20, Math.round((e / 12) * 100))}%,var(--surface2));color:var(--ink)`;
+  `background:color-mix(in srgb,var(--form) ${Math.min(100, Math.max(20, Math.round((e / JORNADA) * 100)))}%,var(--surface2));color:var(--ink)`;
 function heatMonth(e) {
   const a = {};
   e.forEach((e) => (a[e.date] = (a[e.date] || 0) + e.hours));
@@ -1564,22 +1557,24 @@ function heatAll(e) {
 function matrix(e) {
   if (!state.comps.length || !state.fichas.length)
     return '<p class="hint">Agrega competencias y fichas para ver este cruce.</p>';
-  const a = {};
+  const a = {}, porF = {};
   e.filter((e) => "formacion" === e.type).forEach((e) => {
-    const t = e.comp + "|" + e.ficha;
-    a[t] = (a[t] || 0) + e.hours;
+    a[e.comp + "|" + e.ficha] = (a[e.comp + "|" + e.ficha] || 0) + e.hours;
+    porF[e.ficha] = (porF[e.ficha] || 0) + e.hours;
   });
+  const fs = state.fichas.filter((f) => porF[f.id]);
+  if (!fs.length) return '<p class="hint">Aún no hay horas de formación para cruzar.</p>';
   const t = Math.max(1, ...Object.values(a), 1);
-  return `<div class="mx"><table><thead><tr><th>Competencia</th>${state.fichas.map((e, a) => `<th title="${esc(e.name)}">F${a + 1}<br><small style="color:${GCOL[e.grado]}">${e.grado}°</small></th>`).join("")}</tr></thead><tbody>${state.comps
-    .map(
-      (e, o) =>
-        `<tr><td><i class="dot" style="background:${COLORS[e.phva]}"></i>${o + 1}. ${esc((e.name || "(sin nombre)").slice(0, 34))}</td>${state.fichas
-          .map((s) => {
-            const r = a[e.id + "|" + s.id] || 0;
-            return `<td class="v" ${r ? `style="${heatBg((12 * r) / t)}"` : ""} data-tip="Comp ${o + 1} × Ficha ${esc(s.name)}: ${r} h">${r || "·"}</td>`;
-          })
-          .join("")}</tr>`,
-    )
+  return `<div class="mx"><table><thead><tr><th>Competencia</th>${fs.map((e) => `<th title="${esc(e.name)}">${esc(e.name || "(sin número)")}<br><small style="color:${GCOL[e.grado]}">${e.grado}°</small></th>`).join("")}<th>Total</th></tr></thead><tbody>${state.comps
+    .map((e, o) => {
+      const tot = fs.reduce((s, f) => s + (a[e.id + "|" + f.id] || 0), 0);
+      return `<tr><td><i class="dot" style="background:${COLORS[e.phva]}"></i>${o + 1}. ${esc((e.name || "(sin nombre)").slice(0, 34))}</td>${fs
+        .map((s) => {
+          const r = a[e.id + "|" + s.id] || 0;
+          return `<td class="v" ${r ? `style="${heatBg((JORNADA * r) / t)}"` : ""} data-tip="Comp ${o + 1} × Ficha ${esc(s.name)}: ${r} h">${r || "·"}</td>`;
+        })
+        .join("")}<td class="v"><b>${tot || "·"}</b></td></tr>`;
+    })
     .join("")}</tbody></table></div>`;
 }
 function instStats(porFicha, total) {
@@ -1604,29 +1599,29 @@ function instStats(porFicha, total) {
     .join("");
   return `<div class="tgrow">${rs}</div>${filas}`;
 }
-function progGrado(e) {
-  const { p: a } = gradoHoras(e, state.fichas),
-    t = [
-      ...state.programas.map((e, a) => [
-        e.id,
-        `P${a + 1} · ${e.name || "(sin nombre)"}`,
-      ]),
-      ["?", "Sin programa"],
-    ].filter(([e]) => a[e]);
-  if (!t.length)
-    return '<p class="hint">Agrega tus programas, asigna cada ficha a uno y programa formación para ver este cruce.</p>';
-  const o = Math.max(1, ...t.map(([e]) => a[e][10] + a[e][11] + a[e]["?"]));
-  return t
-    .map(([e, t]) => {
-      const s = a[e],
-        r = s[10] + s[11] + s["?"],
-        n = (e, a, s) =>
-          e
-            ? `<i style="width:${(e / o) * 100}%;background:${a}" data-tip="${esc(t)} · ${s}: ${e} h"></i>`
-            : "";
-      return `<div class="bar"><div class="bl"><span>${esc(t)}</span><b>${r} h</b></div><div class="bt stk">${n(s[10], GCOL[10], "Grado 10°")}${n(s[11], GCOL[11], "Grado 11°")}${n(s["?"], "var(--muted)", "Sin grado")}</div><div class="sub2"><span style="color:${GCOL[10]}">● 10°: ${s[10]} h</span> · <span style="color:${GCOL[11]}">● 11°: ${s[11]} h</span>${s["?"] ? ` · sin grado: ${s["?"]} h` : ""}</div></div>`;
-    })
-    .join("");
+function progFicha(e) {
+  const { p: gp } = gradoHoras(e, state.fichas),
+    byF = {};
+  e.forEach((b) => "formacion" === b.type && (byF[b.ficha] = (byF[b.ficha] || 0) + b.hours));
+  const clave = (f) => (state.programas.some((p) => p.id === f.programa) ? f.programa : "?"),
+    grupos = [...state.programas.map((p, i) => [p.id, `P${i + 1} · ${p.name || "(sin nombre)"}`]), ["?", "Sin programa"]]
+      .map(([id, nombre]) => ({ id, nombre, fs: state.fichas.filter((f) => clave(f) === id) }))
+      .filter((g) => g.fs.length);
+  if (!grupos.length) return '<p class="hint">Agrega tus programas y fichas, y programa formación para ver este cuadro.</p>';
+  const tot = (id) => { const s = gp[id] || { 10: 0, 11: 0, "?": 0 }; return s[10] + s[11] + s["?"]; },
+    mayor = Math.max(1, ...grupos.map((g) => tot(g.id)));
+  return grupos.map((g) => {
+    const s = gp[g.id] || { 10: 0, 11: 0, "?": 0 }, r = tot(g.id),
+      n = (v, c, t) => (v ? `<i style="width:${(v / mayor) * 100}%;background:${c}" data-tip="${esc(g.nombre)} · ${t}: ${v} h"></i>` : ""),
+      fichas = g.fs.map((f) => {
+        const h = byF[f.id] || 0, tp = instTipo(f);
+        const ins = f.inst
+          ? `<span class="fi"><i class="dot" style="background:${tp ? ICOL[tp] : "var(--muted)"}"></i>${esc(f.inst)}</span>`
+          : '<span class="fi pend">sin institución</span>';
+        return `<div class="fx${h ? "" : " z"}"><span class="g" style="color:${GCOL[f.grado] || "var(--muted)"}">${f.grado || "?"}°</span><span class="fn">${esc(f.name || "(sin número)")}</span>${ins}<b>${h} h</b></div>`;
+      }).join("");
+    return `<div class="pgx"><div class="bar"><div class="bl"><span><b>${esc(g.nombre)}</b></span><b>${r} h</b></div><div class="bt stk">${n(s[10], GCOL[10], "Grado 10°")}${n(s[11], GCOL[11], "Grado 11°")}${n(s["?"], "var(--muted)", "Sin grado")}</div><div class="sub2"><span style="color:${GCOL[10]}">● 10°: ${s[10]} h</span> · <span style="color:${GCOL[11]}">● 11°: ${s[11]} h</span>${s["?"] ? ` · sin grado: ${s["?"]} h` : ""}</div></div>${fichas}</div>`;
+  }).join("");
 }
 function renderStats() {
   const e = statBlocks(),
@@ -1660,77 +1655,20 @@ function renderStats() {
     for (let e = 1; e <= o; e++) isWorkable(key(a, t, e)).ok && s++;
   });
   const r = pct(a.days, s),
-    n = a.days ? (t.total / a.days).toFixed(1) : 0;
+    n = a.days ? (t.total / a.days).toFixed(1) : 0,
+    pp = pcs([t.formacion, t.planeacion, t.seguimiento], t.total),
+    pd = {};
+  e.forEach((b) => (pd[b.date] = (pd[b.date] || 0) + b.hours));
+  const mx = Object.entries(pd).sort((x, y) => y[1] - x[1] || (x[0] < y[0] ? -1 : 1))[0] || ["", 0];
   $("#stKpis").innerHTML =
-    `\n    <div class="kpi2"><span>Horas programadas</span><b>${t.total}</b><small>${a.days} día${1 === a.days ? "" : "s"} con programación</small></div>\n    <div class="kpi2"><span>Formación</span><b style="color:var(--form)">${t.formacion}</b><small>${pct(t.formacion, t.total)} % del total</small></div>\n    <div class="kpi2"><span>Planeación</span><b style="color:var(--plan)">${t.planeacion}</b><small>${pct(t.planeacion, t.total)} % del total</small></div>\n    <div class="kpi2"><span>Seguimiento</span><b style="color:var(--seg)">${t.seguimiento}</b><small>${pct(t.seguimiento, t.total)} % del total</small></div>\n    <div class="kpi2"><span>Cobertura</span><b>${r}%</b><small>${a.days} de ${s} días hábiles</small>${ring(r, "var(--form)")}</div>\n    <div class="kpi2"><span>Promedio</span><b>${n}</b><small>horas por día programado</small></div>`;
+    `\n    <div class="kpi2"><span>Horas programadas</span><b>${t.total}</b><small>${a.days} día${1 === a.days ? "" : "s"} con programación</small></div>\n    <div class="kpi2"><span>Formación</span><b style="color:var(--form)">${t.formacion}</b><small>${pp[0]} % del total</small></div>\n    <div class="kpi2"><span>Planeación</span><b style="color:var(--plan)">${t.planeacion}</b><small>${pp[1]} % del total</small></div>\n    <div class="kpi2"><span>Seguimiento</span><b style="color:var(--seg)">${t.seguimiento}</b><small>${pp[2]} % del total</small></div>\n    <div class="kpi2"><span>Cobertura</span><b>${r}%</b><small>${a.days} de ${s} días hábiles</small>${ring(r, "var(--form)")}</div>\n    <div class="kpi2"><span>Promedio</span><b>${n}</b><small>horas por día programado</small></div>\n    <div class="kpi2"><span>Día más cargado</span><b>${mx[1]}</b><small>horas · ${mx[0] ? short(mx[0]) : "—"}</small></div>`;
   const i = (e, a, t, o) =>
       `<section class="scard ${e}"><h3>${a}</h3>${t ? `<p class="hint">${t}</p>` : ""}${o}</section>`,
-    c = donut(
-      ["formacion", "planeacion", "seguimiento"].map((e) => ({
-        v: t[e],
-        color: TCOL[e],
-        label: TYPES[e],
-        tip: `${TYPES[e]}: ${t[e]} h (${pct(t[e], t.total)} %)`,
-      })),
-      t.total,
-      "horas",
-    ),
     l = { P: 0, H: 0, V: 0, A: 0, "?": 0 };
   Object.entries(a.byComp).forEach(([e, a]) => {
     const t = state.comps.find((a) => a.id === e);
     l[t ? t.phva : "?"] += a;
   });
-  const d = t.formacion
-      ? donut(
-          [
-            ...Object.keys(PHVA).map((e) => ({
-              v: l[e],
-              color: COLORS[e],
-              label: PHVA[e],
-              tip: `${PHVA[e]}: ${l[e]} h — ${PDESC[e]}`,
-            })),
-            {
-              v: l["?"],
-              color: "var(--muted)",
-              label: "Sin competencia",
-              tip: `Sin competencia: ${l["?"]} h`,
-            },
-          ],
-          t.formacion,
-          "h de formación",
-        )
-      : '<p class="hint">Aún no hay horas de formación.</p>',
-    p = { 10: 0, 11: 0, "?": 0 };
-  Object.entries(a.byFicha).forEach(([e, a]) => {
-    const t = state.fichas.find((a) => a.id === e);
-    p[t ? t.grado : "?"] += a;
-  });
-  const m = t.formacion
-    ? donut(
-        [
-          {
-            v: p[10],
-            color: GCOL[10],
-            label: "Décimo (10°)",
-            tip: `Grado 10°: ${p[10]} h`,
-          },
-          {
-            v: p[11],
-            color: GCOL[11],
-            label: "Once (11°)",
-            tip: `Grado 11°: ${p[11]} h`,
-          },
-          {
-            v: p["?"],
-            color: "var(--muted)",
-            label: "Sin ficha",
-            tip: `Sin ficha: ${p["?"]} h`,
-          },
-        ],
-        t.formacion,
-        "h de formación",
-      )
-    : '<p class="hint">Aún no hay horas de formación.</p>';
   let u;
   if ("month" === statsScope) {
     const e = new Set();
@@ -1779,7 +1717,8 @@ function renderStats() {
     const a = dow(e.date);
     a >= 1 && a <= 5 && (v[a - 1] += e.hours);
   });
-  const b = radar(v, ["Lun", "Mar", "Mié", "Jue", "Vie"]),
+  const DSEM = ["Lun", "Mar", "Mié", "Jue", "Vie"],
+    b = columns(v.map((h, i) => ({ label: DSEM[i], parts: [{ v: h, color: "var(--form)", tip: `${DSEM[i]}: ${h} h` }] })), Math.max(1, ...v)),
     y = {};
   for (let e = RULES.START; e < RULES.END; e++)
     y[e] = { formacion: 0, planeacion: 0, seguimiento: 0 };
@@ -1825,80 +1764,20 @@ function renderStats() {
             "var(--ink)",
           );
         })
-        .join("") || '<p class="hint">Sin horas de formación.</p>',
-    L =
-      Object.entries(a.byFicha)
-        .sort((e, a) => a[1] - e[1])
-        .map(([e, a]) => {
-          const o = fichaIdx(e),
-            s = state.fichas[o];
-          return bar(
-            s
-              ? `${o + 1}. ${s.name || "(sin nombre)"} · ${s.grado}°`
-              : "Sin ficha",
-            a,
-            t.formacion,
-            s ? GCOL[s.grado] : "var(--muted)",
-            s ? `<i class="dot" style="background:${GCOL[s.grado]}"></i>` : "",
-          );
-        })
         .join("") || '<p class="hint">Sin horas de formación.</p>';
+  const fases = Object.keys(PHVA)
+    .map((k) => `<span class="tg" style="--c:${COLORS[k]}${l[k] ? "" : ";opacity:.45"}" title="${esc(PDESC[k])}"><i></i>${PHVA[k]}: <b>${l[k]} h</b></span>`)
+    .join("") + (l["?"] ? `<span class="tg" style="--c:var(--muted)"><i></i>Sin competencia: <b>${l["?"]} h</b></span>` : "");
   $("#stGrid").innerHTML =
-    i(
-      "s4",
-      "Distribución de horas",
-      "Cuánto del tiempo va a formación, planeación y seguimiento.",
-      c,
-    ) +
-    i(
-      "s4",
-      "Ciclo PHVA",
-      "Horas de formación según la etapa de cada competencia.",
-      d,
-    ) +
-    i("s4", "Grados", "Horas de formación en décimo y en once.", m) +
-    i(
-      "s8",
-      "month" === statsScope ? "Horas por semana" : "Horas por mes",
-      "Columnas apiladas por tipo de hora.",
-      g,
-    ) +
-    i("s4", "Carga por día de la semana", "Qué días concentran más horas.", b) +
-    i(
-      "s6",
-      "month" === statsScope
-        ? "Mapa de calor del mes"
-        : "Mapa de calor por mes",
-      "Más verde = más horas ese día.",
-      "month" === statsScope ? heatMonth(e) : heatAll(e),
-    ) +
-    i(
-      "s6",
-      "Franja horaria (6 a. m. – 10 p. m.)",
-      "En qué horas del día está programado el trabajo.",
-      columns(w, k),
-    ) +
-    i("s6", "Horas por competencia", "Color = etapa PHVA.", x) +
-    i("s6", "Horas por RAP", "", S) +
-    i(
-      "s6",
-      "Programas y grados",
-      "Horas de formación de cada programa, separadas en décimo y once.",
-      progGrado(e),
-    ) +
-    i("s6", "Horas por ficha", "Color = grado (décimo / once).", L) +
-    i(
-      "s6",
-      "Horas por institución",
-      "Color = tipo: académica, técnica o privada.",
-      instStats(a.byFicha, t.formacion),
-    ) +
-    i(
-      "s6",
-      "Cruce competencia × ficha",
-      "Horas de formación de cada competencia en cada ficha.",
-      matrix(e),
-    );
+    i("s8", "month" === statsScope ? "Horas por semana" : "Horas por mes", "Columnas apiladas por tipo de hora.", g) +
+    i("s4", "Carga por día de la semana", "Horas programadas de lunes a viernes.", b) +
+    i("s6", "month" === statsScope ? "Mapa de calor del mes" : "Mapa de calor por mes", "Más verde = más horas ese día.", "month" === statsScope ? heatMonth(e) : heatAll(e)) +
+    i("s6", "Franja horaria (6 a. m. – 10 p. m.)", "En qué horas del día está programado el trabajo.", columns(w, k)) +
+    i("s6", "Horas por competencia", "Color = etapa PHVA; arriba, el subtotal de cada etapa.", `<div class="tgrow">${fases}</div>${x}`) +
+    i("s6", "Horas por RAP", "Resultado de aprendizaje, con su competencia.", S) +
+    i("s6", "Formación por programa y ficha", "Cada programa con sus fichas: grado, institución y horas de formación.", progFicha(e)) +
+    i("s6", "Horas por institución", "Color = tipo: académica, técnica o privada.", instStats(a.byFicha, t.formacion)) +
+    i("s12", "Cruce competencia × ficha", "Horas de formación de cada competencia en cada ficha (solo fichas con horas).", matrix(e));
 }
 const tip = $("#tip");
 let hot = null;

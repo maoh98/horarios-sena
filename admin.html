@@ -52,6 +52,8 @@ td .sub{color:var(--muted);font-size:12.5px}
 .ins em{font-style:normal;font-size:10px;font-weight:700;color:var(--danger)}
 .bar select{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;font:inherit;color:inherit}
 .pg{margin:2px 0 6px}.pg b{font-size:13px}.pg .sub{display:block}
+.pg .sub .ins{display:flex;width:max-content;max-width:100%;margin:2px 0 4px 36px}
+.dupe{font-style:normal;font-size:10px;font-weight:700;color:#fff;background:var(--danger);border-radius:4px;padding:0 5px;margin-left:4px}
 .g{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--surface2);margin-right:4px}
 .hrs{display:flex;gap:3px;height:6px;border-radius:4px;overflow:hidden;margin-top:5px;background:var(--surface2);width:110px}
 .hrs i{display:block}
@@ -114,7 +116,7 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
   <div class="wrap"><table>
     <thead><tr>
       <th data-s="n" class="num">N°</th><th data-s="nombre">Instructor</th><th data-s="centro">Centro</th><th data-s="programas">Programas y fichas</th>
-      <th data-s="h10">Formación por grado</th><th data-s="total">Horas por tipo</th><th data-s="dias" class="num">Días</th><th data-s="estado">Sello y reglas</th><th data-s="selladoEn">Sellado (UTC)</th>
+      <th data-s="h10">Formación por grado</th><th data-s="total">Horas por tipo</th><th data-s="dias" class="num">Días</th><th data-s="estado">Sello y reglas</th><th data-s="selladoEn">Sellado (hora local)</th>
     </tr></thead>
     <tbody id="rows"></tbody>
   </table><div class="empty" id="empty" hidden></div></div>
@@ -432,14 +434,16 @@ function visibles(){
   return[...a].sort((x,y)=>{const A=g(x),B=g(y);return(typeof A==='number'&&typeof B==='number'?A-B:String(A??'').localeCompare(String(B??''),'es'))*sortDir});
 }
 const TN={A:'Académica',T:'Técnica',P:'Privada'};
-const pc=(v,t)=>t?Math.round(v/t*100):0;
-function linea(c,txt,h,t){return`<span style="--c:${c}${h?'':';opacity:.45'}">${txt}<em>${pc(h,t)} %</em></span>`}
+const fechaLocal=iso=>{const d=new Date(iso);if(!iso||isNaN(d))return String(iso||'').slice(0,16).replace('T',' ');const z=n=>String(n).padStart(2,'0');return`${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())} ${z(d.getHours())}:${z(d.getMinutes())}`};
+/* porcentajes que siempre suman 100 (método del mayor residuo) */
+function pcs(vals,t){if(!t)return vals.map(()=>0);const raw=vals.map(v=>v/t*100),fl=raw.map(Math.floor);let r=100-fl.reduce((a,b)=>a+b,0);raw.map((v,i)=>[v-fl[i],i]).sort((a,b)=>b[0]-a[0]).forEach(([,i])=>{if(r>0&&vals[i]>0){fl[i]++;r--}});return fl}
+function linea(c,txt,h,p){return`<span style="--c:${c}${h?'':';opacity:.45'}">${txt}<em>${p} %</em></span>`}
 function tipoCelda(x){
   const h=x.horas,t=h.total||1;
   const seg=[['var(--form)','Formación',h.formacion],['var(--plan)','Planeación',h.planeacion],['var(--seg)','Seguimiento',h.seguimiento]];
   return`<div class="tot">${h.total} <small>h en total</small></div>
     <div class="sbar" role="img" aria-label="Formación ${h.formacion} h, planeación ${h.planeacion} h, seguimiento ${h.seguimiento} h">${seg.map(([c,,v])=>v?`<i style="width:${v/t*100}%;background:${c}"></i>`:'').join('')}</div>
-    <div class="slg">${seg.map(([c,n,v])=>linea(c,`<b>${v}</b> h ${n}`,v,t)).join('')}</div>`;
+    <div class="slg">${(P=>seg.map(([c,n,v],i)=>linea(c,`<b>${v}</b> h ${n}`,v,P[i])).join(''))(pcs(seg.map(q=>q[2]),t))}</div>`;
 }
 function gradoCelda(x){
   const g=x.grados,f=x.horas.formacion||0,sin=g.sin||0;
@@ -447,16 +451,18 @@ function gradoCelda(x){
   const seg=[['#2fb3d6','Décimo (10°)',g['10']],['#b5895a','Once (11°)',g['11']]];if(sin)seg.push(['#8a96a3','Sin grado',sin]);
   return`<div class="tot">${f} <small>h de formación</small></div>
     <div class="sbar" role="img" aria-label="Décimo ${g['10']} h, once ${g['11']} h">${seg.map(([c,,v])=>v?`<i style="width:${v/f*100}%;background:${c}"></i>`:'').join('')}</div>
-    <div class="slg">${seg.map(([c,n,v])=>linea(c,`<b>${v}</b> h ${n}`,v,f)).join('')}</div>`;
+    <div class="slg">${(P=>seg.map(([c,n,v],i)=>linea(c,`<b>${v}</b> h ${n}`,v,P[i])).join(''))(pcs(seg.map(q=>q[2]),f))}</div>`;
 }
 const insChip=f=>f.inst?`<span class="ins ${f.tipo||'X'}" title="${esc((TN[f.tipo]||'Tipo sin definir')+(f.instNueva?' · institución nueva (no está en la lista oficial)':''))}"><i></i>${esc(f.inst)}${f.instNueva?' <em>nueva</em>':''}</span>`:'<span class="ins X" title="Aún sin institución. Se completa cuando el instructor vuelva a sellar su horario."><i></i>institución pendiente</span>';
+const repetidas=x=>{const c={};x.fichas.forEach(f=>{const k=String(f.nombre||'').replace(/\s+/g,'');if(k)c[k]=(c[k]||0)+1});return k=>c[String(k||'').replace(/\s+/g,'')]>1};
 function progCelda(x){
+  const dup=repetidas(x);
   if(!x.programas.length&&!x.fichas.length)return'<span class="sub">—</span>';
   const varios=x.programas.filter(q=>q.n).length>1;
   const porProg={};x.fichas.forEach(f=>(porProg[f.programa??'?']=porProg[f.programa??'?']||[]).push(f));
   const bloques=x.programas.map(p=>{const fs=porProg[p.n??'?']||[];
-    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b> <span class="sub" style="display:inline">· ${p.total} h${varios?` (<span class="g10">10°: ${p.h10}</span> · <span class="g11">11°: ${p.h11}</span>${p.hSin?` · sin grado: ${p.hSin}`:''})`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</span>`).join('')}</div>`}).join('');
-  const sueltas=x.programas.some(p=>p.n==null)?'':(porProg['?']||[]).map(f=>`<div class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</div>`).join('');
+    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b> <span class="sub" style="display:inline">· ${p.total} h${varios?` (<span class="g10">10°: ${p.h10}</span> · <span class="g11">11°: ${p.h11}</span>${p.hSin?` · sin grado: ${p.hSin}`:''})`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)}${dup(f.nombre)?' <em class="dupe" title="Este número de ficha aparece más de una vez en este horario">repetida</em>':''} · ${f.horas} h${insChip(f)}</span>`).join('')}</div>`}).join('');
+  const sueltas=x.programas.some(p=>p.n==null)?'':(porProg['?']||[]).map(f=>`<div class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)}${dup(f.nombre)?' <em class="dupe">repetida</em>':''} · ${f.horas} h${insChip(f)}</div>`).join('');
   return bloques+sueltas;
 }
 function render(){
@@ -475,8 +481,8 @@ function render(){
       <td class="mt">${tipoCelda(x)}</td>
       <td class="num"><b>${x.dias}</b><div class="sub">${x.dias?(x.horas.total/x.dias).toFixed(1).replace('.',','):'0'} h/día</div></td>
       <td><span class="tag ${esc(x.estado)}">${ESTADO[x.estado]||esc(x.estado)}</span>${x.huella?`<div class="sub"><code>${esc(x.huella)}</code></div>`:''}
-        <div style="margin-top:4px">${r.ok?'<span class="tag ok">Encaja ✓</span>':`<span class="tag warn" title="${esc(r.problemas.slice(0,6).join('\n'))}">${r.problemas.length} problema(s)</span>`}</div></td>
-      <td class="sub">${esc(String(x.selladoEn||'').slice(0,16).replace('T',' '))}</td></tr>`}).join('');
+        <div style="margin-top:4px">${(()=>{const d=repetidas(x);return x.fichas.some(f=>d(f.nombre))?'<div style="margin-bottom:4px"><span class="tag warn" title="Hay números de ficha repetidos. Pídele que los revise.">Fichas repetidas</span></div>':''})()}${r.ok?'<span class="tag ok">Encaja ✓</span>':`<span class="tag warn" title="${esc(r.problemas.slice(0,6).join('\n'))}">${r.problemas.length} problema(s)</span>`}</div></td>
+      <td class="sub">${esc(fechaLocal(x.selladoEn))}</td></tr>`}).join('');
   if(MODE==='repo'&&LIST.length||MODE==='local'){$('#empty').hidden=!!rows.length;if(!rows.length)$('#empty').textContent='Sin resultados.'}
 }
 function llenarInst(){const v=$('#fi').value,n=[...new Set(LIST.flatMap(x=>x.fichas.map(f=>f.inst)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
@@ -493,7 +499,7 @@ const EST={valido:'Sellado y verificado',roto:'SELLO ROTO','sin-sello':'Sin sell
 const ordenados=()=>[...LIST].sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
 function filas(){return ordenados().map((x,i)=>[i+1,x.nombre,x.cargo,x.centro,x.programas.filter(p=>p.n).map(p=>`P${p.n}. ${p.nombre}`).join(' | '),x.programas.filter(p=>p.n).length,
   x.fichas.map(f=>`${f.nombre} (${f.grado}°${f.programa?' · P'+f.programa:''}${f.inst?' · '+(TN[f.tipo]||'?')+': '+f.inst:''})`).join(' | '),x.instituciones.filter(i=>i.nombre!=='Sin institución').map(i=>`${TN[i.tipo]||'?'}: ${i.nombre}${i.nueva?' (nueva)':''}`).join(' | '),x.grados['10'],x.grados['11'],x.horas.formacion,x.horas.planeacion,x.horas.seguimiento,x.horas.total,x.dias,x.meses.join(', '),
-  x.reglas.ok?'Encaja':`${x.reglas.problemas.length} problema(s): ${x.reglas.problemas.slice(0,3).join(' / ')}`,EST[x.estado]||x.estado,String(x.selladoEn||'').slice(0,16).replace('T',' '),x.huella||'',x.archivo].map(seguro))}
+  x.reglas.ok?'Encaja':`${x.reglas.problemas.length} problema(s): ${x.reglas.problemas.slice(0,3).join(' / ')}`,EST[x.estado]||x.estado,fechaLocal(x.selladoEn),x.huella||'',x.archivo].map(seguro))}
 function filasI(){return ordenados().flatMap(x=>x.instituciones.map(i=>[x.nombre,TN[i.tipo]||'',i.nombre,i.nueva?'Sí':'',i.fichas,i.horas].map(seguro)))}
 function filasP(){return ordenados().flatMap(x=>x.programas.map(p=>[x.nombre,p.n??'',p.nombre,p.h10,p.h11,p.hSin,p.total].map(seguro)))}
 function bajar(nombre,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nombre;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
