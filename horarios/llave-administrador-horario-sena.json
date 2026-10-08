@@ -1,0 +1,14 @@
+{
+  "app": "horario-sena-admin-llave",
+  "v": 1,
+  "nombre": "Administrador",
+  "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEv01UrWEqyzilda7uRlRugrayojYv2IwH0Fta9KDANHQ1rTVCU3n5vUgDppgRwSNSGe+aPjnfH95dl+eRYNnGOQ==",
+  "fp": "51DB 4DF5 DFC1 0BFD",
+  "kdf": {
+    "alg": "PBKDF2-SHA256",
+    "iter": 600000,
+    "salt": "CNDxaq4sZXKiFMXd1YACkg=="
+  },
+  "iv": "OEHugMMlLICnFczb",
+  "key": "nVaFwCFowPNANwEMk2YqasUZmMFvDzCd6B10tihPGUmEmMnyMF6RBsdg9c2R54O6PCb8vfTD6eVBxsGYXNIlMeko0m+avgS6MsgNcuDA2vVHPYRrZ4x44rg8hSVJ7q7i+22mf1Q9dBV49nURP3vEy5sVGXJe6jaIy0b2jC4vSkcXMRBmViflIAYJubaxEyIoBMPQAAw0XNbxIw=="
+}
