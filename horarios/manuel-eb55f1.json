@@ -2,8 +2,8 @@
   "schema": 2,
   "app": "horario-sena",
   "author": "Ing. Manuel Alejandro Ordóñez Hernández",
-  "rev": 1,
-  "por": "instructor",
+  "rev": 2,
+  "por": "administrador",
   "file": "manuel-eb55f1.json",
   "profile": {
     "name": "manuel",
@@ -81,6 +81,33 @@
     ]
   },
   "blocks": [
+    {
+      "date": "2026-10-07",
+      "start": 6,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 7,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 14,
+      "hours": 7,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 3,
+      "ficha": 2
+    },
     {
       "date": "2026-10-08",
       "start": 6,
@@ -276,9 +303,34 @@
       "t": "2026-10-08T13:24:24.831Z",
       "a": "Sellar",
       "d": "Horario sellado con contraseña"
+    },
+    {
+      "t": "2026-10-08T13:28:36.329Z",
+      "a": "Administrador",
+      "d": "Abrió el horario para revisarlo (administrador)"
+    },
+    {
+      "t": "2026-10-08T13:29:21.695Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 14:00–21:00 Formación F2 C2 R3"
+    },
+    {
+      "t": "2026-10-08T13:29:23.410Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 06:00–07:00 Planeación"
+    },
+    {
+      "t": "2026-10-08T13:29:24.417Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-08T13:29:56.295Z",
+      "a": "Sellar",
+      "d": "Sellado por el administrador (administrador) · versión 2"
     }
   ],
-  "exported": "2026-10-08T13:24:34.449Z",
+  "exported": "2026-10-08T13:29:56.296Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -291,8 +343,8 @@
     },
     "iv": "iK6B52Cfsj5rYlAQ",
     "key": "XYldbW2aJ0seuv9S76phyndqUv8nmvHuS4cSZKI3uVR9SDDrRb4D+zprhjAlh4LihdHY/nYAIfK/bM5sWjk2/QmBD1dLGbHeYRA5Kuqii3T/ByWUlkS9tyYYn0VjRmizqdaZsZItIRKFLSa9cr/1FFOW/jc6BdLIlmq7bLrqteFcYp0awzydMTxeON3+yyePfQj29ladsIPd7w==",
-    "sig": "vKM1qCWH/p7lFPQ4NTtBFZcDU6zXG0qhA2Jr/pPvW2BzBZhySzk84i0U1XgaczN4m1cQlexow46lD4tZgnJ+hQ==",
-    "at": "2026-10-08T13:24:24.839Z",
+    "sig": "yx6X42srN1TBScDnqw5YWI3w+lmwC8Yj1qrUzKh6w3jFLDW1aJaqIUwUufYeG4OQBxn34Qa/oN61djuzzHWvRg==",
+    "at": "2026-10-08T13:29:56.296Z",
     "adm": {
       "v": 1,
       "fp": "1DAB 7A75 7F29 AB65",
