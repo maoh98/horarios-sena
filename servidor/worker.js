@@ -59,8 +59,9 @@ export default {
 
     let sha, put;
     /* varios instructores pueden enviar a la vez: si GitHub responde conflicto, se reintenta */
-    for (let intento = 0; intento < 5; intento++) {
-      if (intento) await new Promise(r => setTimeout(r, 300 + Math.random() * 900 * intento));
+    for (let intento = 0; intento < 12; intento++) {
+      /* espera creciente con azar (hasta ~8 s) para que los envíos simultáneos no choquen otra vez; 12 intentos × 2 llamadas = 24 < límite de 50 subpeticiones */
+      if (intento) await new Promise(r => setTimeout(r, 200 + Math.random() * Math.min(8000, 350 * 2 ** intento)));
       sha = undefined;
     const previo = await fetch(`${api}?ref=${encodeURIComponent(rama)}`, {headers: gh});
     if (previo.status === 200) {
@@ -80,9 +81,9 @@ export default {
         content: b64(JSON.stringify(j, null, 2) + '\n'), branch: rama, ...(sha ? {sha} : {})
       })
     });
-      if (put.status !== 409 && put.status !== 422 && put.status < 500) break;
+      if (put.status !== 409 && put.status !== 422 && put.status !== 429 && put.status < 500) break;
     }
-    if (!put.ok) return out(502, {ok: false, error: 'No se pudo guardar en el repositorio (' + put.status + '). Avisa al administrador.'});
+    if (!put.ok) return out(502, {ok: false, error: 'El servidor está muy ocupado (' + put.status + '). Espera un minuto y vuelve a enviar; tu horario sigue guardado en este navegador.'});
     return out(200, {ok: true, archivo, nuevo: !sha, huella: v.huella, mensaje: sha ? 'Horario actualizado.' : 'Horario recibido.'});
   }
 };

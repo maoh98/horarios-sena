@@ -288,8 +288,8 @@ var worker_default = {
     const gh = { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "horario-sena-envios", "X-GitHub-Api-Version": "2022-11-28" };
     const rama = env.RAMA || "main";
     let sha, put;
-    for (let intento = 0; intento < 5; intento++) {
-      if (intento) await new Promise((r2) => setTimeout(r2, 300 + Math.random() * 900 * intento));
+    for (let intento = 0; intento < 12; intento++) {
+      if (intento) await new Promise((r2) => setTimeout(r2, 200 + Math.random() * Math.min(8e3, 350 * 2 ** intento)));
       sha = void 0;
       const previo = await fetch(`${api}?ref=${encodeURIComponent(rama)}`, { headers: gh });
       if (previo.status === 200) {
@@ -313,9 +313,9 @@ var worker_default = {
           ...sha ? { sha } : {}
         })
       });
-      if (put.status !== 409 && put.status !== 422 && put.status < 500) break;
+      if (put.status !== 409 && put.status !== 422 && put.status !== 429 && put.status < 500) break;
     }
-    if (!put.ok) return out(502, { ok: false, error: "No se pudo guardar en el repositorio (" + put.status + "). Avisa al administrador." });
+    if (!put.ok) return out(502, { ok: false, error: "El servidor est\xE1 muy ocupado (" + put.status + "). Espera un minuto y vuelve a enviar; tu horario sigue guardado en este navegador." });
     return out(200, { ok: true, archivo, nuevo: !sha, huella: v.huella, mensaje: sha ? "Horario actualizado." : "Horario recibido." });
   }
 };
