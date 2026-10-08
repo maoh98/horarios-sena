@@ -1,0 +1,950 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "profile": {
+    "name": "manuel alejandro ",
+    "cargo": "instructor pam",
+    "centro": "CFQ",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 2,
+    "maxProgramas": 3
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "IRS",
+        "phva": "H"
+      },
+      {
+        "n": 2,
+        "name": "base de datos",
+        "phva": "V"
+      },
+      {
+        "n": 3,
+        "name": "desarrollo",
+        "phva": "V"
+      },
+      {
+        "n": 4,
+        "name": "redes",
+        "phva": "A"
+      },
+      {
+        "n": 5,
+        "name": "ofimatica",
+        "phva": "P"
+      },
+      {
+        "n": 6,
+        "name": "gestion docuental",
+        "phva": "H"
+      },
+      {
+        "n": 7,
+        "name": "video",
+        "phva": "A"
+      },
+      {
+        "n": 8,
+        "name": "audio",
+        "phva": "V"
+      },
+      {
+        "n": 9,
+        "name": "",
+        "phva": "H"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "configuracion ip",
+        "comp": 2,
+        "nc": 1
+      },
+      {
+        "n": 2,
+        "name": "ie 830",
+        "comp": 1,
+        "nc": 1
+      },
+      {
+        "n": 3,
+        "name": "crrear base de datos",
+        "comp": 3,
+        "nc": 1
+      },
+      {
+        "n": 4,
+        "name": "consultar tablas",
+        "comp": 3,
+        "nc": 2
+      },
+      {
+        "n": 5,
+        "name": "crar docuentnos",
+        "comp": 1,
+        "nc": 2
+      },
+      {
+        "n": 6,
+        "name": "fronted",
+        "comp": 5,
+        "nc": 1
+      },
+      {
+        "n": 7,
+        "name": "backedn",
+        "comp": 2,
+        "nc": 2
+      },
+      {
+        "n": 8,
+        "name": "ruidos",
+        "comp": 6,
+        "nc": 1
+      },
+      {
+        "n": 9,
+        "name": "acustioca",
+        "comp": 2,
+        "nc": 3
+      },
+      {
+        "n": 10,
+        "name": "",
+        "comp": 6,
+        "nc": 2
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3439360",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. Agropecuaria El Marfil"
+      },
+      {
+        "n": 2,
+        "name": "3439369",
+        "grado": "11",
+        "programa": 2,
+        "tipo": "T",
+        "inst": "I.E.T. José Joaquín Ortiz"
+      },
+      {
+        "n": 3,
+        "name": "3439359",
+        "grado": "10",
+        "programa": 2,
+        "tipo": "A",
+        "inst": "I.E. John F. Kennedy"
+      },
+      {
+        "n": 4,
+        "name": "3949494",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "P",
+        "inst": "Colegio Santa Teresita"
+      },
+      {
+        "n": 5,
+        "name": "393949494",
+        "grado": "10",
+        "programa": 3,
+        "tipo": "P",
+        "inst": "Liceo Pestalozzi"
+      },
+      {
+        "n": 6,
+        "name": "93949494",
+        "grado": "11",
+        "programa": 3,
+        "tipo": "A",
+        "inst": "las estrellas"
+      },
+      {
+        "n": 7,
+        "name": "393949494",
+        "grado": "10",
+        "programa": 3,
+        "tipo": null,
+        "inst": ""
+      },
+      {
+        "n": 8,
+        "name": "393949494",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. José Joaquín Ortiz"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "teelinfirmatico"
+      },
+      {
+        "n": 2,
+        "name": "programcino"
+      },
+      {
+        "n": 3,
+        "name": "audivisuale"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-07",
+      "start": 6,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 7,
+      "hours": 11,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 5,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-07",
+      "start": 18,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 6,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-08",
+      "start": 7,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 6,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 8,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-13",
+      "start": 7,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 8,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 8,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-13",
+      "start": 16,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 17,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 3,
+      "ficha": 4
+    }
+  ],
+  "log": [
+    {
+      "t": "2026-10-08T01:31:55.175Z",
+      "a": "Inicio",
+      "d": "Programación creada"
+    },
+    {
+      "t": "2026-10-08T02:07:02.029Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-08T02:07:10.915Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-08T02:07:22.974Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-08T02:07:30.409Z",
+      "a": "Editar programa",
+      "d": "#1: teelinfirmatico"
+    },
+    {
+      "t": "2026-10-08T02:07:32.953Z",
+      "a": "Editar programa",
+      "d": "#2: programcino"
+    },
+    {
+      "t": "2026-10-08T02:07:41.757Z",
+      "a": "Editar programa",
+      "d": "#3: audivisuale"
+    },
+    {
+      "t": "2026-10-08T02:07:45.148Z",
+      "a": "Editar ficha",
+      "d": "#1: 3439360"
+    },
+    {
+      "t": "2026-10-08T02:07:48.260Z",
+      "a": "Editar ficha",
+      "d": "#2: 3439369"
+    },
+    {
+      "t": "2026-10-08T02:07:50.716Z",
+      "a": "Editar ficha",
+      "d": "#3: 3439359"
+    },
+    {
+      "t": "2026-10-08T02:07:52.898Z",
+      "a": "Editar ficha",
+      "d": "#4: 3949494"
+    },
+    {
+      "t": "2026-10-08T02:07:54.006Z",
+      "a": "Editar ficha",
+      "d": "#5: 393949494"
+    },
+    {
+      "t": "2026-10-08T02:07:55.091Z",
+      "a": "Editar ficha",
+      "d": "#6: 93949494"
+    },
+    {
+      "t": "2026-10-08T02:07:56.138Z",
+      "a": "Editar ficha",
+      "d": "#7: 393949494"
+    },
+    {
+      "t": "2026-10-08T02:07:57.183Z",
+      "a": "Editar ficha",
+      "d": "#8: 393949494"
+    },
+    {
+      "t": "2026-10-08T02:07:58.108Z",
+      "a": "Editar ficha",
+      "d": "#9: 2939494"
+    },
+    {
+      "t": "2026-10-08T02:07:59.018Z",
+      "a": "Editar ficha",
+      "d": "#10: 3939494"
+    },
+    {
+      "t": "2026-10-08T02:08:01.583Z",
+      "a": "Quitar ficha",
+      "d": "#11: "
+    },
+    {
+      "t": "2026-10-08T02:08:08.797Z",
+      "a": "Quitar ficha",
+      "d": "#10: 3939494"
+    },
+    {
+      "t": "2026-10-08T02:08:09.540Z",
+      "a": "Quitar ficha",
+      "d": "#9: 2939494"
+    },
+    {
+      "t": "2026-10-08T02:08:26.479Z",
+      "a": "Editar competencia",
+      "d": "#1: IRS"
+    },
+    {
+      "t": "2026-10-08T02:08:36.414Z",
+      "a": "Editar competencia",
+      "d": "#2: base de datos"
+    },
+    {
+      "t": "2026-10-08T02:08:42.379Z",
+      "a": "Quitar competencia",
+      "d": "#3: "
+    },
+    {
+      "t": "2026-10-08T02:08:50.389Z",
+      "a": "Editar competencia",
+      "d": "#3: desarrollo"
+    },
+    {
+      "t": "2026-10-08T02:08:59.487Z",
+      "a": "Editar competencia",
+      "d": "#4: redes"
+    },
+    {
+      "t": "2026-10-08T02:09:39.881Z",
+      "a": "Editar competencia",
+      "d": "#5: telematica"
+    },
+    {
+      "t": "2026-10-08T02:09:40.781Z",
+      "a": "Quitar competencia",
+      "d": "#6: "
+    },
+    {
+      "t": "2026-10-08T02:09:46.737Z",
+      "a": "Editar competencia",
+      "d": "#5: ofimatica"
+    },
+    {
+      "t": "2026-10-08T02:10:04.306Z",
+      "a": "Editar competencia",
+      "d": "#6: gestion docuental"
+    },
+    {
+      "t": "2026-10-08T02:10:07.082Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-08T02:10:08.063Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:10:08.510Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 3: Hacer"
+    },
+    {
+      "t": "2026-10-08T02:10:09.396Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 4: Actuar"
+    },
+    {
+      "t": "2026-10-08T02:10:09.870Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 5: Actuar"
+    },
+    {
+      "t": "2026-10-08T02:10:11.019Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 6: Hacer"
+    },
+    {
+      "t": "2026-10-08T02:10:11.768Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 7: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:10:17.161Z",
+      "a": "Quitar competencia",
+      "d": "#7: "
+    },
+    {
+      "t": "2026-10-08T02:10:21.674Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 5: Planear"
+    },
+    {
+      "t": "2026-10-08T02:10:25.675Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 3: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:11:02.356Z",
+      "a": "Editar competencia",
+      "d": "#7: h"
+    },
+    {
+      "t": "2026-10-08T02:11:11.029Z",
+      "a": "Editar competencia",
+      "d": "#7: video"
+    },
+    {
+      "t": "2026-10-08T02:11:12.765Z",
+      "a": "Editar competencia",
+      "d": "#8: audio"
+    },
+    {
+      "t": "2026-10-08T02:11:34.660Z",
+      "a": "Quitar RAP",
+      "d": "#1: "
+    },
+    {
+      "t": "2026-10-08T02:11:35.466Z",
+      "a": "Quitar RAP",
+      "d": "#1: "
+    },
+    {
+      "t": "2026-10-08T02:11:37.830Z",
+      "a": "Quitar competencia",
+      "d": "#10: "
+    },
+    {
+      "t": "2026-10-08T02:13:42.609Z",
+      "a": "Editar RAP",
+      "d": "#1: redes"
+    },
+    {
+      "t": "2026-10-08T02:13:47.201Z",
+      "a": "Quitar RAP",
+      "d": "#1: redes"
+    },
+    {
+      "t": "2026-10-08T02:13:54.281Z",
+      "a": "Editar RAP",
+      "d": "#1: configuracion ip"
+    },
+    {
+      "t": "2026-10-08T02:14:00.774Z",
+      "a": "Editar RAP",
+      "d": "#2: ie 830"
+    },
+    {
+      "t": "2026-10-08T02:14:09.211Z",
+      "a": "Editar RAP",
+      "d": "#3: crrear base de datos"
+    },
+    {
+      "t": "2026-10-08T02:14:13.385Z",
+      "a": "Editar RAP",
+      "d": "#4: consultar tablas"
+    },
+    {
+      "t": "2026-10-08T02:14:23.734Z",
+      "a": "Editar RAP",
+      "d": "#5: crar docuentnos"
+    },
+    {
+      "t": "2026-10-08T02:14:34.343Z",
+      "a": "Editar RAP",
+      "d": "#6: fronted"
+    },
+    {
+      "t": "2026-10-08T02:14:36.225Z",
+      "a": "Editar RAP",
+      "d": "#7: backedn"
+    },
+    {
+      "t": "2026-10-08T02:14:41.309Z",
+      "a": "Editar RAP",
+      "d": "#8: ruidos"
+    },
+    {
+      "t": "2026-10-08T02:14:42.727Z",
+      "a": "Editar RAP",
+      "d": "#9: acustioca"
+    },
+    {
+      "t": "2026-10-08T02:15:05.799Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 7: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:15:06.431Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 8: Actuar"
+    },
+    {
+      "t": "2026-10-08T02:15:06.898Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 8: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:15:07.959Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 9: Verificar"
+    },
+    {
+      "t": "2026-10-08T02:15:08.439Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 9: Actuar"
+    },
+    {
+      "t": "2026-10-08T02:15:09.146Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 9: Hacer"
+    },
+    {
+      "t": "2026-10-08T02:15:12.741Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 7: Actuar"
+    },
+    {
+      "t": "2026-10-08T02:15:29.641Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C4"
+    },
+    {
+      "t": "2026-10-08T02:16:27.388Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 1: P1"
+    },
+    {
+      "t": "2026-10-08T02:16:28.784Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 2: P2"
+    },
+    {
+      "t": "2026-10-08T02:16:29.875Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 3: P2"
+    },
+    {
+      "t": "2026-10-08T02:16:31.264Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 4: P1"
+    },
+    {
+      "t": "2026-10-08T02:16:32.154Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 5: P3"
+    },
+    {
+      "t": "2026-10-08T02:16:34.126Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 6: P3"
+    },
+    {
+      "t": "2026-10-08T02:16:36.042Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 7: P3"
+    },
+    {
+      "t": "2026-10-08T02:16:37.377Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 8: P3"
+    },
+    {
+      "t": "2026-10-08T02:16:38.874Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 8: P1"
+    },
+    {
+      "t": "2026-10-08T02:16:41.764Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-08T02:16:43.921Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E.T. Agropecuaria El Marfil"
+    },
+    {
+      "t": "2026-10-08T02:16:50.969Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 2: Técnica"
+    },
+    {
+      "t": "2026-10-08T02:16:52.651Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 2: I.E.T. José Joaquín Ortiz"
+    },
+    {
+      "t": "2026-10-08T02:16:53.876Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 3: Académica"
+    },
+    {
+      "t": "2026-10-08T02:16:55.713Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 3: I.E. John F. Kennedy"
+    },
+    {
+      "t": "2026-10-08T02:17:02.977Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 4: Privada"
+    },
+    {
+      "t": "2026-10-08T02:17:04.924Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 4: Colegio Santa Teresita"
+    },
+    {
+      "t": "2026-10-08T02:17:06.437Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 5: Privada"
+    },
+    {
+      "t": "2026-10-08T02:17:09.481Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 5: Liceo Pestalozzi"
+    },
+    {
+      "t": "2026-10-08T02:17:12.564Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 6: Académica"
+    },
+    {
+      "t": "2026-10-08T02:17:14.882Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 6: sin institución"
+    },
+    {
+      "t": "2026-10-08T02:17:20.134Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 6: las estrellas"
+    },
+    {
+      "t": "2026-10-08T02:17:29.267Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 7: 11°"
+    },
+    {
+      "t": "2026-10-08T02:17:32.265Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 7: 10°"
+    },
+    {
+      "t": "2026-10-08T02:17:33.929Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 6: 11°"
+    },
+    {
+      "t": "2026-10-08T02:17:35.153Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 4: 11°"
+    },
+    {
+      "t": "2026-10-08T02:17:36.485Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 2: 11°"
+    },
+    {
+      "t": "2026-10-08T02:17:39.235Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 8: Técnica"
+    },
+    {
+      "t": "2026-10-08T02:17:42.137Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 8: I.E.T. José Joaquín Ortiz"
+    },
+    {
+      "t": "2026-10-08T02:18:36.588Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-08T02:18:37.886Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: C2"
+    },
+    {
+      "t": "2026-10-08T02:18:38.818Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 3: C2"
+    },
+    {
+      "t": "2026-10-08T02:18:39.394Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C3"
+    },
+    {
+      "t": "2026-10-08T02:18:40.258Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C4"
+    },
+    {
+      "t": "2026-10-08T02:18:41.630Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C5"
+    },
+    {
+      "t": "2026-10-08T02:18:42.526Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 4: C2"
+    },
+    {
+      "t": "2026-10-08T02:18:43.119Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 5: C2"
+    },
+    {
+      "t": "2026-10-08T02:18:44.614Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C6"
+    },
+    {
+      "t": "2026-10-08T02:18:45.356Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: C6"
+    },
+    {
+      "t": "2026-10-08T02:18:46.319Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 3: C6"
+    },
+    {
+      "t": "2026-10-08T02:19:03.336Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-08T02:19:09.193Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-08T02:19:14.034Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-08T02:19:14.525Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C3"
+    },
+    {
+      "t": "2026-10-08T02:19:16.823Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C4"
+    },
+    {
+      "t": "2026-10-08T02:19:17.619Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-08T02:20:31.546Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: C1"
+    },
+    {
+      "t": "2026-10-08T02:20:33.758Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-08T02:20:35.563Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 3: C2"
+    },
+    {
+      "t": "2026-10-08T02:20:54.524Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 07:00–18:00 Formación F4 C1 R5"
+    },
+    {
+      "t": "2026-10-08T02:20:56.040Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 06:00–07:00 Planeación"
+    },
+    {
+      "t": "2026-10-08T02:20:57.259Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 18:00–19:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-08T02:22:01.845Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-08T02:22:03.209Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 06:00–07:00 Formación F4 C1 R2"
+    },
+    {
+      "t": "2026-10-08T02:22:04.873Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-08T02:22:26.491Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 16:00–17:00 Planeación"
+    },
+    {
+      "t": "2026-10-08T02:22:28.220Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 06:00–07:00 Formación F4 C6 R8"
+    },
+    {
+      "t": "2026-10-08T02:22:29.622Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-08T02:22:48.440Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 08:00–09:00 Formación F4 C6 R8"
+    },
+    {
+      "t": "2026-10-08T02:23:30.123Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 17:00–21:00 Formación F4 C3 R3"
+    },
+    {
+      "t": "2026-10-08T02:24:58.195Z",
+      "a": "Sellar",
+      "d": "Horario sellado con contraseña"
+    }
+  ],
+  "exported": "2026-10-08T02:25:07.034Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEShw/zB6nZSx4v23/LAIrWxWwgRH1OGP1F/nbaqflioGCRkW19Glx+SL6l0ccjgKMLLN1n3iv7pDu4/nM+FB6pg==",
+    "fp": "0525 82F3 53E7 D21A",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "pjhf642BtoB84FSBWJBrLA=="
+    },
+    "iv": "s1nk2/ilH9Vo1q29",
+    "key": "WJtgykvkzPRh1jRzvMw+VKxDkmgEcKvi93s6gsxctIR0Zc1n4RpexWPIizQ1Uw7wvvusz0PuS4amobiW5CpJs8Tmq49VHqHF9vuOJvx6tuTcbXhqICMWJvK2xLZvGR1XmT+0G+ghsJNoJbg3IrjI/A+VLDTmUF6HKjxuMpvPB+ZfL/tj5LdUB9g5LYljpju3/4xPKITF55tSdQ==",
+    "sig": "PloI2OJAQqBE8veP9W4U9jrVieaLO9QKC++1YdNqOcUqHK3a0qVflOmkxJtN36Gjk0PgyFBQJqrTMLaEnRGqnA==",
+    "at": "2026-10-08T02:24:58.200Z"
+  }
+}
