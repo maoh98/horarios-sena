@@ -56,7 +56,7 @@ Cloudflare se puede hacer completo desde el navegador del celular, sin instalar 
 
 ### Preparación (una sola vez)
 1. Sube esta versión (ver «Actualizar» abajo) y abre `https://<usuario>.github.io/<repo>/index.html?admin` (o el botón **🔑 Mi llave** del panel).
-2. Escribe tu nombre y una contraseña larga (mínimo 10 caracteres) → **Crear llave**. Se descarga `llave-administrador-horario-sena.json`: **guárdala en un lugar seguro** (copia en la nube y en una memoria). Sin ella y sin la contraseña no podrás abrir los horarios ya sellados.
+2. Escribe tu nombre y una contraseña larga (mínimo 10 caracteres) → **Crear llave**. Se descarga `NO-SUBIR-llave-privada-administrador.json`: **guárdala en un lugar seguro** (copia en la nube y en una memoria). Sin ella y sin la contraseña no podrás abrir los horarios ya sellados.
 3. En la misma ventana pulsa **Descargar administrador.json** y súbelo a la carpeta `horarios/` del repositorio (*Add file → Upload files*). Es solo tu llave **pública**; el chequeo de Git y los instructores la usan para preparar la copia cifrada. Cuando esté publicada, la ventana dirá «✓ Tu llave está publicada».
 4. En otro computador: abre el mismo enlace → **Importar** el archivo de la llave → escribe la contraseña.
 

@@ -3508,7 +3508,7 @@ async function admImportar(file) {
 }
 function admDescargarLlave() {
   download(
-    "llave-administrador-horario-sena.json",
+    "NO-SUBIR-llave-privada-administrador.json",
     new Blob([JSON.stringify(admStore, null, 2)], { type: "application/json" }),
   );
 }
@@ -3777,10 +3777,10 @@ async function openAdmModal() {
       <input class="in" id="anom" placeholder="Tu nombre (aparece en el historial de los horarios)" autocomplete="off">
       <input class="in" type="password" id="apw1" placeholder="Contraseña de administrador (mínimo 10 caracteres)" autocomplete="new-password">
       <input class="in" type="password" id="apw2" placeholder="Repite la contraseña" autocomplete="new-password">
-      <label class="chk"><input type="checkbox" id="aok"> <span>Guardaré la copia de seguridad que se descargará. Sin ella y sin la contraseña no podré abrir los horarios ya sellados.</span></label>
+      <label class="chk"><input type="checkbox" id="aok"> <span>Guardaré la copia de seguridad que se descargará (NO-SUBIR-llave-privada-administrador.json) y <b>nunca la subiré a GitHub</b>. Sin ella y sin la contraseña no podré abrir los horarios ya sellados.</span></label>
       <div class="msg" id="admMsg"></div>
       <div class="row"><button class="cta" id="acre" style="flex:1">Crear llave</button></div>
-      <label class="drop" for="aimp" style="margin-top:10px">¿Ya tienes una llave? Importa el archivo <code>llave-administrador-horario-sena.json</code></label>
+      <label class="drop" for="aimp" style="margin-top:10px">¿Ya tienes una llave? Importa el archivo <code>NO-SUBIR-llave-privada-administrador.json</code></label>
       <input id="aimp" type="file" accept=".json" hidden>`),
       ($("#acre").onclick = async () => {
         const p1 = $("#apw1").value,
@@ -3814,7 +3814,8 @@ async function openAdmModal() {
       (B.innerHTML = `<input class="in" type="password" id="apw" placeholder="Contraseña de administrador" autocomplete="current-password">
       <div class="msg" id="admMsg"></div>
       <div class="row"><button class="cta" id="aun" style="flex:1">Entrar</button></div>
-      <p class="note">Huella de tu llave: <code>${esc(admStore.fp)}</code></p>`),
+      <p class="note">Huella de tu llave: <code>${esc(admStore.fp)}</code></p>
+      <p class="note"><button class="btn" id="areset" type="button">Empezar con una llave nueva</button> Borra la llave de este navegador (úsalo solo si la anterior quedó expuesta o la perdiste).</p>`),
       openModal("#bAdm"));
     const go = async () => {
       $("#aun").disabled = !0;
@@ -3824,7 +3825,13 @@ async function openAdmModal() {
         (msg(e.message || "No se pudo entrar."), ($("#aun").disabled = !1));
       }
     };
-    (($("#aun").onclick = go),
+    (($("#areset").onclick = () => {
+      confirm(
+        "Se borra la llave de administrador de este navegador. Los horarios sellados con ella ya no podrán abrirse con la nueva hasta que cada instructor los selle otra vez. ¿Continuar?",
+      ) &&
+        ((admStore = null), (admPriv = null), localStorage.removeItem(LS_ADMK), openAdmModal());
+    }),
+      ($("#aun").onclick = go),
       $("#apw").addEventListener("keydown", (e) => "Enter" === e.key && go()),
       setTimeout(() => $("#apw") && $("#apw").focus(), 50));
     return;
@@ -3865,7 +3872,7 @@ async function openAdmModal() {
         ? '<p class="note">✓ Tu llave está publicada: los horarios que se sellen desde ahora podrán abrirse con ella.</p>'
         : `<div class="note warn"><b>Falta publicar tu llave.</b> Descarga <code>administrador.json</code> y súbelo a la carpeta <code>horarios/</code> del repositorio${g ? ` (<a href="${g.subir}" target="_blank" rel="noopener">abrir la página para subirlo</a>)` : ""}. Hasta entonces, los horarios que se sellen no incluirán la copia para ti. <div class="row" style="margin-top:6px"><button class="btn" id="apub">Descargar administrador.json</button></div></div>`
     }
-    <div class="row"><button class="btn" id="abk">Descargar copia de seguridad de la llave</button><button class="btn" id="alk">Cerrar sesión de administrador</button></div>
+    <div class="row"><button class="btn" id="abk" title="Es privada: guárdala en tu computador o en la nube, NUNCA en GitHub">Descargar copia de seguridad (privada)</button><button class="btn" id="alk">Cerrar sesión de administrador</button></div>
     <div class="msg" id="admMsg"></div>`),
     ($("#anew").onclick = () => admNuevo()),
     ($("#abk").onclick = admDescargarLlave),

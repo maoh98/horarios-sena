@@ -19,7 +19,7 @@ Autor: Ing. Manuel Alejandro Ordóñez Hernández
 - El administrador crea su llave (index.html?admin), publica `horarios/administrador.json` y desde entonces puede abrir/corregir cualquier horario sellado y crear horarios completos para instructores. Ver README → «Modo administrador».
 - Cada sello lleva `lock.adm` (llave de firma cifrada para el administrador), `rev` (versión, solo sube), `por` (instructor/administrador) y `file` (nombre fijo del archivo).
 - Orden de despliegue: Cloudflare (worker-unico.js) y luego GitHub (index.html, admin.html, scripts/, servidor/, README).
-- La copia de seguridad de la llave de administrador (`llave-administrador-horario-sena.json`) y su contraseña NO están en el repositorio ni se pueden recuperar.
+- La copia de seguridad de la llave de administrador (`NO-SUBIR-llave-privada-administrador.json`) y su contraseña NO están en el repositorio ni se pueden recuperar.
 
 ## Archivo fuente editable
 `horario-sena.html` (bloque // <LOGIC> = reglas e INSTITUCIONES). Para cambiar algo:

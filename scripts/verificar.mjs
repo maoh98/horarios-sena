@@ -25,6 +25,7 @@ for (const f of archivos(dir)) {
   const ruta = `${dir}/${f}`;
   let j;
   try { j = leer(dir, f); } catch (e) { console.error(`✗ ${ruta}: JSON inválido`); errores++; continue; }
+  if (j.app === 'horario-sena-admin-llave') { console.error(`✗ ${ruta}: es la copia PRIVADA de tu llave de administrador. Bórrala del repositorio ahora (en GitHub: abre el archivo → icono de papelera → Commit) y publica solo administrador.json.`); errores++; continue; }
   if (j.app !== 'horario-sena' || !Array.isArray(j.blocks)) { console.error(`✗ ${ruta}: no es un archivo de Horario SENA`); errores++; continue; }
   const v = await verificar(j);
   if (!v.ok) { console.error(`✗ ${ruta}: ${v.motivo}`); errores++; continue; }
