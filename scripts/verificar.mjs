@@ -12,6 +12,14 @@ const dir = process.argv[2] || 'horarios';
 const base = process.env.BASE_REF && !/^0+$/.test(process.env.BASE_REF) ? process.env.BASE_REF : 'origin/main';
 let errores = 0, avisos = 0;
 const nombres = new Map();
+/* llave pública del administrador (horarios/administrador.json): solo se comprueba que esté bien formada */
+try {
+  const a = JSON.parse((await import('node:fs')).readFileSync(`${dir}/administrador.json`, 'utf8'));
+  const ok = a && a.app === 'horario-sena-admin' && /^[A-Za-z0-9+\/=]{100,200}$/.test(a.pub || '');
+  if (ok) await crypto.subtle.importKey('spki', Uint8Array.from(atob(a.pub), c => c.charCodeAt(0)), {name: 'ECDH', namedCurve: 'P-256'}, false, []);
+  if (ok) console.log(`✓ ${dir}/administrador.json · llave de administrador${a.nombre ? ' de ' + a.nombre : ''}`);
+  else { console.error(`✗ ${dir}/administrador.json: no tiene el formato de llave de administrador`); errores++; }
+} catch (e) { if (e.code !== 'ENOENT') { console.error(`✗ ${dir}/administrador.json: ${e.message}`); errores++; } }
 
 for (const f of archivos(dir)) {
   const ruta = `${dir}/${f}`;
@@ -26,6 +34,9 @@ for (const f of archivos(dir)) {
     if (previo.lock && previo.lock.pub && previo.lock.pub !== j.lock.pub) {
       console.error(`✗ ${ruta}: la llave de firma cambió respecto a ${base}. Solo el dueño original puede actualizar este archivo.`); errores++; continue;
     }
+    /* la versión nunca puede retroceder (así una copia vieja no pisa lo que corrigió el administrador) */
+    const rp = Number.isInteger(previo.rev) ? previo.rev : 0, rn = Number.isInteger(j.rev) ? j.rev : 0;
+    if (rp && rn < rp) { console.error(`✗ ${ruta}: la versión (${rn}) es más vieja que la ya guardada (${rp}).`); errores++; continue; }
   } catch { /* archivo nuevo: no hay con qué comparar */ }
   const r = resumen(j, f);
   if (!r.reglas.ok) {   // el horario debe encajar con las reglas (jornada, cruces, festivos, apoyo, máx. 3 programas)

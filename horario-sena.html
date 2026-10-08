@@ -261,6 +261,12 @@ body[data-view=stats] .layout,body[data-view=stats] .selbar{display:none!importa
 .banner span{overflow:hidden;text-overflow:ellipsis;flex:0 1 auto;min-width:0}
 .banner.ok{background:color-mix(in srgb,var(--form) 13%,var(--surface))}
 .banner.bad{background:color-mix(in srgb,var(--danger) 16%,var(--surface))}
+.banner.adm{background:color-mix(in srgb,#8b5cf6 16%,var(--surface))}
+.admlist{display:flex;flex-direction:column;gap:6px;margin:6px 0 10px;max-height:300px;overflow:auto}
+.admrow{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid var(--line);border-radius:8px}
+.admrow b{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admrow small{color:var(--mute,#667);white-space:nowrap}
+.pwshow{font:600 15px/1.3 ui-monospace,Consolas,monospace;letter-spacing:.04em;padding:8px 10px;border:1px dashed var(--line);border-radius:8px;user-select:all;word-break:break-all}
 .banner .btn{padding:2px 10px;font-size:12.5px;flex:none}
 body.hasBanner{--top:92px}
 .lockbtn{display:inline-flex;align-items:center;gap:6px}
@@ -347,6 +353,7 @@ body.ro .side .pgb.on{opacity:1}
   <button id="btnSave" class="btn primary">Guardar</button>
   <button id="btnIO" class="btn">Exportar / Importar</button>
   <button id="btnLog" class="btn hide-m">Historial</button>
+  <button id="btnAdm" class="btn hide-m" title="Modo administrador: corregir o crear horarios de instructores" hidden>Administrador</button>
   <button id="avatar" class="avatar" title="Cambiar foto" aria-label="Cambiar foto"></button>
   <input id="photoIn" type="file" accept="image/*" hidden>
 </header>
@@ -514,6 +521,13 @@ body.ro .side .pgb.on{opacity:1}
   <section class="panel narrow">
     <header class="phead"><div><h2 id="sealTitle">Sello del horario</h2><p id="sealSub"></p></div><button class="x" data-close aria-label="Cerrar">✕</button></header>
     <div class="body sealbox" id="sealBody"></div>
+  </section>
+</div>
+
+<div class="back" id="bAdm" hidden>
+  <section class="panel narrow">
+    <header class="phead"><div><h2 id="admTitle">Administrador</h2><p id="admSub"></p></div><button class="x" data-close aria-label="Cerrar">✕</button></header>
+    <div class="body sealbox" id="admBody"></div>
   </section>
 </div>
 
@@ -712,7 +726,17 @@ let state = Object.assign(DEFAULT(), load() || {});
 function persist(e) {
   clearTimeout(saveTimer);
   const a = () => {
-    if ("viewer" !== lockInfo.status) {
+    if ("admin" === lockInfo.status) {
+      /* sesión de administrador: se guarda aparte para no pisar el horario propio de este navegador */
+      try {
+        (localStorage.setItem(KEY_ADM, JSON.stringify({ state, ctx: admCtx })),
+          (storageOK = !0),
+          (lastSaved = new Date()));
+      } catch (e) {
+        storageOK = !1;
+      }
+      renderStatus();
+    } else if ("viewer" !== lockInfo.status) {
       try {
         (localStorage.setItem(KEY, JSON.stringify(state)),
           (storageOK = !0),
@@ -748,8 +772,14 @@ let view = { y: now0.getFullYear(), m: now0.getMonth() + 1 },
   ui = { type: "formacion", ficha: "", comp: "", rap: "", start: 8, hours: 2 };
 const AUTHOR = "Ing. Manuel Alejandro Ordóñez Hernández";
 let lockInfo = { status: state.lock ? "sealed" : "none", valid: null },
-  sealKey = null;
-const canEdit = () => "none" === lockInfo.status || "open" === lockInfo.status,
+  sealKey = null,
+  admCtx = null,
+  remoteNew = null;
+const KEY_ADM = "horario-sena-admin-borrador",
+  canEdit = () =>
+    "none" === lockInfo.status ||
+    "open" === lockInfo.status ||
+    "admin" === lockInfo.status,
   blocksOn = (e) =>
     state.blocks.filter((a) => a.date === e).sort((e, a) => e.start - a.start),
   compIdx = (e) => state.comps.findIndex((a) => a.id === e),
@@ -2284,6 +2314,10 @@ function coreDoc(e) {
     schema: v2 ? 2 : 1,
     app: "horario-sena",
     author: AUTHOR,
+    ...(v2 && state.rev
+      ? { rev: state.rev, por: state.por === "administrador" ? "administrador" : "instructor" }
+      : {}),
+    ...(v2 && state.file ? { file: state.file } : {}),
     profile: state.profile,
     settings: state.settings,
     catalog: {
@@ -3156,39 +3190,94 @@ const probsHTML = (e) =>
           "",
         )}${e.length > 8 ? `<li>…y ${e.length - 8} más</li>` : ""}</ul></div>`
     : '<p class="note">✓ Revisión previa: todo el horario encaja con las reglas (6 a. m.–10 p. m., sin cruces, sin festivos, límites de apoyo y de programas).</p>';
-async function createSeal(e) {
-  if (sealProblems().length)
-    throw new Error("Hay puntos por corregir antes de sellar.");
-  state.schema = 2;
-  const a = await crypto.subtle.generateKey(
-      { name: "ECDSA", namedCurve: "P-256" },
-      !0,
-      ["sign", "verify"],
-    ),
+const FILE_RE = /^[a-z0-9-]{1,70}-[0-9a-f]{6}\.json$/,
+  fp6 = (e) => e.replace(/\s/g, "").slice(0, 6).toLowerCase();
+/* Cada sello puede llevar una copia de la llave de firma cifrada para el administrador (ECDH + AES-GCM):
+   así el administrador puede corregir el horario sin la contraseña del instructor, y la firma sigue siendo la del instructor. */
+const ADM_INFO = enc.encode("horario-sena/admin-wrap/v1"),
+  ECDH = { name: "ECDH", namedCurve: "P-256" },
+  ECDSA = { name: "ECDSA", namedCurve: "P-256" };
+async function admDerive(priv, pub) {
+  const bits = await crypto.subtle.deriveBits({ name: "ECDH", public: pub }, priv, 256),
+    hk = await crypto.subtle.importKey("raw", bits, "HKDF", !1, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name: "HKDF", hash: "SHA-256", salt: new Uint8Array(32), info: ADM_INFO },
+    hk,
+    { name: "AES-GCM", length: 256 },
+    !1,
+    ["encrypt", "decrypt"],
+  );
+}
+async function wrapForAdmin(pkcs8, admPubB64) {
+  const pub = await crypto.subtle.importKey("spki", unb64(admPubB64), ECDH, !1, []),
+    eph = await crypto.subtle.generateKey(ECDH, !0, ["deriveBits"]),
+    key = await admDerive(eph.privateKey, pub),
+    iv = crypto.getRandomValues(new Uint8Array(12)),
+    ct = new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, pkcs8));
+  return {
+    v: 1,
+    fp: await fingerprint(admPubB64),
+    eph: b64(new Uint8Array(await crypto.subtle.exportKey("spki", eph.publicKey))),
+    iv: b64(iv),
+    ct: b64(ct),
+  };
+}
+async function unwrapByAdmin(adm, admPriv) {
+  const eph = await crypto.subtle.importKey("spki", unb64(adm.eph), ECDH, !1, []),
+    key = await admDerive(admPriv, eph);
+  return new Uint8Array(
+    await crypto.subtle.decrypt({ name: "AES-GCM", iv: unb64(adm.iv) }, key, unb64(adm.ct)),
+  );
+}
+/* llave pública del administrador publicada en horarios/administrador.json (o la propia, en modo administrador) */
+let admCfg = null;
+const admCfgP = (async () => {
+  try {
+    const r = await fetch("horarios/administrador.json", { cache: "no-store" });
+    if (!r.ok) return;
+    const j = await r.json();
+    if (j && "horario-sena-admin" === j.app && /^[A-Za-z0-9+\/=]{100,200}$/.test(j.pub || ""))
+      admCfg = { pub: j.pub, fp: await fingerprint(j.pub), nombre: str(j.nombre, 80) };
+  } catch (e) {}
+})();
+const admPubActiva = async () => (
+  await admCfgP,
+  "admin" === lockInfo.status && admStore ? admStore.pub : admCfg ? admCfg.pub : null
+);
+async function newLock(pw, admPub) {
+  const a = await crypto.subtle.generateKey(ECDSA, !0, ["sign", "verify"]),
     t = new Uint8Array(await crypto.subtle.exportKey("spki", a.publicKey)),
     o = new Uint8Array(await crypto.subtle.exportKey("pkcs8", a.privateKey)),
     s = crypto.getRandomValues(new Uint8Array(16)),
     r = crypto.getRandomValues(new Uint8Array(12)),
     n = new Uint8Array(
-      await crypto.subtle.encrypt(
-        { name: "AES-GCM", iv: r },
-        await kdf(e, s, ITER),
-        o,
-      ),
+      await crypto.subtle.encrypt({ name: "AES-GCM", iv: r }, await kdf(pw, s, ITER), o),
     ),
-    i = b64(t);
-  ((state.lock = {
-    v: 1,
-    alg: "ECDSA-P256-SHA256",
-    pub: i,
-    fp: await fingerprint(i),
-    kdf: { alg: "PBKDF2-SHA256", iter: ITER, salt: b64(s) },
-    iv: b64(r),
-    key: b64(n),
-    sig: "",
-    at: "",
-  }),
-    (sealKey = a.privateKey),
+    i = b64(t),
+    lock = {
+      v: 1,
+      alg: "ECDSA-P256-SHA256",
+      pub: i,
+      fp: await fingerprint(i),
+      kdf: { alg: "PBKDF2-SHA256", iter: ITER, salt: b64(s) },
+      iv: b64(r),
+      key: b64(n),
+      sig: "",
+      at: "",
+    };
+  admPub && (lock.adm = await wrapForAdmin(o, admPub));
+  return { lock, key: a.privateKey, pk8: o };
+}
+async function createSeal(e) {
+  if (sealProblems().length)
+    throw new Error("Hay puntos por corregir antes de sellar.");
+  state.schema = 2;
+  const { lock, key } = await newLock(e, await admPubActiva());
+  ((state.lock = lock),
+    (sealKey = key),
+    (state.file = slugNombre() + "-" + fp6(lock.fp) + ".json"),
+    (state.rev = (state.rev || 0) + 1),
+    (state.por = "instructor"),
     L("Sellar", "Horario sellado con contraseña"),
     await signNow(),
     finishSeal());
@@ -3197,7 +3286,12 @@ async function reseal() {
   if (sealProblems().length)
     throw new Error("Hay puntos por corregir antes de sellar.");
   state.schema = 2;
-  (L("Sellar", "Horario sellado de nuevo"), await signNow(), finishSeal());
+  (!state.file && (state.file = slugNombre() + "-" + fp6(state.lock.fp) + ".json"),
+    (state.rev = (state.rev || 0) + 1),
+    (state.por = "instructor"),
+    L("Sellar", "Horario sellado de nuevo"),
+    await signNow(),
+    finishSeal());
 }
 function finishSeal() {
   ((sealKey = null),
@@ -3218,6 +3312,10 @@ async function unlockSeal(e) {
   } catch (e) {
     throw new Error("Contraseña incorrecta.");
   }
+  try {
+    const p = await admPubActiva();
+    p && (!a.adm || a.adm.fp !== (await fingerprint(p))) && (a.adm = await wrapForAdmin(new Uint8Array(t), p));
+  } catch (e) {}
   ((sealKey = await crypto.subtle.importKey(
     "pkcs8",
     t,
@@ -3319,9 +3417,518 @@ function docToState(e) {
         d: str(e && e.d, 400),
       }))),
     (a.lock = e.lock && "object" == typeof e.lock ? e.lock : null),
+    +e.schema >= 2 &&
+      (Number.isInteger(e.rev) && e.rev > 0 && e.rev < 1e6
+        ? ((a.rev = e.rev),
+          (a.por = "administrador" === e.por ? "administrador" : "instructor"))
+        : 0,
+      "string" == typeof e.file && FILE_RE.test(e.file) && (a.file = e.file)),
     a
   );
 }
+/* ===================== Modo administrador ===================== */
+const LS_ADMK = "horario-sena-admin-key";
+let admStore = null,
+  admPriv = null,
+  admPk8 = null,
+  admPend = null;
+try {
+  admStore = JSON.parse(localStorage.getItem(LS_ADMK) || "null");
+  (admStore && admStore.pub && admStore.key && admStore.kdf) || (admStore = null);
+} catch (e) {
+  admStore = null;
+}
+const randPw = () => {
+    const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    return [...crypto.getRandomValues(new Uint8Array(16))]
+      .map((x) => A[x % 32])
+      .join("")
+      .replace(/(.{4})(?=.)/g, "$1-");
+  },
+  admBorrador = () => {
+    try {
+      const d = JSON.parse(localStorage.getItem(KEY_ADM) || "null");
+      return d && d.state && d.ctx ? d : null;
+    } catch (e) {
+      return null;
+    }
+  };
+async function admCrearLlave(nombre, pw) {
+  const kp = await crypto.subtle.generateKey(ECDH, !0, ["deriveBits"]),
+    pub = b64(new Uint8Array(await crypto.subtle.exportKey("spki", kp.publicKey))),
+    pk8 = new Uint8Array(await crypto.subtle.exportKey("pkcs8", kp.privateKey)),
+    salt = crypto.getRandomValues(new Uint8Array(16)),
+    iv = crypto.getRandomValues(new Uint8Array(12)),
+    ct = new Uint8Array(
+      await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await kdf(pw, salt, ITER), pk8),
+    );
+  ((admStore = {
+    app: "horario-sena-admin-llave",
+    v: 1,
+    nombre: str(nombre, 80),
+    pub,
+    fp: await fingerprint(pub),
+    kdf: { alg: "PBKDF2-SHA256", iter: ITER, salt: b64(salt) },
+    iv: b64(iv),
+    key: b64(ct),
+  }),
+    localStorage.setItem(LS_ADMK, JSON.stringify(admStore)),
+    (admPriv = await crypto.subtle.importKey("pkcs8", pk8, ECDH, !1, ["deriveBits"])));
+}
+async function admDesbloquear(pw) {
+  let pk8;
+  try {
+    pk8 = new Uint8Array(
+      await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv: unb64(admStore.iv) },
+        await kdf(pw, unb64(admStore.kdf.salt), admStore.kdf.iter),
+        unb64(admStore.key),
+      ),
+    );
+  } catch (e) {
+    throw new Error("Contraseña incorrecta.");
+  }
+  admPriv = await crypto.subtle.importKey("pkcs8", pk8, ECDH, !1, ["deriveBits"]);
+}
+async function admImportar(file) {
+  if (file.size > 20000) throw new Error("Ese archivo no es una llave de administrador.");
+  const j = JSON.parse(await file.text());
+  if (
+    !j ||
+    "horario-sena-admin-llave" !== j.app ||
+    "string" != typeof j.pub ||
+    "string" != typeof j.key ||
+    !j.kdf ||
+    !(j.kdf.iter >= 1e5 && j.kdf.iter <= 2e6)
+  )
+    throw new Error("Ese archivo no es una llave de administrador.");
+  ((admStore = { ...j, fp: await fingerprint(j.pub) }),
+    localStorage.setItem(LS_ADMK, JSON.stringify(admStore)),
+    (admPriv = null));
+}
+function admDescargarLlave() {
+  download(
+    "llave-administrador-horario-sena.json",
+    new Blob([JSON.stringify(admStore, null, 2)], { type: "application/json" }),
+  );
+}
+function admDescargarPublica() {
+  download(
+    "administrador.json",
+    new Blob(
+      [
+        JSON.stringify(
+          { app: "horario-sena-admin", v: 1, nombre: admStore.nombre || "", pub: admStore.pub, fp: admStore.fp },
+          null,
+          2,
+        ) + "\n",
+      ],
+      { type: "application/json" },
+    ),
+  );
+}
+async function fetchRemoteDoc(archivo, soloRepo) {
+  if (!/^[A-Za-z0-9._-]{1,120}\.json$/.test(archivo)) throw new Error("Nombre de archivo no válido.");
+  const g = gitLinks(),
+    t = Date.now(),
+    urls = [];
+  (g &&
+    urls.push(
+      `https://raw.githubusercontent.com/${g.u}/${g.r}/${g.rama}/horarios/${encodeURIComponent(archivo)}?t=${t}`,
+    ),
+    soloRepo || urls.push(`horarios/${encodeURIComponent(archivo)}?t=${t}`));
+  for (const u of urls)
+    try {
+      const r = await fetch(u, { cache: "no-store" });
+      if (r.ok) return await r.json();
+    } catch (e) {}
+  throw new Error("No se pudo traer ese archivo del repositorio.");
+}
+async function admKeyFrom(lock) {
+  if (!lock || !lock.adm || lock.adm.fp !== admStore.fp)
+    throw new Error(
+      "Este horario no se puede abrir con tu llave de administrador: se selló antes de que existiera tu llave (o con otra llave). Pídele al instructor que lo abra con su contraseña y lo selle de nuevo; desde entonces quedará disponible para ti.",
+    );
+  let key, pk8;
+  try {
+    ((pk8 = await unwrapByAdmin(lock.adm, admPriv)),
+      (key = await crypto.subtle.importKey("pkcs8", pk8, ECDSA, !1, ["sign"])));
+  } catch (e) {
+    throw new Error("La copia de llave guardada en este horario no se pudo abrir con tu llave de administrador.");
+  }
+  const msg = enc.encode("prueba"),
+    sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, key, msg),
+    pub = await crypto.subtle.importKey("spki", unb64(lock.pub), ECDSA, !1, ["verify"]);
+  if (!(await crypto.subtle.verify({ name: "ECDSA", hash: "SHA-256" }, pub, sig, msg)))
+    throw new Error("La llave guardada en este horario no corresponde a su sello.");
+  return ((admPk8 = pk8), key);
+}
+function admReset() {
+  ((sel = new Set()), (ui = { ...ui, ficha: "", comp: "", rap: "" }), (view = nextViewMonth(state)));
+}
+async function admAbrir(archivo) {
+  const doc = await fetchRemoteDoc(archivo);
+  if (!doc || "horario-sena" !== doc.app || !Array.isArray(doc.blocks))
+    throw new Error("Ese archivo no es un horario de Horario SENA.");
+  const v = await verifyFile(doc);
+  if (!v.ok) throw new Error("El sello de ese archivo no es válido: " + v.why);
+  const key = await admKeyFrom(doc.lock),
+    nuevo = docToState(doc);
+  ((nuevo.lock = doc.lock),
+    !nuevo.file && FILE_RE.test(archivo) && (nuevo.file = archivo),
+    (state = nuevo),
+    (sealKey = key),
+    (admCtx = { archivo, nuevo: !1, rev: nuevo.rev || 0 }),
+    (lockInfo = { status: "admin", valid: null }),
+    admReset(),
+    L("Administrador", `Abrió el horario para revisarlo (${admStore.nombre || "administrador"})`),
+    persist(!0),
+    renderAll(!1),
+    applyLock(),
+    closeModal("#bAdm"));
+}
+function admNuevo() {
+  ((state = DEFAULT()),
+    (state.schema = 2),
+    (sealKey = null),
+    (admCtx = { archivo: null, nuevo: !0, rev: 0 }),
+    (lockInfo = { status: "admin", valid: null }),
+    admReset(),
+    L("Administrador", `Creó un horario nuevo (${admStore.nombre || "administrador"})`),
+    persist(!0),
+    renderAll(!1),
+    applyLock(),
+    closeModal("#bAdm"));
+}
+async function admRetomar() {
+  const d = admBorrador();
+  if (!d) throw new Error("No hay borrador.");
+  const st = Object.assign(DEFAULT(), d.state);
+  ((st.profile = Object.assign(DEFAULT().profile, st.profile)),
+    (st.settings = Object.assign(DEFAULT().settings, st.settings)));
+  const key = st.lock ? await admKeyFrom(st.lock) : null;
+  ((state = st),
+    (sealKey = key),
+    (admCtx = d.ctx),
+    (lockInfo = { status: "admin", valid: null }),
+    admReset(),
+    persist(!0),
+    renderAll(!1),
+    applyLock(),
+    closeModal("#bAdm"));
+}
+function admDescartar() {
+  try {
+    localStorage.removeItem(KEY_ADM);
+  } catch (e) {}
+}
+function admSalir() {
+  if (
+    !confirm(
+      "¿Salir del modo administrador? Lo que no hayas enviado se descarta y vuelves a tu propio horario.",
+    )
+  )
+    return;
+  /* "viewer" evita que al recargar se guarde el horario del instructor sobre el propio */
+  ((lockInfo = { status: "viewer", valid: null }), (sealKey = null), admDescartar());
+  const u = new URL(location.href);
+  (u.searchParams.delete("admin"), location.replace(u.pathname + u.search + u.hash));
+}
+async function admSellar(pw) {
+  if (sealProblems().length) throw new Error("Hay puntos por corregir antes de sellar.");
+  if (!(state.profile.name || "").trim()) throw new Error("Escribe el nombre del instructor (columna izquierda).");
+  const nombre = admStore.nombre || "administrador";
+  if (((state.schema = 2), !state.lock)) {
+    const { lock, key, pk8 } = await newLock(pw, admStore.pub);
+    ((state.lock = lock), (sealKey = key), (admPk8 = pk8), (state.file = slugNombre() + "-" + fp6(lock.fp) + ".json"));
+  } else if (pw && admPk8) {
+    /* el administrador cambia la contraseña del instructor (p. ej. la olvidó): se vuelve a cifrar la misma llave de firma */
+    const salt = crypto.getRandomValues(new Uint8Array(16)),
+      iv = crypto.getRandomValues(new Uint8Array(12));
+    ((state.lock.kdf = { alg: "PBKDF2-SHA256", iter: ITER, salt: b64(salt) }),
+      (state.lock.iv = b64(iv)),
+      (state.lock.key = b64(
+        new Uint8Array(await crypto.subtle.encrypt({ name: "AES-GCM", iv }, await kdf(pw, salt, ITER), admPk8)),
+      )),
+      L("Administrador", "Cambió la contraseña del instructor"));
+  }
+  ((state.rev = (admCtx.rev || 0) + 1),
+    (state.por = "administrador"),
+    L("Sellar", `Sellado por el administrador (${nombre}) · versión ${state.rev}`),
+    await signNow(),
+    persist(!0));
+}
+async function postDoc(doc, cod) {
+  const url = metaVal("sena-envio");
+  if (!url) return { ok: !1, error: "El envío no está configurado (etiqueta sena-envio)." };
+  try {
+    localStorage.setItem(LS_COD, cod);
+  } catch (e) {}
+  try {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ codigo: cod, doc }),
+    });
+    return await r.json().catch(() => ({ ok: !1, error: "Respuesta ilegible del servidor." }));
+  } catch (e) {
+    return { ok: !1, error: "No hay conexión con el servidor de envíos. Descarga el archivo y súbelo a horarios/." };
+  }
+}
+function openAdmSealModal() {
+  const a = $("#sealBody"),
+    nuevo = !state.lock,
+    probs = sealProblems();
+  (($("#sealTitle").textContent = "Sellar y enviar como administrador"),
+    ($("#sealSub").textContent = nuevo ? "Horario nuevo para un instructor" : `Versión ${admCtx.rev || 0} → ${(admCtx.rev || 0) + 1}`));
+  let cod = "";
+  try {
+    cod = localStorage.getItem(LS_COD) || "";
+  } catch (e) {}
+  const pwHTML = nuevo
+    ? `<p class="note">Este horario aún no tiene dueño digital. Elige una contraseña para el instructor: con ella él podrá abrirlo y modificarlo desde su navegador. Tú podrás abrirlo siempre con tu llave de administrador, sin esa contraseña.</p>
+      <div class="row"><input class="in" id="apw1" type="text" placeholder="Contraseña del instructor (mínimo 10 caracteres)" autocomplete="off" style="flex:1"><button class="btn" id="asug" type="button">Sugerir una</button></div>`
+    : `<p class="note">Se firma con la llave del instructor (huella <code>${esc(state.lock.fp)}</code>). Queda registrado como «modificado por el administrador» en el archivo y en el historial.</p>
+      ${admPk8 ? '<div class="row"><input class="in" id="apw1" type="text" placeholder="Cambiar la contraseña del instructor (opcional, mínimo 10 caracteres)" autocomplete="off" style="flex:1"><button class="btn" id="asug" type="button">Sugerir una</button></div>' : ""}`;
+  ((a.innerHTML =
+    probsHTML(probs) +
+    pwHTML +
+    `<p class="note" style="margin:10px 0 4px">Código de envío (el mismo que usan los instructores):</p><div class="row"><input class="in" id="acod" placeholder="Código de envío" value="${esc(cod)}" style="flex:1" autocomplete="off"></div>
+     <div class="msg" id="amsg"></div>
+     <div class="row"><button class="cta" id="ago" style="flex:1" ${probs.length ? "disabled" : ""}>📤 Sellar y enviar</button><button class="btn" id="adl" ${probs.length ? "disabled" : ""}>Solo descargar .json</button></div>`),
+    openModal("#bSeal"));
+  const sug = $("#asug");
+  sug && (sug.onclick = () => ($("#apw1").value = randPw()));
+  const run = async (enviar) => {
+    const m = $("#amsg");
+    ((m.style.color = ""), (m.textContent = ""));
+    const pw = $("#apw1") ? $("#apw1").value.trim() : "";
+    if ((!state.lock || pw) && pw.length < 10) return void (m.textContent = "La contraseña del instructor debe tener al menos 10 caracteres.");
+    ($("#ago").disabled = $("#adl").disabled = !0);
+    try {
+      await admSellar(pw);
+      const doc = exportJSON("all");
+      if (!enviar) {
+        download(
+          (state.file || slugNombre() + ".json"),
+          new Blob([JSON.stringify(doc, null, 2)], { type: "application/json" }),
+        );
+        m.style.color = "var(--ok,#1a7f4b)";
+        m.textContent = "✓ Archivo sellado y descargado.";
+      } else {
+        const r = await postDoc(doc, $("#acod").value.trim());
+        if (r.ok) {
+          ((admCtx.rev = state.rev), (admCtx.nuevo = !1), (admCtx.archivo = r.archivo));
+          persist(!0);
+          applyLock();
+          m.style.color = "var(--ok,#1a7f4b)";
+          m.innerHTML = `✓ ${esc(r.mensaje || "Enviado")} Quedó guardado como <code>${esc(r.archivo)}</code> (versión ${state.rev}).${pw ? `<br>Contraseña del instructor: <span class="pwshow">${esc(pw)}</span> Entrégasela por un medio seguro. Si la pierde, puedes poner otra desde aquí.` : ""}`;
+          $("#apw1") && ($("#apw1").value = "");
+        } else
+          m.textContent = (r.error || "No se pudo enviar.") + (r.problemas && r.problemas.length ? " · " + r.problemas.join(" · ") : "");
+      }
+    } catch (e) {
+      m.textContent = e.message || String(e);
+    }
+    $("#ago").disabled = $("#adl").disabled = !!sealProblems().length;
+  };
+  (($("#ago").onclick = () => run(!0)), ($("#adl").onclick = () => run(!1)));
+}
+async function admListaHTML() {
+  try {
+    const r = await fetch("horarios/index.json?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw 0;
+    const l = ((await r.json()).instructores || []).filter((x) => x && /^[A-Za-z0-9._-]+\.json$/.test(x.archivo || ""));
+    if (!l.length) return '<p class="note">Aún no hay horarios publicados.</p>';
+    return (
+      '<div class="admlist">' +
+      l
+        .map((x) => {
+          const ok = x.adm === admStore.fp;
+          return `<div class="admrow"><b title="${esc(x.nombre)}">${esc(x.nombre)}</b><small>v${+x.rev || "—"}${"administrador" === x.por ? " · admin" : ""}</small><button class="btn" data-f="${esc(x.archivo)}" ${ok ? "" : 'disabled title="Sellado sin copia para tu llave: el instructor debe sellarlo de nuevo"'}>${ok ? "Editar" : "Sin acceso"}</button></div>`;
+        })
+        .join("") +
+      "</div>"
+    );
+  } catch (e) {
+    return '<p class="note warn">No se pudo leer la lista (abre esta página desde el sitio publicado, no desde un archivo).</p>';
+  }
+}
+async function openAdmModal() {
+  const T = $("#admTitle"),
+    S = $("#admSub"),
+    B = $("#admBody"),
+    msg = (t, ok) => {
+      const m = $("#admMsg");
+      m && ((m.style.color = ok ? "var(--ok,#1a7f4b)" : ""), (m.textContent = t));
+    };
+  if (!cryptoOK()) {
+    ((T.textContent = "Administrador"),
+      (S.textContent = ""),
+      (B.innerHTML =
+        '<p class="note bad">Este navegador no ofrece criptografía en esta dirección. Abre el sitio por https:// con Chrome, Edge o Firefox actualizados.</p>'),
+      openModal("#bAdm"));
+    return;
+  }
+  if (!admStore) {
+    ((T.textContent = "Crear llave de administrador"),
+      (S.textContent = "Una sola vez"),
+      (B.innerHTML = `<p class="note">Con esta llave podrás <b>abrir y corregir cualquier horario</b> que se selle desde ahora y <b>crear horarios completos</b> para instructores. La llave queda guardada, cifrada con tu contraseña, en este navegador.</p>
+      <input class="in" id="anom" placeholder="Tu nombre (aparece en el historial de los horarios)" autocomplete="off">
+      <input class="in" type="password" id="apw1" placeholder="Contraseña de administrador (mínimo 10 caracteres)" autocomplete="new-password">
+      <input class="in" type="password" id="apw2" placeholder="Repite la contraseña" autocomplete="new-password">
+      <label class="chk"><input type="checkbox" id="aok"> <span>Guardaré la copia de seguridad que se descargará. Sin ella y sin la contraseña no podré abrir los horarios ya sellados.</span></label>
+      <div class="msg" id="admMsg"></div>
+      <div class="row"><button class="cta" id="acre" style="flex:1">Crear llave</button></div>
+      <label class="drop" for="aimp" style="margin-top:10px">¿Ya tienes una llave? Importa el archivo <code>llave-administrador-horario-sena.json</code></label>
+      <input id="aimp" type="file" accept=".json" hidden>`),
+      ($("#acre").onclick = async () => {
+        const p1 = $("#apw1").value,
+          p2 = $("#apw2").value;
+        if (!$("#anom").value.trim()) return msg("Escribe tu nombre.");
+        if (p1.length < 10) return msg("La contraseña debe tener al menos 10 caracteres.");
+        if (p1 !== p2) return msg("Las contraseñas no coinciden.");
+        if (!$("#aok").checked) return msg("Confirma que guardarás la copia de seguridad.");
+        ($("#acre").disabled = !0), ($("#acre").textContent = "Creando…");
+        try {
+          (await admCrearLlave($("#anom").value.trim(), p1), admDescargarLlave(), ($("#btnAdm").hidden = !1), openAdmModal());
+        } catch (e) {
+          (msg("No se pudo crear: " + (e.message || e)), ($("#acre").disabled = !1), ($("#acre").textContent = "Crear llave"));
+        }
+      }),
+      ($("#aimp").onchange = async (e) => {
+        const f = e.target.files[0];
+        if (f)
+          try {
+            (await admImportar(f), ($("#btnAdm").hidden = !1), openAdmModal());
+          } catch (x) {
+            msg(x.message || "No se pudo importar.");
+          }
+      }),
+      openModal("#bAdm"));
+    return;
+  }
+  if (!admPriv) {
+    ((T.textContent = "Administrador"),
+      (S.textContent = admStore.nombre ? `Llave de ${admStore.nombre}` : "Llave de administrador"),
+      (B.innerHTML = `<input class="in" type="password" id="apw" placeholder="Contraseña de administrador" autocomplete="current-password">
+      <div class="msg" id="admMsg"></div>
+      <div class="row"><button class="cta" id="aun" style="flex:1">Entrar</button></div>
+      <p class="note">Huella de tu llave: <code>${esc(admStore.fp)}</code></p>`),
+      openModal("#bAdm"));
+    const go = async () => {
+      $("#aun").disabled = !0;
+      try {
+        (await admDesbloquear($("#apw").value), openAdmModal());
+      } catch (e) {
+        (msg(e.message || "No se pudo entrar."), ($("#aun").disabled = !1));
+      }
+    };
+    (($("#aun").onclick = go),
+      $("#apw").addEventListener("keydown", (e) => "Enter" === e.key && go()),
+      setTimeout(() => $("#apw") && $("#apw").focus(), 50));
+    return;
+  }
+  /* desbloqueado */
+  ((T.textContent = "Administrador"), (S.textContent = `Sesión de ${admStore.nombre || "administrador"} · huella ${admStore.fp}`));
+  if (null !== admPend) {
+    const p = admPend;
+    admPend = null;
+    try {
+      history.replaceState(null, "", location.pathname);
+    } catch (e) {}
+    try {
+      if ("nuevo" === p) return void admNuevo();
+      if (p) return void (await admAbrir(p));
+    } catch (e) {
+      B.innerHTML = `<p class="note bad">${esc(e.message || String(e))}</p>`;
+      S.textContent = "No se pudo abrir ese horario";
+    }
+  }
+  await admCfgP;
+  const pub = admCfg && admCfg.fp === admStore.fp,
+    g = gitLinks(),
+    bor = admBorrador(),
+    lista = await admListaHTML(),
+    keep = B.innerHTML.startsWith('<p class="note bad">') ? B.innerHTML : "";
+  ((B.innerHTML =
+    keep +
+    (bor
+      ? `<div class="note warn"><b>Tienes una edición sin terminar</b> (${esc((bor.state.profile && bor.state.profile.name) || "horario nuevo")}). <div class="row" style="margin-top:6px"><button class="btn" id="abor">Retomar</button><button class="btn" id="adesc">Descartar</button></div></div>`
+      : "") +
+    `<h4 class="sub">Corregir un horario existente</h4>${lista}
+    <h4 class="sub">Crear el horario de un instructor</h4>
+    <div class="row"><button class="cta" id="anew" style="flex:1">➕ Crear horario nuevo para un instructor</button></div>
+    <h4 class="sub">Tu llave</h4>
+    ${
+      pub
+        ? '<p class="note">✓ Tu llave está publicada: los horarios que se sellen desde ahora podrán abrirse con ella.</p>'
+        : `<div class="note warn"><b>Falta publicar tu llave.</b> Descarga <code>administrador.json</code> y súbelo a la carpeta <code>horarios/</code> del repositorio${g ? ` (<a href="${g.subir}" target="_blank" rel="noopener">abrir la página para subirlo</a>)` : ""}. Hasta entonces, los horarios que se sellen no incluirán la copia para ti. <div class="row" style="margin-top:6px"><button class="btn" id="apub">Descargar administrador.json</button></div></div>`
+    }
+    <div class="row"><button class="btn" id="abk">Descargar copia de seguridad de la llave</button><button class="btn" id="alk">Cerrar sesión de administrador</button></div>
+    <div class="msg" id="admMsg"></div>`),
+    ($("#anew").onclick = () => admNuevo()),
+    ($("#abk").onclick = admDescargarLlave),
+    ($("#alk").onclick = () => ((admPriv = null), openAdmModal())),
+    $("#apub") && ($("#apub").onclick = admDescargarPublica),
+    $("#abor") &&
+      ($("#abor").onclick = async () => {
+        try {
+          await admRetomar();
+        } catch (e) {
+          msg(e.message || String(e));
+        }
+      }),
+    $("#adesc") && ($("#adesc").onclick = () => (admDescartar(), openAdmModal())),
+    B.querySelectorAll("[data-f]").forEach(
+      (b) =>
+        (b.onclick = async () => {
+          (msg("Abriendo…", !0), (b.disabled = !0));
+          try {
+            await admAbrir(b.dataset.f);
+          } catch (e) {
+            (msg(e.message || String(e)), (b.disabled = !1));
+          }
+        }),
+    ),
+    openModal("#bAdm"));
+}
+$("#btnAdm").addEventListener("click", () => openAdmModal());
+/* ---- el instructor se entera si el administrador (u otro dispositivo) guardó una versión más nueva ---- */
+async function checkRemote() {
+  try {
+    if (!state.lock || !state.lock.fp || "viewer" === lockInfo.status || "admin" === lockInfo.status) return;
+    const archivo = state.file || slugNombre() + "-" + fp6(state.lock.fp) + ".json",
+      doc = await fetchRemoteDoc(archivo);
+    if (!doc || !doc.lock || doc.lock.pub !== state.lock.pub) return;
+    if (+doc.rev > (+state.rev || 0) && (await verifyFile(doc)).ok) ((remoteNew = doc), applyLock());
+  } catch (e) {}
+}
+function adoptRemote() {
+  const d = remoteNew;
+  if (!d) return;
+  if (
+    "open" === lockInfo.status &&
+    !confirm("Tienes cambios sin sellar en este navegador. Cargar la versión nueva los descarta. ¿Continuar?")
+  )
+    return;
+  if (
+    !confirm(
+      `Se cargará la versión ${d.rev} guardada ${"administrador" === d.por ? "por el administrador" : "desde otro dispositivo"}. Reemplaza el horario de este navegador. ¿Continuar?`,
+    )
+  )
+    return;
+  ((state = docToState(d)),
+    (sealKey = null),
+    (lockInfo = { status: "sealed", valid: !0 }),
+    (remoteNew = null),
+    admReset(),
+    persist(!0),
+    renderAll(!1),
+    applyLock(),
+    toast("Versión cargada"));
+}
+
 let viewDoc = null;
 async function enterViewer(e, a) {
   const t = await verifyFile(e);
@@ -3420,6 +4027,9 @@ function gitLinks() {
   const o = `https://github.com/${t.u}/${t.r}`,
     s = slugNombre() + ".json";
   return {
+    u: t.u,
+    r: t.r,
+    rama: a,
     carpeta: `${o}/tree/${a}/horarios`,
     subir: `${o}/upload/${a}/horarios`,
     archivo: `${o}/blob/${a}/horarios/${s}`,
@@ -3454,7 +4064,12 @@ function applyLock() {
     i = "";
   const c = esc(state.profile.name || "instructor");
   if (
-    ("none" === e
+    ("admin" === e
+      ? ((r += " open"),
+        (s = I_OPEN + "Enviar"),
+        (n = `Modo administrador · ${state.profile.name ? c : "horario sin nombre"} · ${admCtx && admCtx.nuevo ? "horario nuevo (sin enviar)" : "versión " + (state.rev || 0)} · se firma con la llave del instructor y queda marcado como «modificado por el administrador».`),
+        (i = "adm"))
+      : "none" === e
       ? (s = I_OPEN + "Sellar horario")
       : "open" === e
         ? ((r += " open"),
@@ -3482,7 +4097,10 @@ function applyLock() {
     n)
   ) {
     let a = "";
-    ("viewer" === e
+    ("admin" === e
+      ? (a =
+          '<span style="flex:1"></span><button class="btn" id="bnSeal">Sellar y enviar</button><button class="btn" id="bnAdmOut">Salir</button>')
+      : "viewer" === e
       ? (a =
           '<span style="flex:1"></span><button class="btn" id="bnUse">Usar como mi archivo</button><button class="btn" id="bnLeave">Salir de la consulta</button>')
       : "sealed" === e
@@ -3491,8 +4109,14 @@ function applyLock() {
         : "open" === e &&
           (a =
             '<span style="flex:1"></span><button class="btn" id="bnSeal">Sellar de nuevo</button>'),
+      remoteNew &&
+        ("sealed" === e || "open" === e) &&
+        ((n += ` · ⚠ Hay una versión más reciente (${remoteNew.rev}) guardada ${"administrador" === remoteNew.por ? "por el administrador" : "desde otro dispositivo"}.`),
+        (a += '<button class="btn" id="bnRemote">Cargar esa versión</button>')),
       (o.className = "banner " + i),
       (o.innerHTML = `<span>${n}</span>${a}`),
+      $("#bnRemote")?.addEventListener("click", adoptRemote),
+      $("#bnAdmOut")?.addEventListener("click", admSalir),
       $("#bnUse")?.addEventListener("click", adoptViewed),
       $("#bnLeave")?.addEventListener("click", leaveViewer),
       $("#bnUnlock")?.addEventListener("click", openSealModal),
@@ -3578,6 +4202,7 @@ function sealInfoHTML(e, a, t) {
 function openSealModal() {
   const e = lockInfo.status,
     a = $("#sealBody");
+  if ("admin" === e) return openAdmSealModal();
   if (!cryptoOK())
     return (
       ($("#sealTitle").textContent = "Sello no disponible"),
@@ -3691,7 +4316,13 @@ function openSealModal() {
     openModal("#bSeal"));
 }
 async function initSeal() {
-  (applyLock(), cryptoOK() && (await checkLocal()));
+  const ad = new URLSearchParams(location.search).get("admin");
+  (null !== ad && (admPend = ad),
+    ($("#btnAdm").hidden = !(admStore || null !== ad || admBorrador())),
+    applyLock(),
+    cryptoOK() && (await checkLocal()),
+    null !== ad && openAdmModal(),
+    checkRemote());
   const e = new URLSearchParams(location.search).get("ver");
   if (e)
     try {

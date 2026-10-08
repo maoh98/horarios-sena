@@ -103,6 +103,8 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
 <header>
   <h1>Horario <span>SENA · Administrador</span></h1>
   <div class="sp"></div>
+  <a class="btn" id="bNew" href="index.html?admin=nuevo" title="Crear el horario completo de un instructor" style="text-decoration:none;color:inherit">➕ Horario nuevo</a>
+  <a class="btn" id="bAdmK" href="index.html?admin" title="Tu llave de administrador" style="text-decoration:none;color:inherit">🔑 Mi llave</a>
   <button class="btn" id="bAct" title="Se actualiza solo cada minuto">Actualizar</button>
   <button class="btn" id="bVer">Verificar sellos ahora</button>
   <button class="btn" id="bCsv">CSV</button>
@@ -490,6 +492,8 @@ function render(){
       <td class="mt">${tipoCelda(x)}</td>
       <td class="num"><b>${x.dias}</b><div class="sub">${x.dias?(x.horas.total/x.dias).toFixed(1).replace('.',','):'0'} h/día</div></td>
       <td><span class="tag ${esc(x.estado)}">${ESTADO[x.estado]||esc(x.estado)}</span>${x.huella?`<div class="sub"><code>${esc(x.huella)}</code></div>`:''}
+        ${x.rev?`<div class="sub">versión ${x.rev} · ${x.por==='administrador'?'<b>corregido por el administrador</b>':'sellado por el instructor'}</div>`:''}
+        ${link?(x.adm?`<div style="margin-top:4px"><a class="btn" href="${esc(APP+'?admin='+encodeURIComponent(x.archivo))}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;padding:2px 8px;font-size:12px" title="Abrir el horario para corregirlo con tu llave de administrador">✏ Editar</a></div>`:`<div class="sub" title="Se selló sin copia para tu llave de administrador. Si el instructor lo abre con su contraseña y lo sella de nuevo, podrás editarlo.">sin acceso de administrador</div>`):''}
         <div style="margin-top:4px">${(()=>{const d=repetidas(x);return x.fichas.some(f=>d(f.nombre))?'<div style="margin-bottom:4px"><span class="tag warn" title="Hay números de ficha repetidos. Pídele que los revise.">Fichas repetidas</span></div>':''})()}${r.ok?'<span class="tag ok">Encaja ✓</span>':`<span class="tag warn" title="${esc(r.problemas.slice(0,6).join('\n'))}">${r.problemas.length} problema(s)</span>`}</div></td>
       <td class="sub">${esc(fechaLocal(x.selladoEn))}</td></tr>`}).join('');
   if(MODE==='repo'&&LIST.length||MODE==='local'){$('#empty').hidden=!!rows.length;if(!rows.length)$('#empty').textContent='Sin resultados.'}

@@ -64,6 +64,9 @@ export function resumen(j, archivo) {
     grados: {'10': G.g['10'], '11': G.g['11'], sin: G.g['?']},
     horas: {...t, total: t.formacion + t.planeacion + t.seguimiento}, dias: dias.size, meses: [...meses].sort(),
     reglas: {ok: problemas.length === 0, problemas},
-    selladoEn: (j.lock && j.lock.at) || '', huellaDeclarada: (j.lock && j.lock.fp) || '', autor: j.author || ''
+    selladoEn: (j.lock && j.lock.at) || '', huellaDeclarada: (j.lock && j.lock.fp) || '', autor: j.author || '',
+    /* versión del horario y quién lo selló por última vez; adm = huella del administrador que puede abrirlo ('' si ninguno) */
+    rev: Number.isInteger(j.rev) && j.rev > 0 ? j.rev : 0, por: j.por === 'administrador' ? 'administrador' : 'instructor',
+    adm: (j.lock && j.lock.adm && typeof j.lock.adm.fp === 'string' && j.lock.adm.fp) || ''
   };
 }

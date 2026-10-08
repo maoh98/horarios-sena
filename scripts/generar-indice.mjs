@@ -23,7 +23,7 @@ lista.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es'));
 lista.forEach((x, i) => x.n = i + 1);
 writeFileSync(join(dir, 'index.json'), JSON.stringify({generado: new Date().toISOString(), total: lista.length, instructores: lista}, null, 2));
 
-const COLS = ['N°', 'Instructor', 'Cargo', 'Centro', 'Programas de formación', 'N° programas', 'Fichas', 'Instituciones', 'Horas grado 10°', 'Horas grado 11°', 'Horas formación', 'Horas planeación', 'Horas seguimiento', 'Horas totales', 'Días programados', 'Meses', 'Revisión de reglas', 'Estado del sello', 'Sellado el (UTC)', 'Huella', 'Archivo'];
+const COLS = ['N°', 'Instructor', 'Cargo', 'Centro', 'Programas de formación', 'N° programas', 'Fichas', 'Instituciones', 'Horas grado 10°', 'Horas grado 11°', 'Horas formación', 'Horas planeación', 'Horas seguimiento', 'Horas totales', 'Días programados', 'Meses', 'Revisión de reglas', 'Estado del sello', 'Versión', 'Sellado por', 'Sellado el (UTC)', 'Huella', 'Archivo'];
 const ESTADO = {valido: 'Sellado y verificado', roto: 'SELLO ROTO', 'sin-sello': 'Sin sellar'};
 const TN = {A: 'Académica', T: 'Técnica', P: 'Privada', S: 'SENA'};
 const progNombres = x => x.programas.filter(p => p.n).map(p => `P${p.n}. ${p.nombre}`).join(' | ');
@@ -31,7 +31,7 @@ const filas = lista.map(x => [x.n, x.nombre, x.cargo, x.centro, progNombres(x), 
   x.instituciones.filter(i => i.nombre !== 'Sin institución').map(i => `${TN[i.tipo] || '?'}: ${i.nombre}${i.nueva ? ' (nueva)' : ''}`).join(' | '),
   x.grados['10'], x.grados['11'], x.horas.formacion, x.horas.planeacion, x.horas.seguimiento, x.horas.total, x.dias, x.meses.join(', '),
   x.reglas.ok ? 'Encaja' : `${x.reglas.problemas.length} problema(s): ${x.reglas.problemas.slice(0, 3).join(' / ')}`,
-  ESTADO[x.estado] || x.estado, x.selladoEn ? x.selladoEn.slice(0, 16).replace('T', ' ') : '', x.huella, `${dir}/${x.archivo}`]);
+  ESTADO[x.estado] || x.estado, x.rev || '', x.por === 'administrador' ? 'Administrador' : 'Instructor', x.selladoEn ? x.selladoEn.slice(0, 16).replace('T', ' ') : '', x.huella, `${dir}/${x.archivo}`]);
 const COLS_P = ['Instructor', 'N° programa', 'Programa de formación', 'Horas grado 10°', 'Horas grado 11°', 'Horas especialidad / sin grado', 'Horas totales'];
 const COLS_I = ['Instructor', 'Tipo de institución', 'Institución', 'Nueva (fuera de la lista oficial)', 'N° fichas', 'Horas de formación'];
 const filasI = lista.flatMap(x => x.instituciones.map(i => [x.nombre, TN[i.tipo] || '', i.nombre, i.nueva ? 'Sí' : '', i.fichas, i.horas]));
@@ -50,7 +50,7 @@ try {
   const X = (await import('xlsx')).default;
   const wb = X.utils.book_new();
   const ws = X.utils.aoa_to_sheet([COLS, ...filas.map(r => r.map(seguro))]);
-  ws['!cols'] = [5, 32, 26, 24, 50, 9, 56, 50, 10, 10, 10, 10, 10, 10, 10, 20, 34, 20, 17, 21, 36].map(w => ({wch: w}));
+  ws['!cols'] = [5, 32, 26, 24, 50, 9, 56, 50, 10, 10, 10, 10, 10, 10, 10, 20, 34, 20, 9, 14, 17, 21, 36].map(w => ({wch: w}));
   X.utils.book_append_sheet(wb, ws, 'Instructores');
   const wp = X.utils.aoa_to_sheet([COLS_P, ...filasP.map(r => r.map(seguro))]); wp['!cols'] = [32, 11, 50, 12, 12, 12, 12].map(w => ({wch: w}));
   X.utils.book_append_sheet(wb, wp, 'Programas y grados');

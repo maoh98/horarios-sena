@@ -50,6 +50,34 @@ Cloudflare se puede hacer completo desde el navegador del celular, sin instalar 
 - **Descargar Excel / CSV** desde el mismo panel (hojas: Instructores, Programas y grados, Horas por día del mes, Resumen) (o `npm run indice`, que genera `instructores.xlsx` y `instructores.csv`).
 - Sin conexión: en el panel, carga varios `.json` a mano.
 
+## Modo administrador: corregir horarios y crear el de un instructor
+
+**Idea:** cada sello lleva, además, una copia de la llave de firma del instructor **cifrada para el administrador**. Con su propia llave (protegida por su contraseña) el administrador abre cualquier horario, lo corrige y lo vuelve a sellar **con la firma del instructor**. Así el archivo conserva el mismo nombre, la misma huella y el mismo dueño; no hace falta tocar las reglas del servidor ni el chequeo de Git. Cada versión queda numerada y marcada como *«corregido por el administrador»*, y el historial de Git guarda las anteriores.
+
+### Preparación (una sola vez)
+1. Sube esta versión (ver «Actualizar» abajo) y abre `https://<usuario>.github.io/<repo>/index.html?admin` (o el botón **🔑 Mi llave** del panel).
+2. Escribe tu nombre y una contraseña larga (mínimo 10 caracteres) → **Crear llave**. Se descarga `llave-administrador-horario-sena.json`: **guárdala en un lugar seguro** (copia en la nube y en una memoria). Sin ella y sin la contraseña no podrás abrir los horarios ya sellados.
+3. En la misma ventana pulsa **Descargar administrador.json** y súbelo a la carpeta `horarios/` del repositorio (*Add file → Upload files*). Es solo tu llave **pública**; el chequeo de Git y los instructores la usan para preparar la copia cifrada. Cuando esté publicada, la ventana dirá «✓ Tu llave está publicada».
+4. En otro computador: abre el mismo enlace → **Importar** el archivo de la llave → escribe la contraseña.
+
+### Corregir un horario existente
+- En el panel, botón **✏ Editar** en la fila del instructor (o *Administrador → Corregir un horario*). Escribes tu contraseña, el planeador abre ese horario **en modo administrador** (franja morada), editas con las mismas herramientas del instructor y pulsas **Enviar** → *Sellar y enviar*. Tu propio horario guardado en el navegador **no se toca**.
+- Si ya tenías un borrador sin terminar, al volver a entrar aparece «Retomar / Descartar».
+- Solo se pueden abrir los horarios sellados **después** de publicar tu llave. Los anteriores aparecen como «sin acceso de administrador»: pídele al instructor que los abra con su contraseña y los selle otra vez (con un clic queda disponible para ti).
+
+### Crear el horario completo de un instructor
+- Panel → **➕ Horario nuevo** (o *Administrador → Crear horario nuevo para un instructor*). Escribes el nombre y armas programas, fichas (con institución o SENA/especialidad), competencias, RAP y calendario.
+- Al sellar eliges una **contraseña para el instructor** (hay un botón *Sugerir una*). Se envía y se muestra una sola vez: entrégasela por un medio seguro. Con ella el instructor abre el archivo en su planeador (*Exportar / Importar* → «Abrir un archivo sellado» → **Usar como mi archivo** → **Desbloquear**; o simplemente abre su enlace publicado `index.html?ver=horarios/<archivo>`) y puede seguir editándolo; tú siempre puedes abrirlo con tu llave.
+- ¿Olvidó la contraseña? Abre su horario en modo administrador y, al sellar, escribe una nueva en «Cambiar la contraseña del instructor».
+
+### Si el administrador y el instructor editan a la vez
+Cada sello lleva un número de **versión** y el servidor solo acepta versiones mayores. Si el instructor tiene una copia vieja y la envía, recibe el aviso *«El servidor ya tiene la versión N, corregida por el administrador»*; al abrir el planeador aparece la franja **«Hay una versión más reciente… [Cargar esa versión]»**. Carga la nueva, edita y vuelve a enviar. El nombre del archivo queda fijo (campo firmado `file`), así que corregir el nombre del instructor no crea un duplicado.
+
+### Seguridad: qué significa que el administrador pueda abrir los horarios
+- Quien tenga tu llave **y** tu contraseña puede firmar como cualquier instructor que se haya sellado con ella. Trátala como la llave del repositorio: contraseña larga y copia de seguridad guardada.
+- Un instructor solo puede modificar su propio archivo (su contraseña); el administrador, cualquiera. Todo cambio queda en el historial de Git (autor del commit: el servidor de envíos) y en el campo firmado `por` («administrador») y en el historial interno del horario.
+- Si cambias de llave de administrador, los horarios sellados con la anterior dejan de abrirse con la nueva hasta que el instructor los vuelva a sellar. No la cambies sin necesidad.
+
 ## Puesta en marcha (15 min)
 1. Crea el repositorio y sube todo esto. En *Settings → Pages* elige **Source: GitHub Actions**.
 2. En *Settings → Branches* protege `main`: exige Pull Request, revisión de *Code Owners* y que pase el chequeo **Verificar sellos**.
@@ -62,7 +90,7 @@ Cloudflare se puede hacer completo desde el navegador del celular, sin instalar 
 - **Sí:** el chequeo fija la **llave pública** de cada instructor (la de la rama base): nadie puede reemplazar un archivo por otro firmado con una llave distinta.
 - **No:** bloquear la edición dentro del navegador no es una barrera absoluta (es una página web); la garantía real es la firma + Git + permisos del repositorio. Por eso el panel y el CI verifican la firma, no la pantalla.
 - La contraseña protege la llave de firma que viaja cifrada dentro del archivo. Si el repo es público, una contraseña corta podría adivinarse por fuerza bruta: usa frases largas, o usa un repositorio privado.
-- Si un instructor pierde su contraseña no se recupera; habría que crear un nuevo sello y aprobarlo a mano (el chequeo marcará el cambio de llave).
+- Si un instructor pierde su contraseña, **el administrador puede ponerle otra** desde el modo administrador (ver abajo). Sin llave de administrador no se recupera.
 
 ## Proteger tu autoría y el código
 - Tu nombre aparece de forma discreta en: pie del panel izquierdo, ayuda del logo, metadatos del HTML, comentarios del código, consola del navegador, archivos `.json` (campo `author`, **firmado**: si lo borran, el sello se rompe) y Excel (propiedades + hoja Resumen).

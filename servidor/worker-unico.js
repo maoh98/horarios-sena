@@ -239,7 +239,11 @@ function resumen(j, archivo) {
     reglas: { ok: problemas.length === 0, problemas },
     selladoEn: j.lock && j.lock.at || "",
     huellaDeclarada: j.lock && j.lock.fp || "",
-    autor: j.author || ""
+    autor: j.author || "",
+    /* versión del horario y quién lo selló por última vez; adm = huella del administrador que puede abrirlo ('' si ninguno) */
+    rev: Number.isInteger(j.rev) && j.rev > 0 ? j.rev : 0,
+    por: j.por === "administrador" ? "administrador" : "instructor",
+    adm: j.lock && j.lock.adm && typeof j.lock.adm.fp === "string" && j.lock.adm.fp || ""
   };
 }
 
@@ -289,7 +293,8 @@ var worker_default = {
     if (!v.ok) return out(422, { ok: false, error: "Sello inv\xE1lido: " + v.motivo + ". Sella tu horario y vuelve a enviarlo." });
     const r = resumen(j, "");
     if (!r.reglas.ok) return out(422, { ok: false, error: "El horario no cumple las reglas.", problemas: r.reglas.problemas.slice(0, 10) });
-    const archivo = `${slug(j.profile && j.profile.name)}-${v.huella.replace(/\s/g, "").slice(0, 6).toLowerCase()}.json`;
+    const h6 = v.huella.replace(/\s/g, "").slice(0, 6).toLowerCase();
+    const archivo = typeof j.file === "string" && /^[a-z0-9-]{1,70}\.json$/.test(j.file) && j.file.endsWith("-" + h6 + ".json") ? j.file : `${slug(j.profile && j.profile.name)}-${h6}.json`;
     const ruta = `horarios/${archivo}`;
     const api = `https://api.github.com/repos/${env.REPO}/contents/${ruta}`;
     const gh = { Authorization: `Bearer ${env.GITHUB_TOKEN}`, Accept: "application/vnd.github+json", "User-Agent": "horario-sena-envios", "X-GitHub-Api-Version": "2022-11-28" };
@@ -306,7 +311,10 @@ var worker_default = {
           const anterior = JSON.parse(unb642(p.content));
           const nuevoAt = Date.parse(j.lock.at), viejoAt = Date.parse(anterior.lock && anterior.lock.at);
           if (anterior.lock && anterior.lock.pub !== j.lock.pub) return out(409, { ok: false, error: "Ya existe un archivo con ese nombre firmado con otra llave." });
-          if (viejoAt && nuevoAt && nuevoAt <= viejoAt) return out(409, { ok: false, error: "El servidor ya tiene una versi\xF3n igual o m\xE1s reciente de tu horario." });
+          const nuevoRev = Number.isInteger(j.rev) ? j.rev : 0, viejoRev = Number.isInteger(anterior.rev) ? anterior.rev : 0;
+          if (viejoRev) {
+            if (nuevoRev <= viejoRev) return out(409, { ok: false, error: `El servidor ya tiene la versi\xF3n ${viejoRev}${anterior.por === "administrador" ? ", corregida por el administrador" : ""}. Tu copia es la ${nuevoRev || "anterior"}. Carga la versi\xF3n nueva (aviso en la parte superior del planificador) y vuelve a enviar.`, version: viejoRev });
+          } else if (viejoAt && nuevoAt && nuevoAt <= viejoAt) return out(409, { ok: false, error: "El servidor ya tiene una versi\xF3n igual o m\xE1s reciente de tu horario." });
         } catch {
         }
       } else if (previo.status !== 404) return out(502, { ok: false, error: "No se pudo consultar el repositorio (" + previo.status + ")." });
@@ -323,7 +331,7 @@ var worker_default = {
       if (put.status !== 409 && put.status !== 422 && put.status !== 429 && put.status < 500) break;
     }
     if (!put.ok) return out(502, { ok: false, error: "El servidor est\xE1 muy ocupado (" + put.status + "). Espera un minuto y vuelve a enviar; tu horario sigue guardado en este navegador." });
-    return out(200, { ok: true, archivo, nuevo: !sha, huella: v.huella, mensaje: sha ? "Horario actualizado." : "Horario recibido." });
+    return out(200, { ok: true, archivo, nuevo: !sha, huella: v.huella, version: Number.isInteger(j.rev) ? j.rev : 0, mensaje: sha ? "Horario actualizado." : "Horario recibido." });
   }
 };
 export {
