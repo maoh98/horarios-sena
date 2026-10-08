@@ -1,6 +1,6 @@
 // Horario SENA · núcleo de verificación SIN dependencias de Node (sirve en Node 18+ y en Cloudflare Workers)
 // Creado por el Ing. Manuel Alejandro Ordóñez Hernández
-import {gradoHoras, auditar} from './reglas.mjs';
+import {gradoHoras, auditar, instFija, tipoValido} from './reglas.mjs';
 
 export const canon = v => {
   if (v === null || typeof v !== 'object') return JSON.stringify(v);
@@ -35,19 +35,31 @@ export function resumen(j, archivo) {
     if (t[b.type] === undefined || !Number.isInteger(b.hours) || typeof b.date !== 'string') continue;
     t[b.type] += b.hours; dias.add(b.date); meses.add(b.date.slice(0, 7));
   }
-  const fchs = (cat.fichas || []).map(f => ({id: f.n, grado: f.grado, programa: f.programa || null}));
+  const fchs = (cat.fichas || []).map(f => ({id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst}));
   const G = gradoHoras(blocks, fchs);
   const horasFicha = {};
   for (const b of blocks) if (b.type === 'formacion' && b.ficha) horasFicha[b.ficha] = (horasFicha[b.ficha] || 0) + b.hours;
-  const fichas = (cat.fichas || []).map(f => ({n: f.n, nombre: f.name, grado: f.grado === '11' ? '11' : '10', programa: f.programa || null, horas: horasFicha[f.n] || 0}));
+  const fichas = (cat.fichas || []).map(f => ({
+    n: f.n, nombre: f.name, grado: f.grado === '11' ? '11' : '10', programa: f.programa || null,
+    tipo: tipoValido(f.tipo) ? f.tipo : null, inst: typeof f.inst === 'string' ? f.inst : '',
+    instNueva: !!f.inst && !instFija(f.inst), horas: horasFicha[f.n] || 0
+  }));
+  // horas de formación por institución (para el panel y el Excel)
+  const porInst = {};
+  for (const f of fichas) {
+    const k = f.inst ? `${f.tipo || '?'}|${f.inst}` : '?|';
+    (porInst[k] = porInst[k] || {tipo: f.tipo, nombre: f.inst || 'Sin institución', nueva: f.instNueva, fichas: 0, horas: 0});
+    porInst[k].fichas++; porInst[k].horas += f.horas;
+  }
+  const instituciones = Object.values(porInst).sort((a, b) => b.horas - a.horas);
   const hp = id => G.p[id] || {'10': 0, '11': 0, '?': 0};
   const programas = (cat.programas || []).map(x => ({n: x.n, nombre: x.name, h10: hp(x.n)['10'], h11: hp(x.n)['11'], hSin: hp(x.n)['?'], total: hp(x.n)['10'] + hp(x.n)['11'] + hp(x.n)['?']}));
   if (G.p['?']) programas.push({n: null, nombre: 'Sin programa', h10: G.p['?']['10'], h11: G.p['?']['11'], hSin: G.p['?']['?'], total: G.p['?']['10'] + G.p['?']['11'] + G.p['?']['?']});
-  const maxProg = st.maxProgramas === 3 ? 3 : 2;
-  const problemas = auditar(blocks, {maxApoyo: st.maxApoyo === 3 ? 3 : 2, nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 2, fichas: fchs});
+  const maxProg = st.maxProgramas === 2 ? 2 : 3;
+  const problemas = auditar(blocks, {maxApoyo: st.maxApoyo === 3 ? 3 : 2, nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 3, fichas: fchs, schema: j.schema || 1});
   return {
     archivo, nombre: p.name || '(sin nombre)', cargo: p.cargo || '', centro: p.centro || '',
-    programas, maxProgramas: maxProg, fichas, competencias: (cat.comps || []).length, raps: (cat.raps || []).length,
+    programas, maxProgramas: maxProg, fichas, instituciones, competencias: (cat.comps || []).length, raps: (cat.raps || []).length,
     grados: {'10': G.g['10'], '11': G.g['11'], sin: G.g['?']},
     horas: {...t, total: t.formacion + t.planeacion + t.seguimiento}, dias: dias.size, meses: [...meses].sort(),
     reglas: {ok: problemas.length === 0, problemas},

@@ -16,8 +16,8 @@ herramientas/         proteger.mjs (cifrar / minificar) · sincronizar-reglas.mj
 ```
 
 ## Flujo del instructor
-1. Abre el sitio (`index.html`), llena perfil, **programas de formación** (2 o máximo 3; se elige el máximo en el perfil), fichas (10°/11°, cada una asignada a su programa), competencias y RAP, y programa sus horas.
-2. Pulsa **Sellar horario**. Antes de sellar el planeador revisa que todo encaje (6 a. m.–6 p. m., sin cruces, sin festivos, límites de apoyo, máx. de programas y fichas con programa); si algo no encaja, lo marca y no deja sellar. Luego crea su contraseña (mín. 10 caracteres; mejor una frase). El horario queda estático.
+1. Abre el sitio (`index.html`), llena perfil, **programas de formación** (máximo 3), fichas **sin límite** (10°/11°, cada una asignada a su programa y a su **institución educativa**: se elige el tipo —Académica, Técnica o Privada— y luego la institución en la lista, o «+ Otra institución…»), competencias y RAP, y programa sus horas.
+2. Pulsa **Sellar horario**. Antes de sellar el planeador revisa que todo encaje (6 a. m.–10 p. m., sin cruces, sin festivos, límites de apoyo, máx. de programas, y fichas con programa e institución); si algo no encaja, lo marca y no deja sellar. Luego crea su contraseña (mín. 10 caracteres; mejor una frase). El horario queda estático.
 3. Pulsa el candado → **Descargar archivo (.json)**.
 4. Pulsa **📤 Enviar mi horario** (sin cuenta de nada; ver «Envío sin cuenta» abajo). Alternativas: descargar el `.json` y mandarlo al administrador, o —solo quien tenga GitHub— subirlo a `horarios/`. En el mismo cuadro del candado hay accesos directos: **⬆ Subir mi archivo**, **📁 Abrir la carpeta** y **👁 Ver mi horario publicado** (aparecen solos si el sitio está en GitHub Pages; si no, escribe `usuario/repo` en la etiqueta `sena-repo` de `index.html`). Nómbralo igual que la vez anterior (p. ej. `maria-perez.json`) para que reemplace al anterior y Git conserve la historia.
 5. Para cambiar algo: abre su archivo con *Exportar / Importar → Abrir un archivo sellado* → **Usar como mi archivo** → **Desbloquear** (contraseña) → edita → **Sellar de nuevo** → descarga y sube la nueva versión. Cada versión queda en el historial de Git.
@@ -38,7 +38,7 @@ herramientas/         proteger.mjs (cifrar / minificar) · sincronizar-reglas.mj
 ### Montarlo desde el celular (sin computador)
 Cloudflare se puede hacer completo desde el navegador del celular, sin instalar nada: Workers y Pages → Crear → *Hello World* → **Editar código** → pega todo `servidor/worker-unico.js` (es el mismo servidor en un solo archivo) → Desplegar. Luego *Configuración → Variables y secretos*: agrega `REPO`, `RAMA`, `ORIGEN`, `CODIGO` (texto) y `GITHUB_TOKEN` (tipo **Secreto**). Usa la vista «Sitio de escritorio» del navegador. Si cambias las reglas del planeador, vuelve a generar `worker-unico.js` (`npx esbuild servidor/worker.js --bundle --format=esm --outfile=servidor/worker-unico.js`) y pégalo de nuevo.
 
-**Qué hace el servidor antes de guardar:** verifica la firma, las reglas (6–18 h, cruces, festivos, apoyo, 2/3 programas), rechaza versiones más viejas que la guardada y decide él mismo el nombre del archivo (`nombre-huella.json`), de modo que **un envío nunca puede reemplazar el archivo de otra persona**. Tras guardar, el chequeo de Git y Pages republican solos y el panel admin lo muestra en ~1–2 minutos.
+**Qué hace el servidor antes de guardar:** verifica la firma, las reglas (6–22 h, cruces, festivos, apoyo, máx. 3 programas, institución en cada ficha con horas), rechaza versiones más viejas que la guardada y decide él mismo el nombre del archivo (`nombre-huella.json`), de modo que **un envío nunca puede reemplazar el archivo de otra persona**. Tras guardar, el chequeo de Git y Pages republican solos y el panel admin lo muestra en ~1–2 minutos.
 
 **Límites que debes conocer:** cualquiera con el enlace puede *intentar* enviar (por eso el código de grupo y el límite de 2 MB); un archivo falso pero bien firmado por un desconocido entraría como «un instructor más» — el panel lo mostrará con otro nombre/huella y puedes borrarlo en Git. Si el código se filtra, cámbialo en `wrangler.toml` y `npx wrangler deploy`. Para limitar abusos activa una regla de *Rate limiting* gratuita en Cloudflare. Esto no lo pude probar contra Cloudflare ni GitHub reales: probé el servidor con GitHub simulado.
 
@@ -58,7 +58,7 @@ Cloudflare se puede hacer completo desde el navegador del celular, sin instalar 
 
 ## Qué garantiza el sello (y qué no)
 - **Sí:** si alguien cambia una sola hora, el nombre o el historial dentro del archivo, la firma deja de coincidir → *Sello roto* en el panel y el chequeo de Git rechaza el cambio. Solo quien tiene la contraseña puede volver a sellar.
-- **Sí:** el chequeo de Git también revisa las **reglas** del horario (jornada, cruces, festivos, límites de apoyo, máx. 2 o 3 programas): un archivo firmado pero que no encaje se rechaza.
+- **Sí:** el chequeo de Git también revisa las **reglas** del horario (jornada, cruces, festivos, límites de apoyo, máx. 3 programas): un archivo firmado pero que no encaje se rechaza.
 - **Sí:** el chequeo fija la **llave pública** de cada instructor (la de la rama base): nadie puede reemplazar un archivo por otro firmado con una llave distinta.
 - **No:** bloquear la edición dentro del navegador no es una barrera absoluta (es una página web); la garantía real es la firma + Git + permisos del repositorio. Por eso el panel y el CI verifican la firma, no la pantalla.
 - La contraseña protege la llave de firma que viaja cifrada dentro del archivo. Si el repo es público, una contraseña corta podría adivinarse por fuerza bruta: usa frases largas, o usa un repositorio privado.
@@ -71,7 +71,16 @@ Cloudflare se puede hacer completo desde el navegador del celular, sin instalar 
 - Límite honesto: una página que los instructores abren en su navegador **tiene que descifrarse en su navegador**; quien tenga la clave (o abra el sitio ya descifrado) puede copiar el código. Ofuscar y cifrar eleva el esfuerzo, no lo hace imposible. Lo que sí te respalda: la autoría firmada dentro de los archivos, el historial de Git a tu nombre, una licencia (agrega un archivo `LICENSE` con "Todos los derechos reservados") y mantener el código fuente en un repositorio privado.
 
 ## Mantenimiento (solo el autor)
-Las reglas viven en `horario-sena.html` (la copia legible, bloque `LOGIC`). Si las cambias:
+## Instituciones educativas
+
+La lista oficial (con su tipo A/T/P) está en `horario-sena.html`, bloque `LOGIC`, constante `INSTITUCIONES`; las horas informativas de cada tipo (11, 5 y 2) están en `TIPOS_INST` (solo se muestran, no validan nada). Si un instructor escribe una institución que no está en la lista, queda marcada **«nueva»** en el panel del administrador (también hay filtro por tipo, por institución y por «nuevas»). Para volverla oficial: agrega una línea a `INSTITUCIONES` y haz los pasos de abajo.
+
+Los horarios sellados antes de esta versión (sin institución) siguen siendo válidos; cuando su dueño los desbloquee y vuelva a sellar, el planeador le pedirá la institución de cada ficha con horas.
+
+## Cambiar las reglas
+
+Las reglas viven en `horario-sena.html` (la copia legible, bloque `LOGIC`, está en la raíz del repositorio). Si las cambias:
 1. `node herramientas/sincronizar-reglas.mjs ruta/a/horario-sena.html` (actualiza `scripts/reglas.mjs` y `admin.html`).
 2. `node herramientas/proteger.mjs ruta/a/horario-sena.html index.html --solo-minificar` (regenera la versión publicada).
+3. `npx esbuild servidor/worker.js --bundle --format=esm --outfile=servidor/worker-unico.js` y pega el resultado en Cloudflare (Editar código → Desplegar).
 Así el planeador, el panel y Git aplican siempre exactamente las mismas reglas.

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Verifica TODOS los archivos de instructores:
 //  1) que estén sellados y que la firma coincida con el contenido;
-//  1b) que el horario cumpla las reglas (6 a. m.–6 p. m., sin cruces, sin festivos, límites de apoyo, máx. 2 o 3 programas);
+//  1b) que el horario cumpla las reglas (6 a. m.–10 p. m., sin cruces, sin festivos, límites de apoyo, máx. 3 programas);
 //  2) que la llave pública no haya cambiado respecto a la rama base (evita que alguien
 //     reemplace el archivo de un instructor por otro firmado con otra llave).
 // Uso: node scripts/verificar.mjs [carpeta=horarios]     (BASE_REF = commit/rama base)
@@ -28,7 +28,7 @@ for (const f of archivos(dir)) {
     }
   } catch { /* archivo nuevo: no hay con qué comparar */ }
   const r = resumen(j, f);
-  if (!r.reglas.ok) {   // el horario debe encajar con las reglas (jornada, cruces, festivos, apoyo, máx. 2 o 3 programas)
+  if (!r.reglas.ok) {   // el horario debe encajar con las reglas (jornada, cruces, festivos, apoyo, máx. 3 programas)
     console.error(`✗ ${ruta}: el horario no cumple las reglas:`);
     r.reglas.problemas.slice(0, 10).forEach(x => console.error('    - ' + x));
     if (r.reglas.problemas.length > 10) console.error(`    …y ${r.reglas.problemas.length - 10} más`);

@@ -1,7 +1,35 @@
 // GENERADO por herramientas/sincronizar-reglas.mjs a partir de horario-sena.html. No editar a mano.
 // Horario SENA · creado por el Ing. Manuel Alejandro Ordóñez Hernández
 
-const RULES={START:6,END:18};
+const RULES={START:6,END:22};
+/* Tipos de institución educativa. "horas" es solo informativo (horas de formación diaria que puede dar ese tipo). */
+const TIPOS_INST={
+  A:{nombre:'Académica',plural:'Académicas',horas:11},
+  T:{nombre:'Técnica',plural:'Técnicas',horas:5},
+  P:{nombre:'Privada',plural:'Privadas',horas:2}
+};
+/* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
+const INSTITUCIONES=[
+  {tipo:'A',nombre:'I.E. José Antonio Galán'},
+  {tipo:'A',nombre:'I.E. Puerto Pinzón'},
+  {tipo:'A',nombre:'I.E. San Pedro Claver'},
+  {tipo:'A',nombre:'I.E. Antonio Santos'},
+  {tipo:'A',nombre:'I.E. John F. Kennedy'},
+  {tipo:'A',nombre:'I.E. La Floresta'},
+  {tipo:'A',nombre:'I.E. El Prado'},
+  {tipo:'A',nombre:'I.E. Santa Bárbara'},
+  {tipo:'T',nombre:'I.E.T. Agropecuaria El Marfil'},
+  {tipo:'T',nombre:'I.E.T. Puerto Serviez'},
+  {tipo:'T',nombre:'I.E.T. Técnica Pablo Valette'},
+  {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
+  {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
+  {tipo:'P',nombre:'Colegio Santa Teresita'},
+  {tipo:'P',nombre:'Liceo Pestalozzi'}
+];
+const normInst=t=>String(t==null?'':t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+/** Devuelve la institución oficial que coincide con el nombre (sin importar mayúsculas ni tildes) o null. */
+const instFija=n=>{const k=normInst(n);return k?INSTITUCIONES.find(i=>normInst(i.nombre)===k)||null:null};
+const tipoValido=t=>t==='A'||t==='T'||t==='P';
 const TYPES={formacion:'Formación',planeacion:'Planeación',seguimiento:'Seguimiento'};
 const PHVA={P:'Planear',H:'Hacer',V:'Verificar',A:'Actuar'};
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -43,8 +71,8 @@ function limits(maxApoyo){const per=Math.max(1,maxApoyo-1);return{plan:per,seg:p
 function validateBlock(b,day,maxApoyo=2){
   if(!TYPES[b.type])return'Tipo de bloque no válido.';
   if(!Number.isInteger(b.start)||!Number.isInteger(b.hours)||b.hours<1)return'La hora de inicio y la duración deben ser números enteros (mínimo 1 h).';
-  if(b.start<RULES.START)return'Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 6 p. m.).';
-  if(b.start+b.hours>RULES.END)return'Termina después de las 18:00; la jornada va de 6 a. m. a 6 p. m.';
+  if(b.start<RULES.START)return'Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 10 p. m.).';
+  if(b.start+b.hours>RULES.END)return'Termina después de las 22:00; la jornada va de 6 a. m. a 10 p. m.';
   if(b.type==='formacion'&&!(b.comp&&b.rap&&b.ficha))return'La formación necesita ficha, competencia y RAP.';
   for(const o of day){if(b.start<o.start+o.hours&&o.start<b.start+b.hours)return`Se cruza con otro bloque (${fh(o.start)}–${fh(o.start+o.hours)}).`}
   if(b.type!=='formacion'){
@@ -91,14 +119,21 @@ function auditar(blocks,o){
       if(e)out.push(`${d} ${Number.isInteger(b.start)?fh(b.start):'?'}: ${e}`);else acc.push(b);
     }
   }
-  const np=o.nProgramas||0,mp=o.maxProgramas||2;
+  const np=o.nProgramas||0,mp=o.maxProgramas||3;
   if(mp!==2&&mp!==3)out.push('El máximo de programas de formación debe ser 2 o 3.');
   else if(np>mp)out.push(`Tiene ${np} programas de formación y el máximo es ${mp}.`);
   if(np>0&&o.fichas){
     const used=new Set(blocks.filter(b=>b.type==='formacion'&&b.ficha).map(b=>b.ficha));
     o.fichas.forEach((f,i)=>{if(used.has(f.id)&&!f.programa)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene programa asignado.`)});
   }
+  if(o.fichas){
+    const used2=new Set(blocks.filter(b=>b.type==='formacion'&&b.ficha).map(b=>b.ficha));
+    o.fichas.forEach((f,i)=>{
+      if(f.inst&&!tipoValido(f.tipo))out.push(`La ficha ${i+1} tiene institución pero no tipo (académica, técnica o privada).`);
+      if(o.schema>=2&&used2.has(f.id)&&!f.inst)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene institución educativa.`);
+    });
+  }
   return out;
 }
 
-export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators};
+export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst};

@@ -1,5 +1,28 @@
-// ../../../../../outputs/horario-sena-limpio/scripts/reglas.mjs
-var RULES = { START: 6, END: 18 };
+// scripts/reglas.mjs
+var RULES = { START: 6, END: 22 };
+var INSTITUCIONES = [
+  { tipo: "A", nombre: "I.E. Jos\xE9 Antonio Gal\xE1n" },
+  { tipo: "A", nombre: "I.E. Puerto Pinz\xF3n" },
+  { tipo: "A", nombre: "I.E. San Pedro Claver" },
+  { tipo: "A", nombre: "I.E. Antonio Santos" },
+  { tipo: "A", nombre: "I.E. John F. Kennedy" },
+  { tipo: "A", nombre: "I.E. La Floresta" },
+  { tipo: "A", nombre: "I.E. El Prado" },
+  { tipo: "A", nombre: "I.E. Santa B\xE1rbara" },
+  { tipo: "T", nombre: "I.E.T. Agropecuaria El Marfil" },
+  { tipo: "T", nombre: "I.E.T. Puerto Serviez" },
+  { tipo: "T", nombre: "I.E.T. T\xE9cnica Pablo Valette" },
+  { tipo: "T", nombre: "I.E.T. Jos\xE9 Joaqu\xEDn Ortiz" },
+  { tipo: "T", nombre: "I.E.T. Nuestra Se\xF1ora de la Paz" },
+  { tipo: "P", nombre: "Colegio Santa Teresita" },
+  { tipo: "P", nombre: "Liceo Pestalozzi" }
+];
+var normInst = (t) => String(t == null ? "" : t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+var instFija = (n) => {
+  const k = normInst(n);
+  return k ? INSTITUCIONES.find((i) => normInst(i.nombre) === k) || null : null;
+};
+var tipoValido = (t) => t === "A" || t === "T" || t === "P";
 var TYPES = { formacion: "Formaci\xF3n", planeacion: "Planeaci\xF3n", seguimiento: "Seguimiento" };
 var DAY = 864e5;
 var pad = (n) => String(n).padStart(2, "0");
@@ -66,8 +89,8 @@ function limits(maxApoyo) {
 function validateBlock(b, day, maxApoyo = 2) {
   if (!TYPES[b.type]) return "Tipo de bloque no v\xE1lido.";
   if (!Number.isInteger(b.start) || !Number.isInteger(b.hours) || b.hours < 1) return "La hora de inicio y la duraci\xF3n deben ser n\xFAmeros enteros (m\xEDnimo 1 h).";
-  if (b.start < RULES.START) return "Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 6 p. m.).";
-  if (b.start + b.hours > RULES.END) return "Termina despu\xE9s de las 18:00; la jornada va de 6 a. m. a 6 p. m.";
+  if (b.start < RULES.START) return "Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 10 p. m.).";
+  if (b.start + b.hours > RULES.END) return "Termina despu\xE9s de las 22:00; la jornada va de 6 a. m. a 10 p. m.";
   if (b.type === "formacion" && !(b.comp && b.rap && b.ficha)) return "La formaci\xF3n necesita ficha, competencia y RAP.";
   for (const o of day) {
     if (b.start < o.start + o.hours && o.start < b.start + b.hours) return `Se cruza con otro bloque (${fh(o.start)}\u2013${fh(o.start + o.hours)}).`;
@@ -109,7 +132,7 @@ function auditar(blocks, o) {
       else acc.push(b);
     }
   }
-  const np = o.nProgramas || 0, mp = o.maxProgramas || 2;
+  const np = o.nProgramas || 0, mp = o.maxProgramas || 3;
   if (mp !== 2 && mp !== 3) out.push("El m\xE1ximo de programas de formaci\xF3n debe ser 2 o 3.");
   else if (np > mp) out.push(`Tiene ${np} programas de formaci\xF3n y el m\xE1ximo es ${mp}.`);
   if (np > 0 && o.fichas) {
@@ -118,10 +141,17 @@ function auditar(blocks, o) {
       if (used.has(f.id) && !f.programa) out.push(`La ficha ${i + 1} tiene horas de formaci\xF3n pero no tiene programa asignado.`);
     });
   }
+  if (o.fichas) {
+    const used2 = new Set(blocks.filter((b) => b.type === "formacion" && b.ficha).map((b) => b.ficha));
+    o.fichas.forEach((f, i) => {
+      if (f.inst && !tipoValido(f.tipo)) out.push(`La ficha ${i + 1} tiene instituci\xF3n pero no tipo (acad\xE9mica, t\xE9cnica o privada).`);
+      if (o.schema >= 2 && used2.has(f.id) && !f.inst) out.push(`La ficha ${i + 1} tiene horas de formaci\xF3n pero no tiene instituci\xF3n educativa.`);
+    });
+  }
   return out;
 }
 
-// ../../../../../outputs/horario-sena-limpio/scripts/nucleo.mjs
+// scripts/nucleo.mjs
 var canon = (v) => {
   if (v === null || typeof v !== "object") return JSON.stringify(v);
   if (Array.isArray(v)) return "[" + v.map(canon).join(",") + "]";
@@ -157,16 +187,33 @@ function resumen(j, archivo) {
     dias.add(b.date);
     meses.add(b.date.slice(0, 7));
   }
-  const fchs = (cat.fichas || []).map((f) => ({ id: f.n, grado: f.grado, programa: f.programa || null }));
+  const fchs = (cat.fichas || []).map((f) => ({ id: f.n, grado: f.grado, programa: f.programa || null, tipo: f.tipo, inst: f.inst }));
   const G = gradoHoras(blocks, fchs);
   const horasFicha = {};
   for (const b of blocks) if (b.type === "formacion" && b.ficha) horasFicha[b.ficha] = (horasFicha[b.ficha] || 0) + b.hours;
-  const fichas = (cat.fichas || []).map((f) => ({ n: f.n, nombre: f.name, grado: f.grado === "11" ? "11" : "10", programa: f.programa || null, horas: horasFicha[f.n] || 0 }));
+  const fichas = (cat.fichas || []).map((f) => ({
+    n: f.n,
+    nombre: f.name,
+    grado: f.grado === "11" ? "11" : "10",
+    programa: f.programa || null,
+    tipo: tipoValido(f.tipo) ? f.tipo : null,
+    inst: typeof f.inst === "string" ? f.inst : "",
+    instNueva: !!f.inst && !instFija(f.inst),
+    horas: horasFicha[f.n] || 0
+  }));
+  const porInst = {};
+  for (const f of fichas) {
+    const k = f.inst ? `${f.tipo || "?"}|${f.inst}` : "?|";
+    porInst[k] = porInst[k] || { tipo: f.tipo, nombre: f.inst || "Sin instituci\xF3n", nueva: f.instNueva, fichas: 0, horas: 0 };
+    porInst[k].fichas++;
+    porInst[k].horas += f.horas;
+  }
+  const instituciones = Object.values(porInst).sort((a, b) => b.horas - a.horas);
   const hp = (id) => G.p[id] || { "10": 0, "11": 0, "?": 0 };
   const programas = (cat.programas || []).map((x) => ({ n: x.n, nombre: x.name, h10: hp(x.n)["10"], h11: hp(x.n)["11"], hSin: hp(x.n)["?"], total: hp(x.n)["10"] + hp(x.n)["11"] + hp(x.n)["?"] }));
   if (G.p["?"]) programas.push({ n: null, nombre: "Sin programa", h10: G.p["?"]["10"], h11: G.p["?"]["11"], hSin: G.p["?"]["?"], total: G.p["?"]["10"] + G.p["?"]["11"] + G.p["?"]["?"] });
-  const maxProg = st.maxProgramas === 3 ? 3 : 2;
-  const problemas = auditar(blocks, { maxApoyo: st.maxApoyo === 3 ? 3 : 2, nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 2, fichas: fchs });
+  const maxProg = st.maxProgramas === 2 ? 2 : 3;
+  const problemas = auditar(blocks, { maxApoyo: st.maxApoyo === 3 ? 3 : 2, nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 3, fichas: fchs, schema: j.schema || 1 });
   return {
     archivo,
     nombre: p.name || "(sin nombre)",
@@ -175,6 +222,7 @@ function resumen(j, archivo) {
     programas,
     maxProgramas: maxProg,
     fichas,
+    instituciones,
     competencias: (cat.comps || []).length,
     raps: (cat.raps || []).length,
     grados: { "10": G.g["10"], "11": G.g["11"], sin: G.g["?"] },
@@ -188,7 +236,7 @@ function resumen(j, archivo) {
   };
 }
 
-// ../../../../../outputs/horario-sena-limpio/servidor/worker.js
+// servidor/worker.js
 var MAX_BYTES = 2 * 1024 * 1024;
 var slug = (s) => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "instructor";
 var b64 = (s) => {

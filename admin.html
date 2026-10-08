@@ -45,6 +45,12 @@ td .sub{color:var(--muted);font-size:12.5px}
 .tag.warn{background:color-mix(in srgb,var(--danger) 18%,transparent);color:var(--danger)}
 .tag.sin-sello{background:color-mix(in srgb,var(--seg) 22%,transparent);color:var(--ink)}
 .g10{color:#1b8fb0}.g11{color:#9a6f3e}
+:root{--iA:#1f9d6b;--iT:#3b82d6;--iP:#e4741f}
+.ins{display:inline-flex;align-items:center;gap:5px;margin-left:6px;padding:0 8px;border-radius:99px;font-size:11.5px;line-height:1.6;border:1px solid var(--c);background:color-mix(in srgb,var(--c) 12%,transparent);color:var(--ink);white-space:nowrap}
+.ins i{width:7px;height:7px;border-radius:50%;background:var(--c)}
+.ins.A{--c:var(--iA)}.ins.T{--c:var(--iT)}.ins.P{--c:var(--iP)}.ins.X{--c:var(--muted)}
+.ins em{font-style:normal;font-size:10px;font-weight:700;color:var(--danger)}
+.bar select{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 10px;font:inherit;color:inherit}
 .pg{margin:2px 0 6px}.pg b{font-size:13px}.pg .sub{display:block}
 .g{display:inline-block;font-size:11.5px;font-weight:700;padding:1px 6px;border-radius:6px;background:var(--surface2);margin-right:4px}
 .hrs{display:flex;gap:3px;height:6px;border-radius:4px;overflow:hidden;margin-top:5px;background:var(--surface2);width:110px}
@@ -96,7 +102,7 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
   <div class="kpis" id="kpis"></div>
   <div class="vista" id="vista"><button data-v="lista" class="on">Lista de instructores</button><button data-v="general">Horario de todos</button></div>
   <div id="vLista">
-  <div class="bar"><input type="search" id="q" placeholder="Buscar instructor, ficha, centro…" aria-label="Buscar"><span id="src" class="note" style="margin:0"></span></div>
+  <div class="bar"><input type="search" id="q" placeholder="Buscar instructor, ficha, centro…" aria-label="Buscar"><select id="ft" aria-label="Filtrar por tipo de institución"><option value="">Todos los tipos</option><option value="A">Académicas</option><option value="T">Técnicas</option><option value="P">Privadas</option><option value="N">Instituciones nuevas</option><option value="S">Sin institución</option></select><select id="fi" aria-label="Filtrar por institución"><option value="">Todas las instituciones</option></select><span id="src" class="note" style="margin:0"></span></div>
   <div class="wrap"><table>
     <thead><tr>
       <th data-s="n" class="num">N°</th><th data-s="nombre">Instructor</th><th data-s="centro">Centro</th><th data-s="programas">Programas y fichas</th>
@@ -109,7 +115,7 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
     <div class="gtb"><button class="btn" id="gPrev" aria-label="Mes anterior">‹</button><h2 id="gTitle"></h2><button class="btn" id="gNext" aria-label="Mes siguiente">›</button>
       <div class="leg"><span><i style="background:#2fb3d6"></i>Formación 10°</span><span><i style="background:#b5895a"></i>Formación 11°</span><span><i style="background:#8a96a3"></i>Formación sin grado</span><span><i style="background:var(--plan)"></i>Planeación</span><span><i style="background:var(--seg)"></i>Seguimiento</span></div></div>
     <div class="wrap" id="gWrap"></div>
-    <p class="note">Cada columna es un día; la barra muestra las horas del instructor ese día (altura = horas, máximo 12). Pasa el cursor para ver el detalle, <b>clic en un día</b> para ver sus bloques y <b>clic en el nombre</b> para abrir su planeador en ese mes.</p>
+    <p class="note">Cada columna es un día; la barra muestra las horas del instructor ese día (altura = horas, máximo 16). Pasa el cursor para ver el detalle, <b>clic en un día</b> para ver sus bloques y <b>clic en el nombre</b> para abrir su planeador en ese mes.</p>
   </div>
   <div class="dlg" id="dlg" hidden><div id="dlgBody"></div></div>
   <p class="note">Haz clic en el nombre de un instructor para abrir su planeador en modo consulta (solo lectura). Cada archivo está firmado por su instructor: si alguien lo modifica, el estado cambia a <b>Sello roto</b>.</p>
@@ -121,7 +127,35 @@ tr.sumrow td{background:var(--surface2);font-size:11.5px;color:var(--muted)}
 const AUTHOR='Ing. Manuel Alejandro Ordóñez Hernández';
 /*<REGLAS>*/
 const R=(()=>{
-const RULES={START:6,END:18};
+const RULES={START:6,END:22};
+/* Tipos de institución educativa. "horas" es solo informativo (horas de formación diaria que puede dar ese tipo). */
+const TIPOS_INST={
+  A:{nombre:'Académica',plural:'Académicas',horas:11},
+  T:{nombre:'Técnica',plural:'Técnicas',horas:5},
+  P:{nombre:'Privada',plural:'Privadas',horas:2}
+};
+/* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
+const INSTITUCIONES=[
+  {tipo:'A',nombre:'I.E. José Antonio Galán'},
+  {tipo:'A',nombre:'I.E. Puerto Pinzón'},
+  {tipo:'A',nombre:'I.E. San Pedro Claver'},
+  {tipo:'A',nombre:'I.E. Antonio Santos'},
+  {tipo:'A',nombre:'I.E. John F. Kennedy'},
+  {tipo:'A',nombre:'I.E. La Floresta'},
+  {tipo:'A',nombre:'I.E. El Prado'},
+  {tipo:'A',nombre:'I.E. Santa Bárbara'},
+  {tipo:'T',nombre:'I.E.T. Agropecuaria El Marfil'},
+  {tipo:'T',nombre:'I.E.T. Puerto Serviez'},
+  {tipo:'T',nombre:'I.E.T. Técnica Pablo Valette'},
+  {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
+  {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
+  {tipo:'P',nombre:'Colegio Santa Teresita'},
+  {tipo:'P',nombre:'Liceo Pestalozzi'}
+];
+const normInst=t=>String(t==null?'':t).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
+/** Devuelve la institución oficial que coincide con el nombre (sin importar mayúsculas ni tildes) o null. */
+const instFija=n=>{const k=normInst(n);return k?INSTITUCIONES.find(i=>normInst(i.nombre)===k)||null:null};
+const tipoValido=t=>t==='A'||t==='T'||t==='P';
 const TYPES={formacion:'Formación',planeacion:'Planeación',seguimiento:'Seguimiento'};
 const PHVA={P:'Planear',H:'Hacer',V:'Verificar',A:'Actuar'};
 const MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -163,8 +197,8 @@ function limits(maxApoyo){const per=Math.max(1,maxApoyo-1);return{plan:per,seg:p
 function validateBlock(b,day,maxApoyo=2){
   if(!TYPES[b.type])return'Tipo de bloque no válido.';
   if(!Number.isInteger(b.start)||!Number.isInteger(b.hours)||b.hours<1)return'La hora de inicio y la duración deben ser números enteros (mínimo 1 h).';
-  if(b.start<RULES.START)return'Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 6 p. m.).';
-  if(b.start+b.hours>RULES.END)return'Termina después de las 18:00; la jornada va de 6 a. m. a 6 p. m.';
+  if(b.start<RULES.START)return'Antes de las 06:00 no se programa (la jornada va de 6 a. m. a 10 p. m.).';
+  if(b.start+b.hours>RULES.END)return'Termina después de las 22:00; la jornada va de 6 a. m. a 10 p. m.';
   if(b.type==='formacion'&&!(b.comp&&b.rap&&b.ficha))return'La formación necesita ficha, competencia y RAP.';
   for(const o of day){if(b.start<o.start+o.hours&&o.start<b.start+b.hours)return`Se cruza con otro bloque (${fh(o.start)}–${fh(o.start+o.hours)}).`}
   if(b.type!=='formacion'){
@@ -211,17 +245,24 @@ function auditar(blocks,o){
       if(e)out.push(`${d} ${Number.isInteger(b.start)?fh(b.start):'?'}: ${e}`);else acc.push(b);
     }
   }
-  const np=o.nProgramas||0,mp=o.maxProgramas||2;
+  const np=o.nProgramas||0,mp=o.maxProgramas||3;
   if(mp!==2&&mp!==3)out.push('El máximo de programas de formación debe ser 2 o 3.');
   else if(np>mp)out.push(`Tiene ${np} programas de formación y el máximo es ${mp}.`);
   if(np>0&&o.fichas){
     const used=new Set(blocks.filter(b=>b.type==='formacion'&&b.ficha).map(b=>b.ficha));
     o.fichas.forEach((f,i)=>{if(used.has(f.id)&&!f.programa)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene programa asignado.`)});
   }
+  if(o.fichas){
+    const used2=new Set(blocks.filter(b=>b.type==='formacion'&&b.ficha).map(b=>b.ficha));
+    o.fichas.forEach((f,i)=>{
+      if(f.inst&&!tipoValido(f.tipo))out.push(`La ficha ${i+1} tiene institución pero no tipo (académica, técnica o privada).`);
+      if(o.schema>=2&&used2.has(f.id)&&!f.inst)out.push(`La ficha ${i+1} tiene horas de formación pero no tiene institución educativa.`);
+    });
+  }
   return out;
 }
 
-return {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators};})();
+return {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst};})();
 /*</REGLAS>*/
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -245,15 +286,19 @@ function resumen(j,archivo){
   const t={formacion:0,planeacion:0,seguimiento:0},dias=new Set(),meses=new Set();
   const blocks=Array.isArray(j.blocks)?j.blocks:[],cat=j.catalog||{},p=j.profile||{},st=j.settings||{};
   for(const b of blocks){if(!(b.type in t)||!Number.isInteger(b.hours)||typeof b.date!=='string')continue;t[b.type]+=b.hours;dias.add(b.date);meses.add(b.date.slice(0,7))}
-  const fchs=(cat.fichas||[]).map(f=>({id:f.n,grado:f.grado,programa:f.programa||null}));
+  const fchs=(cat.fichas||[]).map(f=>({id:f.n,grado:f.grado,programa:f.programa||null,tipo:f.tipo,inst:f.inst}));
   const G=R.gradoHoras(blocks,fchs),hF={};
   for(const b of blocks)if(b.type==='formacion'&&b.ficha)hF[b.ficha]=(hF[b.ficha]||0)+b.hours;
-  const fichas=(cat.fichas||[]).map(f=>({n:f.n,nombre:String(f.name||''),grado:f.grado==='11'?'11':'10',programa:f.programa||null,horas:hF[f.n]||0}));
+  const fichas=(cat.fichas||[]).map(f=>({n:f.n,nombre:String(f.name||''),grado:f.grado==='11'?'11':'10',programa:f.programa||null,horas:hF[f.n]||0,
+    tipo:R.tipoValido(f.tipo)?f.tipo:null,inst:typeof f.inst==='string'?f.inst:'',instNueva:!!f.inst&&!R.instFija(f.inst)}));
+  const pi={};
+  for(const f of fichas){const k=f.inst?f.tipo+'|'+f.inst:'?|';(pi[k]=pi[k]||{tipo:f.tipo,nombre:f.inst||'Sin institución',nueva:f.instNueva,fichas:0,horas:0});pi[k].fichas++;pi[k].horas+=f.horas}
+  const instituciones=Object.values(pi).sort((a,b)=>b.horas-a.horas);
   const hp=id=>G.p[id]||{'10':0,'11':0,'?':0};
   const programas=(cat.programas||[]).map(x=>({n:x.n,nombre:String(x.name||''),h10:hp(x.n)['10'],h11:hp(x.n)['11'],hSin:hp(x.n)['?'],total:hp(x.n)['10']+hp(x.n)['11']+hp(x.n)['?']}));
   if(G.p['?'])programas.push({n:null,nombre:'Sin programa',h10:G.p['?']['10'],h11:G.p['?']['11'],hSin:G.p['?']['?'],total:G.p['?']['10']+G.p['?']['11']+G.p['?']['?']});
-  const problemas=R.auditar(blocks,{maxApoyo:st.maxApoyo===3?3:2,nProgramas:(cat.programas||[]).length,maxProgramas:st.maxProgramas??2,fichas:fchs});
-  return{archivo,nombre:String(p.name||'(sin nombre)'),cargo:String(p.cargo||''),centro:String(p.centro||''),programas,fichas,
+  const problemas=R.auditar(blocks,{maxApoyo:st.maxApoyo===3?3:2,nProgramas:(cat.programas||[]).length,maxProgramas:st.maxProgramas??3,fichas:fchs,schema:j.schema||1});
+  return{archivo,nombre:String(p.name||'(sin nombre)'),cargo:String(p.cargo||''),centro:String(p.centro||''),programas,fichas,instituciones,
     grados:{'10':G.g['10'],'11':G.g['11'],sin:G.g['?']},horas:{...t,total:t.formacion+t.planeacion+t.seguimiento},dias:dias.size,meses:[...meses].sort(),
     reglas:{ok:!problemas.length,problemas},selladoEn:String(j.lock&&j.lock.at||'')}
 }
@@ -276,14 +321,14 @@ function detalle(doc,b){
   const hora=`${H12(b.start)} – ${H12(b.start+b.hours)}`;
   if(b.type!=='formacion')return{color:GC[b.type],txt:`${hora} · ${b.type==='planeacion'?'Planeación':'Seguimiento'}`,sub:''};
   const g=f&&(f.grado==='10'||f.grado==='11')?f.grado:'?';
-  return{color:GC[g],txt:`${hora} · Formación${g!=='?'?' · '+g+'°':''}`,sub:`${f?'Ficha '+f.name:'Sin ficha'}${c?' · Comp '+c.n+': '+c.name:''}${r?' · RAP '+r.n+': '+r.name:''}`};
+  return{color:GC[g],txt:`${hora} · Formación${g!=='?'?' · '+g+'°':''}`,sub:`${f?'Ficha '+f.name+(f.inst?' ('+f.inst+')':''):'Sin ficha'}${c?' · Comp '+c.n+': '+c.name:''}${r?' · RAP '+r.n+': '+r.name:''}`};
 }
 function celda(doc,a,k,bl){
   const w=R.isWorkable(k);
   if(!bl.length)return`<td class="gc ${w.ok?'':'nw'}" ${w.ok?'':`title="${esc(w.reason)}"`}></td>`;
   const seg={};let tot=0;
   for(const b of bl){const f=((doc.catalog||{}).fichas||[]).find(x=>x.n===b.ficha);const key=b.type==='formacion'?(f&&(f.grado==='10'||f.grado==='11')?f.grado:'?'):b.type;seg[key]=(seg[key]||0)+b.hours;tot+=b.hours}
-  const bars=['10','11','?','planeacion','seguimiento'].filter(q=>seg[q]).map(q=>`<i style="height:${seg[q]/12*100}%;background:${GC[q]}"></i>`).join('');
+  const bars=['10','11','?','planeacion','seguimiento'].filter(q=>seg[q]).map(q=>`<i style="height:${seg[q]/(R.RULES.END-R.RULES.START)*100}%;background:${GC[q]}"></i>`).join('');
   const tip=bl.map(b=>{const d=detalle(doc,b);return d.txt+(d.sub?' — '+d.sub:'')}).join('\n');
   return`<td class="gc has ${w.ok?'':'nw'}" data-a="${esc(a)}" data-d="${k}" title="${esc(tip)}"><div class="st">${bars}</div><b>${tot}</b></td>`;
 }
@@ -372,19 +417,24 @@ function visibles(){
   const norm=s=>String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
   const q=norm($('#q').value.trim());
   const k={programas:progTxt,total:x=>x.horas.total,h10:x=>x.grados['10'],h11:x=>x.grados['11']};
-  let a=LIST.filter(x=>!q||norm([x.nombre,x.cargo,x.centro,progTxt(x),x.fichas.map(f=>f.nombre).join(' ')].join(' ')).includes(q));
+  const ft=$('#ft').value,fi=$('#fi').value;
+  const pasa=x=>{if(!ft&&!fi)return true;return x.fichas.some(f=>(ft==='N'?f.instNueva:ft==='S'?!f.inst:ft?f.tipo===ft:true)&&(!fi||f.inst===fi))};
+  let a=LIST.filter(x=>pasa(x)&&(!q||norm([x.nombre,x.cargo,x.centro,progTxt(x),x.fichas.map(f=>f.nombre+' '+f.inst+' '+(TN[f.tipo]||'')).join(' ')].join(' ')).includes(q)));
   const g=x=>k[sortKey]?k[sortKey](x):x[sortKey];
   return[...a].sort((x,y)=>{const A=g(x),B=g(y);return(typeof A==='number'&&typeof B==='number'?A-B:String(A??'').localeCompare(String(B??''),'es'))*sortDir});
 }
+const TN={A:'Académica',T:'Técnica',P:'Privada'};
+const insChip=f=>f.inst?`<span class="ins ${f.tipo||'X'}" title="${esc((TN[f.tipo]||'Tipo sin definir')+(f.instNueva?' · institución nueva (no está en la lista oficial)':''))}"><i></i>${esc(f.inst)}${f.instNueva?' <em>nueva</em>':''}</span>`:'<span class="ins X" title="Sin institución"><i></i>sin institución</span>';
 function progCelda(x){
   if(!x.programas.length&&!x.fichas.length)return'<span class="sub">—</span>';
   const porProg={};x.fichas.forEach(f=>(porProg[f.programa??'?']=porProg[f.programa??'?']||[]).push(f));
   const bloques=x.programas.map(p=>{const fs=porProg[p.n??'?']||[];
-    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b><span class="sub"><span class="g10">10°: ${p.h10} h</span> · <span class="g11">11°: ${p.h11} h</span>${p.hSin?` · sin grado: ${p.hSin} h`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h</span>`).join('')}</div>`}).join('');
-  const sueltas=x.programas.some(p=>p.n==null)?'':(porProg['?']||[]).map(f=>`<div class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h</div>`).join('');
+    return`<div class="pg"><b>${p.n?'P'+p.n+' · ':''}${esc(p.nombre)}</b><span class="sub"><span class="g10">10°: ${p.h10} h</span> · <span class="g11">11°: ${p.h11} h</span>${p.hSin?` · sin grado: ${p.hSin} h`:''}</span>${fs.map(f=>`<span class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</span>`).join('')}</div>`}).join('');
+  const sueltas=x.programas.some(p=>p.n==null)?'':(porProg['?']||[]).map(f=>`<div class="sub"><span class="g">${f.grado}°</span>${esc(f.nombre)} · ${f.horas} h${insChip(f)}</div>`).join('');
   return bloques+sueltas;
 }
 function render(){
+  llenarInst();
   const L=LIST,n=L.length,c=k=>L.filter(x=>x.estado===k).length,sum=f=>L.reduce((s,x)=>s+f(x),0),noEnc=L.filter(x=>x.reglas&&!x.reglas.ok).length;
   $('#kpis').innerHTML=`<div class="kpi"><small>Instructores</small><b>${n}</b></div><div class="kpi ok"><small>Sellados y verificados</small><b>${c('valido')}</b></div><div class="kpi ${c('roto')?'bad':''}"><small>Con sello roto</small><b>${c('roto')}</b></div><div class="kpi ${noEnc?'bad':''}"><small>No encajan con las reglas</small><b>${noEnc}</b></div><div class="kpi"><small>Horas grado 10°</small><b class="g10">${sum(x=>x.grados['10'])}</b></div><div class="kpi"><small>Horas grado 11°</small><b class="g11">${sum(x=>x.grados['11'])}</b></div><div class="kpi"><small>Horas programadas</small><b>${sum(x=>x.horas.total)}</b></div>`;
   const rows=visibles();
@@ -403,18 +453,22 @@ function render(){
       <td class="sub">${esc(String(x.selladoEn||'').slice(0,16).replace('T',' '))}</td></tr>`}).join('');
   if(MODE==='repo'&&LIST.length||MODE==='local'){$('#empty').hidden=!!rows.length;if(!rows.length)$('#empty').textContent='Sin resultados.'}
 }
-$('#q').addEventListener('input',render);
+function llenarInst(){const v=$('#fi').value,n=[...new Set(LIST.flatMap(x=>x.fichas.map(f=>f.inst)).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'es'));
+  $('#fi').innerHTML='<option value="">Todas las instituciones</option>'+n.map(i=>`<option value="${esc(i)}">${esc(i)}</option>`).join('');if(n.includes(v))$('#fi').value=v}
+$('#q').addEventListener('input',render);$('#ft').addEventListener('change',render);$('#fi').addEventListener('change',render);
 document.querySelector('thead').addEventListener('click',e=>{const th=e.target.closest('th[data-s]');if(!th)return;const k=th.dataset.s;sortDir=sortKey===k?-sortDir:1;sortKey=k;render()});
 
 /* ---- exportar ---- */
-const COLS=['N°','Instructor','Cargo','Centro','Programas de formación','N° programas','Fichas','Horas grado 10°','Horas grado 11°','Horas formación','Horas planeación','Horas seguimiento','Horas totales','Días programados','Meses','Revisión de reglas','Estado del sello','Sellado el (UTC)','Huella','Archivo'];
+const COLS=['N°','Instructor','Cargo','Centro','Programas de formación','N° programas','Fichas','Instituciones','Horas grado 10°','Horas grado 11°','Horas formación','Horas planeación','Horas seguimiento','Horas totales','Días programados','Meses','Revisión de reglas','Estado del sello','Sellado el (UTC)','Huella','Archivo'];
 const COLS_P=['Instructor','N° programa','Programa de formación','Horas grado 10°','Horas grado 11°','Horas sin grado','Horas totales'];
+const COLS_I=['Instructor','Tipo de institución','Institución','Nueva (fuera de la lista oficial)','N° fichas','Horas de formación'];
 const seguro=v=>typeof v==='string'&&/^[=+\-@]/.test(v)?"'"+v:v;
 const EST={valido:'Sellado y verificado',roto:'SELLO ROTO','sin-sello':'Sin sellar'};
 const ordenados=()=>[...LIST].sort((a,b)=>a.nombre.localeCompare(b.nombre,'es'));
 function filas(){return ordenados().map((x,i)=>[i+1,x.nombre,x.cargo,x.centro,x.programas.filter(p=>p.n).map(p=>`P${p.n}. ${p.nombre}`).join(' | '),x.programas.filter(p=>p.n).length,
-  x.fichas.map(f=>`${f.nombre} (${f.grado}°${f.programa?' · P'+f.programa:''})`).join(' | '),x.grados['10'],x.grados['11'],x.horas.formacion,x.horas.planeacion,x.horas.seguimiento,x.horas.total,x.dias,x.meses.join(', '),
+  x.fichas.map(f=>`${f.nombre} (${f.grado}°${f.programa?' · P'+f.programa:''}${f.inst?' · '+(TN[f.tipo]||'?')+': '+f.inst:''})`).join(' | '),x.instituciones.filter(i=>i.nombre!=='Sin institución').map(i=>`${TN[i.tipo]||'?'}: ${i.nombre}${i.nueva?' (nueva)':''}`).join(' | '),x.grados['10'],x.grados['11'],x.horas.formacion,x.horas.planeacion,x.horas.seguimiento,x.horas.total,x.dias,x.meses.join(', '),
   x.reglas.ok?'Encaja':`${x.reglas.problemas.length} problema(s): ${x.reglas.problemas.slice(0,3).join(' / ')}`,EST[x.estado]||x.estado,String(x.selladoEn||'').slice(0,16).replace('T',' '),x.huella||'',x.archivo].map(seguro))}
+function filasI(){return ordenados().flatMap(x=>x.instituciones.map(i=>[x.nombre,TN[i.tipo]||'',i.nombre,i.nueva?'Sí':'',i.fichas,i.horas].map(seguro)))}
 function filasP(){return ordenados().flatMap(x=>x.programas.map(p=>[x.nombre,p.n??'',p.nombre,p.h10,p.h11,p.hSin,p.total].map(seguro)))}
 function bajar(nombre,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nombre;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},500)}
 const stamp=()=>new Date().toISOString().slice(0,10).replace(/-/g,'');
@@ -425,8 +479,9 @@ $('#bXls').addEventListener('click',async()=>{
   try{
     if(!window.XLSX)await new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';s.onload=res;s.onerror=()=>rej(new Error('No se pudo cargar el módulo de Excel (¿sin internet?). Usa el CSV.'));document.head.appendChild(s)});
     const X=window.XLSX,wb=X.utils.book_new(),ws=X.utils.aoa_to_sheet([COLS,...filas()]);
-    ws['!cols']=[5,32,26,24,50,9,56,10,10,10,10,10,10,10,20,34,20,17,21,36].map(w=>({wch:w}));X.utils.book_append_sheet(wb,ws,'Instructores');
+    ws['!cols']=[5,32,26,24,50,9,56,50,10,10,10,10,10,10,10,20,34,20,17,21,36].map(w=>({wch:w}));X.utils.book_append_sheet(wb,ws,'Instructores');
     const wp=X.utils.aoa_to_sheet([COLS_P,...filasP()]);wp['!cols']=[32,11,50,12,12,12,12].map(w=>({wch:w}));X.utils.book_append_sheet(wb,wp,'Programas y grados');
+    const wi=X.utils.aoa_to_sheet([COLS_I,...filasI()]);wi['!cols']=[32,16,44,16,10,16].map(w=>({wch:w}));X.utils.book_append_sheet(wb,wi,'Instituciones');
     await cargarDocs();
     {const ym=`${gv.y}-${String(gv.m).padStart(2,'0')}`,dim=new Date(Date.UTC(gv.y,gv.m,0)).getUTCDate();
      const head=['Instructor',...Array.from({length:dim},(_,i)=>i+1),'Horas del mes','Horas 10°','Horas 11°'];
@@ -436,7 +491,7 @@ $('#bXls').addEventListener('click',async()=>{
      const wg=X.utils.aoa_to_sheet([head,...rows]);wg['!cols']=[{wch:32},...Array(dim).fill({wch:4}),{wch:13},{wch:10},{wch:10}];
      X.utils.book_append_sheet(wb,wg,`Horas por día ${ym}`.slice(0,31))}
     const c=k=>LIST.filter(x=>x.estado===k).length,tot=k=>LIST.reduce((s,x)=>s+x.horas[k],0),totG=g=>LIST.reduce((s,x)=>s+x.grados[g],0);
-    const w2=X.utils.aoa_to_sheet([['Indicador','Valor'],['Total de instructores',LIST.length],['Sellados y verificados',c('valido')],['Con sello roto',c('roto')],['Sin sellar',c('sin-sello')],['Horarios que no encajan con las reglas',LIST.filter(x=>!x.reglas.ok).length],['Horas de formación grado 10°',totG('10')],['Horas de formación grado 11°',totG('11')],['Horas de formación sin grado',totG('sin')],['Horas de formación',tot('formacion')],['Horas de planeación',tot('planeacion')],['Horas de seguimiento',tot('seguimiento')],['Horas totales',tot('total')],['Generado',new Date().toISOString().slice(0,16).replace('T',' ')],['Creado por',AUTHOR+' · Horario SENA']]);
+    const w2=X.utils.aoa_to_sheet([['Indicador','Valor'],['Total de instructores',LIST.length],['Sellados y verificados',c('valido')],['Con sello roto',c('roto')],['Sin sellar',c('sin-sello')],['Horarios que no encajan con las reglas',LIST.filter(x=>!x.reglas.ok).length],['Instituciones nuevas por revisar',new Set(LIST.flatMap(x=>x.fichas.filter(f=>f.instNueva).map(f=>f.inst))).size],['Horas de formación grado 10°',totG('10')],['Horas de formación grado 11°',totG('11')],['Horas de formación sin grado',totG('sin')],['Horas de formación',tot('formacion')],['Horas de planeación',tot('planeacion')],['Horas de seguimiento',tot('seguimiento')],['Horas totales',tot('total')],['Generado',new Date().toISOString().slice(0,16).replace('T',' ')],['Creado por',AUTHOR+' · Horario SENA']]);
     w2['!cols']=[{wch:28},{wch:52}];X.utils.book_append_sheet(wb,w2,'Resumen');
     wb.Props={Title:'Instructores · Horario SENA',Author:'Manuel Alejandro Ordóñez Hernández',Company:'SENA'};
     X.writeFile(wb,`instructores_${stamp()}.xlsx`);

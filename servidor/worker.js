@@ -4,7 +4,7 @@
 // Permite que un instructor ENVÍE su horario sellado SIN tener cuenta de GitHub.
 // El servidor no confía en nadie: antes de guardar, verifica LO MISMO que el chequeo de Git:
 //   1) que el archivo esté sellado y la firma coincida (nadie lo alteró);
-//   2) que el horario cumpla las reglas (6–18 h, sin cruces, sin festivos, apoyo, máx. 2 o 3 programas);
+//   2) que el horario cumpla las reglas (6–22 h, sin cruces, sin festivos, apoyo, máx. 3 programas);
 //   3) que no sea una versión más vieja que la ya guardada (evita volver atrás);
 //   4) que el nombre del archivo lo decida el servidor (nombre + huella de la llave): un envío NUNCA
 //      puede reemplazar el archivo de otra persona.
