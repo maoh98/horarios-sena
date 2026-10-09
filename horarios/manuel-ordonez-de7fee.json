@@ -2,87 +2,77 @@
   "schema": 2,
   "app": "horario-sena",
   "author": "Ing. Manuel Alejandro Ordóñez Hernández",
-  "rev": 2,
+  "rev": 3,
   "por": "instructor",
   "file": "manuel-ordonez-de7fee.json",
   "profile": {
-    "name": "manuel ordoñez",
+    "name": "yari",
     "cargo": "instructor PAM",
     "centro": "CFQ",
     "photo": "data:image/jpeg;base64,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"
   },
   "settings": {
-    "maxApoyo": 4,
+    "maxApoyo": 3,
     "maxProgramas": 2
   },
   "catalog": {
     "comps": [
       {
         "n": 1,
-        "name": "redes",
-        "phva": "H"
-      },
-      {
-        "n": 2,
-        "name": "desarrollo",
-        "phva": "V"
+        "name": "monitoriar clientes",
+        "phva": "A"
       }
     ],
     "raps": [
       {
         "n": 1,
-        "name": "cableado",
+        "name": "ejecutar cleintes",
         "comp": 1,
-        "nc": 1
-      },
-      {
-        "n": 2,
-        "name": "infraestructura",
-        "comp": 2,
         "nc": 1
       }
     ],
     "fichas": [
       {
         "n": 1,
-        "name": "3439390",
+        "name": "440330",
         "grado": "10",
         "programa": 1,
         "tipo": "T",
-        "inst": "I.E.T. José Antonio Galán"
-      },
-      {
-        "n": 2,
-        "name": "3439369",
-        "grado": "10",
-        "programa": 1,
-        "tipo": "T",
-        "inst": "I.E.T. José Antonio Galán"
+        "inst": "I.E.T. La Floresta"
       }
     ],
     "programas": [
       {
         "n": 1,
-        "name": "teleinformaticos"
+        "name": "asesoria comercial"
       },
       {
         "n": 2,
-        "name": "programacion de software"
+        "name": "asistencia administrativa"
       }
     ]
   },
   "blocks": [
     {
-      "date": "2026-10-07",
-      "start": 6,
-      "hours": 1,
-      "type": "planeacion",
-      "comp": null,
-      "rap": null,
-      "ficha": null
+      "date": "2026-10-26",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
     },
     {
-      "date": "2026-10-07",
+      "date": "2026-10-27",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-28",
       "start": 7,
       "hours": 1,
       "type": "formacion",
@@ -91,22 +81,22 @@
       "ficha": 1
     },
     {
-      "date": "2026-10-07",
+      "date": "2026-10-28",
       "start": 8,
       "hours": 1,
-      "type": "seguimiento",
+      "type": "planeacion",
       "comp": null,
       "rap": null,
       "ficha": null
     },
     {
-      "date": "2026-10-09",
-      "start": 6,
-      "hours": 2,
-      "type": "formacion",
-      "comp": 1,
-      "rap": 1,
-      "ficha": 1
+      "date": "2026-10-28",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
     }
   ],
   "log": [
@@ -396,27 +386,232 @@
       "d": "Horario sellado con contraseña"
     },
     {
-      "t": "2026-10-09T21:11:06.371Z",
+      "t": "2026-10-09T21:28:41.051Z",
       "a": "Desbloquear",
       "d": "Edición habilitada con la contraseña del instructor"
     },
     {
-      "t": "2026-10-09T21:11:25.367Z",
+      "t": "2026-10-09T21:28:48.329Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 3 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T21:28:53.039Z",
+      "a": "Quitar programa",
+      "d": "#1: teleinformaticos"
+    },
+    {
+      "t": "2026-10-09T21:28:54.090Z",
+      "a": "Quitar programa",
+      "d": "#1: programacion de software"
+    },
+    {
+      "t": "2026-10-09T21:28:56.250Z",
+      "a": "Quitar ficha",
+      "d": "#1: 3439390"
+    },
+    {
+      "t": "2026-10-09T21:28:57.134Z",
+      "a": "Quitar ficha",
+      "d": "#1: 3439369"
+    },
+    {
+      "t": "2026-10-09T21:28:58.078Z",
+      "a": "Quitar competencia",
+      "d": "#1: redes"
+    },
+    {
+      "t": "2026-10-09T21:28:58.504Z",
+      "a": "Quitar competencia",
+      "d": "#1: desarrollo"
+    },
+    {
+      "t": "2026-10-09T21:29:01.360Z",
+      "a": "Quitar RAP",
+      "d": "#1: cableado"
+    },
+    {
+      "t": "2026-10-09T21:29:02.004Z",
+      "a": "Quitar RAP",
+      "d": "#1: infraestructura"
+    },
+    {
+      "t": "2026-10-09T21:29:11.479Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-09T21:29:57.955Z",
+      "a": "Editar programa",
+      "d": "#1: asesoria comercail"
+    },
+    {
+      "t": "2026-10-09T21:30:58.472Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 3 h"
+    },
+    {
+      "t": "2026-10-09T21:31:22.159Z",
+      "a": "Editar programa",
+      "d": "#1: asesoria comercial"
+    },
+    {
+      "t": "2026-10-09T21:31:36.233Z",
+      "a": "Editar programa",
+      "d": "#2: asistencia administrativa"
+    },
+    {
+      "t": "2026-10-09T21:33:10.974Z",
+      "a": "Editar ficha",
+      "d": "#1: 440330"
+    },
+    {
+      "t": "2026-10-09T21:33:11.089Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: Sin grado"
+    },
+    {
+      "t": "2026-10-09T21:33:11.625Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 10°"
+    },
+    {
+      "t": "2026-10-09T21:33:13.325Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 11°"
+    },
+    {
+      "t": "2026-10-09T21:33:15.108Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 10°"
+    },
+    {
+      "t": "2026-10-09T21:33:16.716Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 11°"
+    },
+    {
+      "t": "2026-10-09T21:33:17.333Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 10°"
+    },
+    {
+      "t": "2026-10-09T21:33:55.038Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 1: P1"
+    },
+    {
+      "t": "2026-10-09T21:34:02.264Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-09T21:34:04.806Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Académica"
+    },
+    {
+      "t": "2026-10-09T21:34:05.242Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-09T21:34:06.106Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Privada"
+    },
+    {
+      "t": "2026-10-09T21:34:09.314Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-09T21:34:32.129Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E.T. La Floresta"
+    },
+    {
+      "t": "2026-10-09T21:35:06.105Z",
+      "a": "Editar competencia",
+      "d": "#1: monitoriar clientes"
+    },
+    {
+      "t": "2026-10-09T21:35:06.182Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-09T21:35:06.673Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Verificar"
+    },
+    {
+      "t": "2026-10-09T21:35:07.285Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Actuar"
+    },
+    {
+      "t": "2026-10-09T21:36:03.240Z",
+      "a": "Editar RAP",
+      "d": "#1: ejecutar cleintes"
+    },
+    {
+      "t": "2026-10-09T21:36:05.120Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-09T21:36:05.777Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-09T21:36:08.361Z",
+      "a": "Quitar competencia",
+      "d": "#2: "
+    },
+    {
+      "t": "2026-10-09T21:43:42.055Z",
       "a": "Agregar bloque",
-      "d": "2026-10-09 06:00–08:00 Formación F1 C1 R1"
+      "d": "2026-10-26 07:00–09:00 Formación F1 C1 R1"
     },
     {
-      "t": "2026-10-09T21:11:28.271Z",
-      "a": "Guardar",
-      "d": "Guardado manual"
+      "t": "2026-10-09T21:44:04.716Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 07:00–09:00 Formación F1 C1 R1"
     },
     {
-      "t": "2026-10-09T21:11:34.384Z",
+      "t": "2026-10-09T21:44:15.450Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 07:00–08:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T21:44:40.028Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 08:00–09:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T21:45:02.542Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T21:46:39.018Z",
+      "a": "Sellar",
+      "d": "Horario sellado de nuevo"
+    },
+    {
+      "t": "2026-10-09T21:51:22.333Z",
+      "a": "Desbloquear",
+      "d": "Edición habilitada con la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-09T21:51:41.272Z",
       "a": "Sellar",
       "d": "Horario sellado de nuevo"
     }
   ],
-  "exported": "2026-10-09T21:11:50.200Z",
+  "exported": "2026-10-09T21:52:11.104Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -429,8 +624,8 @@
     },
     "iv": "elym9gl2W42mm/d/",
     "key": "rWttTSlL9AxgVed0Q191D2hSrI5yV1a1tKEaq0k/7DNNFa7cCwtP3U63gCSjKjy8XcOBHSxBx2BVkfr7YXlhcI5qte4ZBQOoFpa3lPz6xPryA05QLCH1BvlsZfMXQEVnAn0BpSsiY1LxR1WkAOPA4Gfh0lsXB9na8Q4YQ9Fei671sGLjFFFkcWdZ6W5TaShmDaOctNVABtr0yg==",
-    "sig": "aoRbboY8/zcSUtZ1iDGRVlFo0Cncsfonw7w79UOg8jiN4nTlcBf69JNOItx4cbh4LhNskTm1egs4pD+sDRRWKA==",
-    "at": "2026-10-09T21:11:34.385Z",
+    "sig": "UIBeZpnjggzn13fvlu3Sd7FsF4VnmOAcaYBJS5rgasNfm1FP56Dw59jINmJf2lMh87wcDwElTimJV/Y8iJBzDw==",
+    "at": "2026-10-09T21:51:41.273Z",
     "adm": {
       "v": 1,
       "fp": "1DAB 7A75 7F29 AB65",
