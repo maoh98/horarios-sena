@@ -1,0 +1,157 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "rev": 1,
+  "por": "administrador",
+  "file": "ashkjbfhks-c1b743.json",
+  "profile": {
+    "name": "ashkjbfhks",
+    "cargo": "efwe",
+    "centro": "efwef",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 2,
+    "maxProgramas": 3
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "qewfweqf",
+        "phva": "H"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "qwefwef",
+        "comp": 1,
+        "nc": 1
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "wefwef",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. Puerto Serviez"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "wefwef"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-07",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    }
+  ],
+  "log": [
+    {
+      "t": "2026-10-09T00:57:04.223Z",
+      "a": "Administrador",
+      "d": "Creó un horario nuevo (administrador)"
+    },
+    {
+      "t": "2026-10-09T00:57:07.652Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-09T00:57:08.309Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-09T00:57:09.588Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-09T00:57:11.700Z",
+      "a": "Editar programa",
+      "d": "#1: wefwef"
+    },
+    {
+      "t": "2026-10-09T00:57:13.135Z",
+      "a": "Editar ficha",
+      "d": "#1: wefwef"
+    },
+    {
+      "t": "2026-10-09T00:57:13.218Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 11°"
+    },
+    {
+      "t": "2026-10-09T00:57:14.081Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-09T00:57:17.751Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E.T. Puerto Serviez"
+    },
+    {
+      "t": "2026-10-09T00:57:20.136Z",
+      "a": "Editar competencia",
+      "d": "#1: qewfweqf"
+    },
+    {
+      "t": "2026-10-09T00:57:20.629Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-09T00:57:25.795Z",
+      "a": "Editar RAP",
+      "d": "#1: qwefwef"
+    },
+    {
+      "t": "2026-10-09T00:57:28.230Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T00:58:09.097Z",
+      "a": "Sellar",
+      "d": "Sellado por el administrador (administrador) · versión 1"
+    }
+  ],
+  "exported": "2026-10-09T00:58:09.098Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE5uMKNto37u8BK6AHxJJZAkq1wryGr8StkmPfn3ibS6a4h95oVZQXqT2ZC9MIkA+jkscj71T6fdyj5Av2rB1/BA==",
+    "fp": "C1B7 436B 7CA4 BF89",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "swo1HKDdkDwgbIc/Ut7vyQ=="
+    },
+    "iv": "urpMmP4/kv+4ZkcL",
+    "key": "pM+qmbk5pmPh7E2EBpn+jYT6302499oC3TY45oMHcrCoHzoR4WycVll8udxHIXmF07wyC9FBAe1te19jTVAFQYXwYUYCoaBAq28EFJKQ0omWOGiXOKNxYqBf2mzJlT29CkcSFRZSgs/tOteuke7Ep9cJvJ+jlCn65wBvrgaDikgbBrHZeXTX5jt/BCU5oyAzbPMQKyWshpUibg==",
+    "sig": "95Tyl0JmGXlWsHI6v7eLwIWAIOHzR/d5+8IkCMLvFTlCojUYPyd18EFgLHzaaQEaev5VlYUO+jlx3ljtRNGEnQ==",
+    "at": "2026-10-09T00:58:09.098Z",
+    "adm": {
+      "v": 1,
+      "fp": "1DAB 7A75 7F29 AB65",
+      "eph": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEvkdq5fRVFYhoY22AhIWtqtqjXtz4UNjQFQOdrne0HCFsRnUsu2Y/ue8NFznLxtlDvQfImymHFXOrccpwi592/A==",
+      "iv": "zxxt9NuTd7gD5RM6",
+      "ct": "5mJt7TyiOmiCa5AzHnziTddHu5qGy9QcxXXSRAKTFiRnGaCq0F1irmmTWYToD2Og38+plGzV5hWBXeCyG+WvpomG78d0qrxMhYA7KBbTHG0KSaeJdsFA636jiFUfYfRSC8tVN+zhhQH+d9PP2YkO3AVCxmxjiG0ewzGHTa3/wgHK3xsYhShH8EcPwY0AeXEhHzOXwggkwbCZag=="
+    }
+  }
+}
