@@ -1,0 +1,71 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Prueba de carga",
+  "profile": {
+    "name": "Prueba Carga 002",
+    "cargo": "prueba",
+    "centro": "prueba",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 2,
+    "maxProgramas": 3
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "Competencia de prueba",
+        "phva": "H"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "RAP de prueba",
+        "comp": 1,
+        "nc": 1
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3000002",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "A",
+        "inst": "I.E. San Pedro Claver"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "Programa de prueba"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-13",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    }
+  ],
+  "log": [],
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEMD4PdVNf1D859sv+Q5QV2Ru7dQaR8IPs8tI5LhxRW0a/xgFF2YuzWI5uSCB2iAFzG2CvUD8EVaZXvYeZKkeEPg==",
+    "fp": "",
+    "kdf": {},
+    "iv": "",
+    "key": "",
+    "sig": "SMrZXuIuPxu9a1mNrGyvTespJj13+5FgV3pjiVj0R8Fou/mpDCnP/2UXpU1SkTGrWOHVi4hR2Sne6zoqAy122A==",
+    "at": "2026-10-09T16:46:06.715Z"
+  }
+}
