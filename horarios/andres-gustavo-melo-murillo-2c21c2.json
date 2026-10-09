@@ -1,0 +1,308 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "rev": 1,
+  "por": "instructor",
+  "file": "andres-gustavo-melo-murillo-2c21c2.json",
+  "profile": {
+    "name": "Andres Gustavo Melo Murillo ",
+    "cargo": "Instructor PAM",
+    "centro": "CF Las Quinchas",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 3,
+    "maxProgramas": 2
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "Registrar información de acuerdo con normativa y procedimiento técnico",
+        "phva": "P"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "R2. Utilizar recursos tecnológicos de la unidad administrativa de acuerdo a las tecnologías disponibles",
+        "comp": 1,
+        "nc": 1
+      },
+      {
+        "n": 2,
+        "name": "R3. Procesar datos utilizando herramientas informáticas de acuerdo a las necesidades de las unidades administrativas",
+        "comp": 1,
+        "nc": 2
+      },
+      {
+        "n": 3,
+        "name": "04 consolidar información de manera física o electrónica haciendo uso de la tecnología disponible",
+        "comp": 1,
+        "nc": 3
+      },
+      {
+        "n": 4,
+        "name": "R5. Elaborar reportes de acuerdo con los requerimientos de información",
+        "comp": 1,
+        "nc": 4
+      },
+      {
+        "n": 5,
+        "name": "",
+        "comp": 1,
+        "nc": 5
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3168430",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "A",
+        "inst": "I.E. San Pedro Claver"
+      },
+      {
+        "n": 2,
+        "name": "3168782",
+        "grado": "11",
+        "programa": 2,
+        "tipo": "A",
+        "inst": "I.E. Antonia Santos"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "Asistencia Administrativa "
+      },
+      {
+        "n": 2,
+        "name": "Recursos Humanos "
+      }
+    ]
+  },
+  "blocks": [],
+  "log": [
+    {
+      "t": "2026-10-09T20:41:20.093Z",
+      "a": "Inicio",
+      "d": "Programación creada"
+    },
+    {
+      "t": "2026-10-09T20:42:08.211Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-09T20:42:46.022Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-09T20:47:20.437Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-09T20:47:29.500Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-09T20:47:36.513Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-09T20:49:42.732Z",
+      "a": "Cambiar regla",
+      "d": "Programas de formación máx.: 2"
+    },
+    {
+      "t": "2026-10-09T20:50:07.729Z",
+      "a": "Editar programa",
+      "d": "#1: Asistencia Administrativa "
+    },
+    {
+      "t": "2026-10-09T20:50:14.073Z",
+      "a": "Editar programa",
+      "d": "#2: Recursos Humanos "
+    },
+    {
+      "t": "2026-10-09T21:14:35.577Z",
+      "a": "Editar ficha",
+      "d": "#1: 3168430"
+    },
+    {
+      "t": "2026-10-09T21:14:35.648Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 11°"
+    },
+    {
+      "t": "2026-10-09T21:14:40.232Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Académica"
+    },
+    {
+      "t": "2026-10-09T21:14:41.848Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 1: P1"
+    },
+    {
+      "t": "2026-10-09T21:14:48.202Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E. San Pedro Claver"
+    },
+    {
+      "t": "2026-10-09T21:28:32.391Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-09T21:28:48.200Z",
+      "a": "Editar ficha",
+      "d": "#2: 3168782"
+    },
+    {
+      "t": "2026-10-09T21:28:48.272Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 2: 11°"
+    },
+    {
+      "t": "2026-10-09T21:28:55.080Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 2: P1"
+    },
+    {
+      "t": "2026-10-09T21:28:56.223Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 2: Académica"
+    },
+    {
+      "t": "2026-10-09T21:29:01.281Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 2: I.E. Antonia Santos"
+    },
+    {
+      "t": "2026-10-09T21:30:07.739Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 4 h"
+    },
+    {
+      "t": "2026-10-09T21:30:49.581Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 2 h"
+    },
+    {
+      "t": "2026-10-09T21:30:53.715Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-09T21:33:34.967Z",
+      "a": "Programa de ficha",
+      "d": "Ficha 2: P2"
+    },
+    {
+      "t": "2026-10-09T21:33:41.672Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-09T21:35:24.218Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-09T21:35:27.746Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Verificar"
+    },
+    {
+      "t": "2026-10-09T21:35:31.074Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Actuar"
+    },
+    {
+      "t": "2026-10-09T21:35:33.530Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-09T21:38:53.196Z",
+      "a": "Editar competencia",
+      "d": "#1: Registrar información de acuerdo con normativa y procedimiento técnico"
+    },
+    {
+      "t": "2026-10-09T21:38:57.424Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-09T21:39:20.867Z",
+      "a": "Editar RAP",
+      "d": "#1: R2. Utilizar recursos tecnológicos de la unidad administrativa de acuerdo a las "
+    },
+    {
+      "t": "2026-10-09T21:39:35.715Z",
+      "a": "Editar RAP",
+      "d": "#2: R3. Procesar datos utilizando herramientas informáticas de acuerdo a las necesid"
+    },
+    {
+      "t": "2026-10-09T21:39:50.837Z",
+      "a": "Editar RAP",
+      "d": "#3: 04 consolidar información de manera física o electrónica haciendo uso de la tecn"
+    },
+    {
+      "t": "2026-10-09T21:40:05.316Z",
+      "a": "Editar RAP",
+      "d": "#4: R5. Elaborar reportes de acuerdo con los requerimientos de información"
+    },
+    {
+      "t": "2026-10-09T21:43:10.343Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 06:00–10:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T21:46:01.419Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 06:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-09T21:47:49.800Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 3 h"
+    },
+    {
+      "t": "2026-10-09T21:58:37.021Z",
+      "a": "Sellar",
+      "d": "Horario sellado con contraseña"
+    }
+  ],
+  "exported": "2026-10-09T21:58:48.416Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAESokFUDFR8JaiBAOeI6QZ28VP/CKBRPASuWDf7DujMhfUSqRazNiFW2P28+ryG0+86M6KpZ3u1JbcOY2Xnm/A/w==",
+    "fp": "2C21 C28E F17F 903A",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "mvK4X/Lo4OUkaAu/+CFbqw=="
+    },
+    "iv": "SX98wwWC1BcZmCox",
+    "key": "agYhsz2aQ6Cs3XYTkkNjsQqCdr5EAdckaJfySpyYf5PkIgXzNP9XjjJ459YMHbgR4r+PlL5PUhR0PhOts+XZnoq7W7mFT2uVEUTcoFtuFavfogRJFpHY3yhOUOm1zf+QCu60BsfRC1ZWjMDMZ5MX+VEuf/TxG0GFsvfdteaUNoqINhh/TS0fsEbBNNUxYvijoYDxoP5dDUsLSw==",
+    "sig": "5mbZIc62PXxsBkPUR9J0Ob2zchZYm8sM5y/TAkinDKH3JlZtpfaDV7P/8PqH07Du7XcD+i6lIvAEk2g6Dw8uFA==",
+    "at": "2026-10-09T21:58:37.022Z",
+    "adm": {
+      "v": 1,
+      "fp": "1DAB 7A75 7F29 AB65",
+      "eph": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEEZRtxirL//jOUf8zxEfkTaEiYK7QDueWXo9BG21kfEhWXhj4kXmJVkhOY30ZptftwX3H+lnHWjHFdnA9uly5IQ==",
+      "iv": "HWhBZQIPrvnCQu5y",
+      "ct": "R4LZqjLitep+23rcMjkkp6a3wPKk16dBrdvS6AultFWIVMpbHwj+CWyGo2JaTEkeH1LIvc/HjkZl3mI6zKD8lcP5MSP4Taob5ypzVz1uas6iaVC8SXkeVBWY1DaQVOixDQa5X1SK+Ulyx9scAmNaC9ISL6xeKEtIqV+X5Ci05eMNUstvrUNIw05AeZ/D7vPFbxIrwf+ghjX30Q=="
+    }
+  }
+}
