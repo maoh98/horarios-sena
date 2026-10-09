@@ -2,7 +2,7 @@
   "schema": 2,
   "app": "horario-sena",
   "author": "Ing. Manuel Alejandro Ordóñez Hernández",
-  "rev": 1,
+  "rev": 2,
   "por": "administrador",
   "file": "manuel-alejandro-ordonez-hernandez-c5ead2.json",
   "profile": {
@@ -1695,9 +1695,19 @@
       "t": "2026-10-09T00:18:50.055Z",
       "a": "Sellar",
       "d": "Sellado por el administrador (administrador) · versión 1"
+    },
+    {
+      "t": "2026-10-09T00:19:55.213Z",
+      "a": "Administrador",
+      "d": "Cambió la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-09T00:19:55.213Z",
+      "a": "Sellar",
+      "d": "Sellado por el administrador (administrador) · versión 2"
     }
   ],
-  "exported": "2026-10-09T00:18:50.061Z",
+  "exported": "2026-10-09T00:19:55.215Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -1706,12 +1716,12 @@
     "kdf": {
       "alg": "PBKDF2-SHA256",
       "iter": 600000,
-      "salt": "nFLt8DAZKaZw1+Z2paJ3eg=="
+      "salt": "uoSnTbEWva2qoVuPQWpW5g=="
     },
-    "iv": "MTQZI+se7fDLNiqU",
-    "key": "sSErSBexnDhXwf1LYEp87uGxMl3ZWxqftwcPT940C/Tkw0Fwzead4ag0yy1RJyVyLR9/0reJ9ENkBBzDgxD6YRBwW0lDTVyPLm5wCP9+tNgfx7BDU1EpsmQfxw+Bl5XUr7ZNsiH6q45OZoLXzw/J19/cppstnyNdhBcA/EJA/+u7TNLCEFnqsKo8oMfD3A/naujFc5X+JZCbcg==",
-    "sig": "fxB2LmCkV8RjiW2eOKMpbmUpRLDwiocvhrSqbXxCxN6NVSu/7P3XnIDkjdBRhbDNTpf41i+BhgrI5R8UW5ERXA==",
-    "at": "2026-10-09T00:18:50.061Z",
+    "iv": "LNRzKdNxRgB0D0OA",
+    "key": "IieUdG1sxqBOgQW67DBLwHQjhzZrzkMvr4J8OtWt3uS2SckpLn8klwC2IBTuKKfkks9O1rkjjM0aBF1MEf0L8CqI7w/bY41dnyVUA5NI8nWAJpP/QwXzP01LIJquic1cGXXCRrRyQXHoQzHPU08RUHzXqqAHMOoIEe72T9jiR8rPBiqQy8K0bTb9VyzFbWlbepmp5XumVTYDtQ==",
+    "sig": "9uGnp4QLg2mLXmHBD8STWWQ40I2iOOluqxD0PermH6wc8+skq4xI44vbEz7qwBaJzJA0MBly1Lpq6myRubxf0w==",
+    "at": "2026-10-09T00:19:55.214Z",
     "adm": {
       "v": 1,
       "fp": "1DAB 7A75 7F29 AB65",
