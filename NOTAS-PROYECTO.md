@@ -33,3 +33,8 @@ Autor: Ing. Manuel Alejandro Ordóñez Hernández
 ## Pendientes
 - Probar envíos realmente simultáneos de varios instructores
 - Vista compacta del admin si hay muchos instructores
+
+## Versión 5 (9-oct-2026)
+- Tope diario de apoyo (planeación + seguimiento) elegible de 2 a 8 h; cada tipo admite hasta (tope − 1). Antes solo 2 o 3. Funciona en el planeador, el panel, el Worker y el chequeo de Git (`apoyoValido` en el bloque LOGIC).
+- Lista de instituciones corregida: Académicas (6): Puerto Pinzón, San Pedro Claver, Antonia Santos, John F. Kennedy, El Prado, Santa Bárbara. Técnicas (7): José Antonio Galán, Agropecuaria El Marfil, Puerto Serviez, Técnica Pablo Valette, José Joaquín Ortiz, Nuestra Señora de la Paz, La Floresta. Privadas: Santa Teresita, Pestalozzi.
+- Los horarios ya sellados con nombres antiguos siguen siendo válidos (la institución es texto libre); solo cambian las opciones de la lista.

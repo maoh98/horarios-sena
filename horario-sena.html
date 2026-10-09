@@ -370,8 +370,8 @@ body.ro .side .pgb.on{opacity:1}
           <input class="in" id="pCentro" placeholder="Centro / institución" autocomplete="off">
         </div>
       </div>
-      <div class="row2">Horas de apoyo máx. por día
-        <select id="maxApoyo"><option value="2">2 (1 plan. + 1 seg.)</option><option value="3">3</option></select>
+      <div class="row2">Horas de apoyo máx. por día (planeación + seguimiento)
+        <select id="maxApoyo"><option value="2">2 (hasta 1 de cada una)</option><option value="3">3 (hasta 2 de cada una)</option><option value="4">4 (hasta 3 de cada una)</option><option value="5">5 (hasta 4 de cada una)</option><option value="6">6 (hasta 5 de cada una)</option><option value="7">7 (hasta 6 de cada una)</option><option value="8">8 (hasta 7 de cada una)</option></select>
       </div>
       <div class="row2">Programas de formación (máx.)
         <select id="maxProg"><option value="2">2</option><option value="3">3</option></select>
@@ -546,19 +546,19 @@ const TIPOS_INST={
 };
 /* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
 const INSTITUCIONES=[
-  {tipo:'A',nombre:'I.E. José Antonio Galán'},
   {tipo:'A',nombre:'I.E. Puerto Pinzón'},
   {tipo:'A',nombre:'I.E. San Pedro Claver'},
-  {tipo:'A',nombre:'I.E. Antonio Santos'},
+  {tipo:'A',nombre:'I.E. Antonia Santos'},
   {tipo:'A',nombre:'I.E. John F. Kennedy'},
-  {tipo:'A',nombre:'I.E. La Floresta'},
   {tipo:'A',nombre:'I.E. El Prado'},
   {tipo:'A',nombre:'I.E. Santa Bárbara'},
+  {tipo:'T',nombre:'I.E.T. José Antonio Galán'},
   {tipo:'T',nombre:'I.E.T. Agropecuaria El Marfil'},
   {tipo:'T',nombre:'I.E.T. Puerto Serviez'},
   {tipo:'T',nombre:'I.E.T. Técnica Pablo Valette'},
   {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
   {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
+  {tipo:'T',nombre:'I.E.T. La Floresta'},
   {tipo:'P',nombre:'Colegio Santa Teresita'},
   {tipo:'P',nombre:'Liceo Pestalozzi'},
   {tipo:'S',nombre:'SENA'}
@@ -607,6 +607,8 @@ function isWorkable(k){
   if(hn)return{ok:false,reason:hn,holiday:true};
   return{ok:true,reason:''};
 }
+/** Tope diario de apoyo (planeación + seguimiento): entero de 2 a 8; cualquier otro valor cuenta como 2. */
+const apoyoValido=v=>{v=+v;return Number.isInteger(v)&&v>=2&&v<=8?v:2};
 function limits(maxApoyo){const per=Math.max(1,maxApoyo-1);return{plan:per,seg:per,total:maxApoyo}}
 function validateBlock(b,day,maxApoyo=2){
   if(!TYPES[b.type])return'Tipo de bloque no válido.';
@@ -3351,7 +3353,7 @@ function docToState(e) {
     t = e.catalog || {};
   ((a.profile = cleanProfile(e.profile)),
     (a.settings = {
-      maxApoyo: e.settings && 3 === +e.settings.maxApoyo ? 3 : 2,
+      maxApoyo: apoyoValido(e.settings && e.settings.maxApoyo),
       maxProgramas: e.settings && 2 === +e.settings.maxProgramas ? 2 : 3,
     }),
     (a.comps = (t.comps || []).map((e) => ({

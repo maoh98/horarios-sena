@@ -11,19 +11,19 @@ const TIPOS_INST={
 };
 /* Lista oficial. Para agregar una institución nueva: añade una línea aquí y ejecuta herramientas/sincronizar-reglas.mjs */
 const INSTITUCIONES=[
-  {tipo:'A',nombre:'I.E. José Antonio Galán'},
   {tipo:'A',nombre:'I.E. Puerto Pinzón'},
   {tipo:'A',nombre:'I.E. San Pedro Claver'},
-  {tipo:'A',nombre:'I.E. Antonio Santos'},
+  {tipo:'A',nombre:'I.E. Antonia Santos'},
   {tipo:'A',nombre:'I.E. John F. Kennedy'},
-  {tipo:'A',nombre:'I.E. La Floresta'},
   {tipo:'A',nombre:'I.E. El Prado'},
   {tipo:'A',nombre:'I.E. Santa Bárbara'},
+  {tipo:'T',nombre:'I.E.T. José Antonio Galán'},
   {tipo:'T',nombre:'I.E.T. Agropecuaria El Marfil'},
   {tipo:'T',nombre:'I.E.T. Puerto Serviez'},
   {tipo:'T',nombre:'I.E.T. Técnica Pablo Valette'},
   {tipo:'T',nombre:'I.E.T. José Joaquín Ortiz'},
   {tipo:'T',nombre:'I.E.T. Nuestra Señora de la Paz'},
+  {tipo:'T',nombre:'I.E.T. La Floresta'},
   {tipo:'P',nombre:'Colegio Santa Teresita'},
   {tipo:'P',nombre:'Liceo Pestalozzi'},
   {tipo:'S',nombre:'SENA'}
@@ -72,6 +72,8 @@ function isWorkable(k){
   if(hn)return{ok:false,reason:hn,holiday:true};
   return{ok:true,reason:''};
 }
+/** Tope diario de apoyo (planeación + seguimiento): entero de 2 a 8; cualquier otro valor cuenta como 2. */
+const apoyoValido=v=>{v=+v;return Number.isInteger(v)&&v>=2&&v<=8?v:2};
 function limits(maxApoyo){const per=Math.max(1,maxApoyo-1);return{plan:per,seg:per,total:maxApoyo}}
 function validateBlock(b,day,maxApoyo=2){
   if(!TYPES[b.type])return'Tipo de bloque no válido.';
@@ -144,4 +146,4 @@ function auditar(blocks,o){
   return out;
 }
 
-export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst, ESPECIALIDADES, espValida};
+export {gradoHoras, auditar, validateBlock, isWorkable, holidays, indicators, INSTITUCIONES, TIPOS_INST, RULES, instFija, tipoValido, normInst, ESPECIALIDADES, espValida, apoyoValido};

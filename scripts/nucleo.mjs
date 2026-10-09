@@ -1,6 +1,6 @@
 // Horario SENA · núcleo de verificación SIN dependencias de Node (sirve en Node 18+ y en Cloudflare Workers)
 // Creado por el Ing. Manuel Alejandro Ordóñez Hernández
-import {gradoHoras, auditar, instFija, tipoValido, ESPECIALIDADES, espValida} from './reglas.mjs';
+import {gradoHoras, auditar, instFija, tipoValido, ESPECIALIDADES, espValida, apoyoValido} from './reglas.mjs';
 
 export const canon = v => {
   if (v === null || typeof v !== 'object') return JSON.stringify(v);
@@ -57,7 +57,7 @@ export function resumen(j, archivo) {
   const programas = (cat.programas || []).map(x => ({n: x.n, nombre: x.name, h10: hp(x.n)['10'], h11: hp(x.n)['11'], hSin: hp(x.n)['?'], total: hp(x.n)['10'] + hp(x.n)['11'] + hp(x.n)['?']}));
   if (G.p['?']) programas.push({n: null, nombre: 'Sin programa', h10: G.p['?']['10'], h11: G.p['?']['11'], hSin: G.p['?']['?'], total: G.p['?']['10'] + G.p['?']['11'] + G.p['?']['?']});
   const maxProg = st.maxProgramas === 2 ? 2 : 3;
-  const problemas = auditar(blocks, {maxApoyo: st.maxApoyo === 3 ? 3 : 2, nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 3, fichas: fchs, schema: j.schema || 1});
+  const problemas = auditar(blocks, {maxApoyo: apoyoValido(st.maxApoyo), nProgramas: (cat.programas || []).length, maxProgramas: st.maxProgramas ?? 3, fichas: fchs, schema: j.schema || 1});
   return {
     archivo, nombre: p.name || '(sin nombre)', cargo: p.cargo || '', centro: p.centro || '',
     programas, maxProgramas: maxProg, fichas, instituciones, competencias: (cat.comps || []).length, raps: (cat.raps || []).length,
