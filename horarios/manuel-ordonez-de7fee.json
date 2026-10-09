@@ -2,7 +2,7 @@
   "schema": 2,
   "app": "horario-sena",
   "author": "Ing. Manuel Alejandro Ordóñez Hernández",
-  "rev": 1,
+  "rev": 2,
   "por": "instructor",
   "file": "manuel-ordonez-de7fee.json",
   "profile": {
@@ -98,6 +98,15 @@
       "comp": null,
       "rap": null,
       "ficha": null
+    },
+    {
+      "date": "2026-10-09",
+      "start": 6,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
     }
   ],
   "log": [
@@ -385,9 +394,29 @@
       "t": "2026-10-09T21:09:25.168Z",
       "a": "Sellar",
       "d": "Horario sellado con contraseña"
+    },
+    {
+      "t": "2026-10-09T21:11:06.371Z",
+      "a": "Desbloquear",
+      "d": "Edición habilitada con la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-09T21:11:25.367Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 06:00–08:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T21:11:28.271Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-09T21:11:34.384Z",
+      "a": "Sellar",
+      "d": "Horario sellado de nuevo"
     }
   ],
-  "exported": "2026-10-09T21:09:51.566Z",
+  "exported": "2026-10-09T21:11:50.200Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -400,8 +429,8 @@
     },
     "iv": "elym9gl2W42mm/d/",
     "key": "rWttTSlL9AxgVed0Q191D2hSrI5yV1a1tKEaq0k/7DNNFa7cCwtP3U63gCSjKjy8XcOBHSxBx2BVkfr7YXlhcI5qte4ZBQOoFpa3lPz6xPryA05QLCH1BvlsZfMXQEVnAn0BpSsiY1LxR1WkAOPA4Gfh0lsXB9na8Q4YQ9Fei671sGLjFFFkcWdZ6W5TaShmDaOctNVABtr0yg==",
-    "sig": "lWolYzZXe+eXrnS/Kq3qHNZ/ifWds0k/WiEQAhYsdOGTmynO6SZHxqrKEm0FWiPFuh9ANMCy7C4/uZhC7e8+MQ==",
-    "at": "2026-10-09T21:09:25.173Z",
+    "sig": "aoRbboY8/zcSUtZ1iDGRVlFo0Cncsfonw7w79UOg8jiN4nTlcBf69JNOItx4cbh4LhNskTm1egs4pD+sDRRWKA==",
+    "at": "2026-10-09T21:11:34.385Z",
     "adm": {
       "v": 1,
       "fp": "1DAB 7A75 7F29 AB65",
