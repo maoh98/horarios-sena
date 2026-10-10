@@ -2,7 +2,7 @@
   "schema": 2,
   "app": "horario-sena",
   "author": "Ing. Manuel Alejandro Ordóñez Hernández",
-  "rev": 2,
+  "rev": 3,
   "por": "instructor",
   "file": "dubier-orlando-millan-barbosa-56e9b1.json",
   "profile": {
@@ -169,7 +169,7 @@
     {
       "date": "2026-10-14",
       "start": 7,
-      "hours": 1,
+      "hours": 2,
       "type": "formacion",
       "comp": 1,
       "rap": 2,
@@ -177,7 +177,7 @@
     },
     {
       "date": "2026-10-14",
-      "start": 10,
+      "start": 9,
       "hours": 1,
       "type": "planeacion",
       "comp": null,
@@ -186,7 +186,7 @@
     },
     {
       "date": "2026-10-14",
-      "start": 11,
+      "start": 10,
       "hours": 1,
       "type": "seguimiento",
       "comp": null,
@@ -214,7 +214,7 @@
     {
       "date": "2026-10-15",
       "start": 10,
-      "hours": 1,
+      "hours": 2,
       "type": "formacion",
       "comp": 1,
       "rap": 2,
@@ -339,30 +339,12 @@
     },
     {
       "date": "2026-10-21",
-      "start": 10,
-      "hours": 1,
-      "type": "planeacion",
-      "comp": null,
-      "rap": null,
-      "ficha": null
-    },
-    {
-      "date": "2026-10-21",
       "start": 11,
       "hours": 1,
       "type": "formacion",
       "comp": 1,
       "rap": 2,
       "ficha": 2
-    },
-    {
-      "date": "2026-10-21",
-      "start": 12,
-      "hours": 1,
-      "type": "seguimiento",
-      "comp": null,
-      "rap": null,
-      "ficha": null
     },
     {
       "date": "2026-10-21",
@@ -381,6 +363,24 @@
       "comp": 1,
       "rap": 2,
       "ficha": 2
+    },
+    {
+      "date": "2026-10-22",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-22",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
     },
     {
       "date": "2026-10-22",
@@ -453,6 +453,501 @@
       "comp": 2,
       "rap": 7,
       "ficha": 3
+    },
+    {
+      "date": "2026-11-03",
+      "start": 8,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-03",
+      "start": 9,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-03",
+      "start": 13,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-04",
+      "start": 8,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-04",
+      "start": 9,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-04",
+      "start": 13,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-05",
+      "start": 13,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-06",
+      "start": 13,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-09",
+      "start": 7,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-09",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-09",
+      "start": 10,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-09",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-10",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-10",
+      "start": 9,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-10",
+      "start": 10,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-10",
+      "start": 11,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-10",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-11",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-11",
+      "start": 11,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-11",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-12",
+      "start": 7,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-12",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-13",
+      "start": 7,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-17",
+      "start": 7,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 6
+    },
+    {
+      "date": "2026-11-17",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-17",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-17",
+      "start": 14,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-18",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-18",
+      "start": 9,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-18",
+      "start": 10,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-18",
+      "start": 14,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 6
+    },
+    {
+      "date": "2026-11-19",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 6
+    },
+    {
+      "date": "2026-11-19",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 6
+    },
+    {
+      "date": "2026-11-19",
+      "start": 14,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-20",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-20",
+      "start": 12,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-23",
+      "start": 7,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-23",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-23",
+      "start": 10,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-23",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-24",
+      "start": 7,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-24",
+      "start": 9,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-24",
+      "start": 10,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-24",
+      "start": 11,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-24",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-25",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-25",
+      "start": 11,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-25",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-26",
+      "start": 7,
+      "hours": 4,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-26",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-26",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-26",
+      "start": 14,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-27",
+      "start": 7,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 3,
+      "ficha": 1
     }
   ],
   "log": [
@@ -1555,9 +2050,724 @@
       "t": "2026-10-10T03:30:38.056Z",
       "a": "Sellar",
       "d": "Horario sellado de nuevo"
+    },
+    {
+      "t": "2026-10-10T18:34:01.917Z",
+      "a": "Desbloquear",
+      "d": "Edición habilitada con la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-10T20:36:35.294Z",
+      "a": "Desbloquear",
+      "d": "Edición habilitada con la contraseña del instructor"
+    },
+    {
+      "t": "2026-10-10T20:51:17.377Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 07:00–08:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:52:05.587Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 10:00–11:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:52:15.620Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 09:00–10:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:52:22.260Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 14:00–16:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:53:24.758Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 07:00–09:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:53:35.864Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 11:00–13:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:53:47.231Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 14:00–16:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:55:06.818Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 09:00–10:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:55:15.966Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 11:00–12:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:55:28.988Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 14:00–16:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:56:13.552Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 07:00–11:00 Formación F2 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:56:25.163Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 14:00–16:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:56:43.651Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-27 07:00–08:00 Formación F1 C1 R3"
+    },
+    {
+      "t": "2026-10-10T20:57:02.596Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T21:03:41.396Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:03:47.199Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 13:00–14:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:04:47.132Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 09:00–10:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:05:09.887Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:12:31.972Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 07:00–10:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:12:44.584Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 14:00–16:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:27:10.509Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 07:00–08:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:27:26.674Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 14:00–16:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:28:15.167Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–08:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:28:52.886Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 10:00–11:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:29:06.874Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 14:00–16:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:35:51.814Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 09:00–10:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:35:59.907Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 12:00–13:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:36:44.945Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 13:00–18:00 Formación F4 C2 R7"
+    },
+    {
+      "t": "2026-10-10T21:36:56.262Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 13:00–18:00 Formación F4 C2 R7"
+    },
+    {
+      "t": "2026-10-10T21:37:05.863Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 13:00–18:00 Formación F3 C2 R7"
+    },
+    {
+      "t": "2026-10-10T21:37:12.515Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-06 13:00–18:00 Formación F3 C2 R7"
+    },
+    {
+      "t": "2026-10-10T21:38:49.655Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 07:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:38:50.283Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 07:00–11:00 Formación F6 C1 R1"
+    },
+    {
+      "t": "2026-10-10T21:39:54.447Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 14:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:39:59.126Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:40:10.813Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-18 14:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:40:22.007Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 14:00–17:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:40:31.955Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 14:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:40:40.961Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:41:16.476Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 07:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:17.767Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:22.280Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-18 07:00–08:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:22.607Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-18 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:29.384Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 07:00–08:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:29.629Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 11:00–14:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:41:30.757Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 10:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:30.956Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 11:00–14:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:31.158Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 06:00–09:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:41:32.472Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 06:00–09:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:33.606Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:36.992Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-20 09:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:41:37.739Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-20 12:00–13:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:42:11.294Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 07:00–11:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:42:18.959Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:42:30.861Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:42:45.260Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:43:37.057Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 07:00–09:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:43:45.478Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 09:00–10:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:43:55.130Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:44:06.389Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 14:00–17:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:44:49.063Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–10:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:45:04.828Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 07:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:45:08.992Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–09:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:45:15.533Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 07:00–09:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:45:17.609Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 09:00–12:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:45:20.871Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 09:00–12:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:45:23.451Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–10:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:45:36.334Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 07:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:45:36.913Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–08:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:45:50.306Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 10:00–12:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:46:01.505Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:46:35.639Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 09:00–10:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:46:44.878Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 12:00–14:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:47:23.999Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-19 07:00–08:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:47:24.755Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 07:00–09:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:49:00.323Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 07:00–08:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:49:15.398Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 09:00–10:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:49:44.782Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 10:00–11:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:49:55.042Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 14:00–16:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:50:23.289Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T21:50:50.461Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 07:00–09:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:50:56.889Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 11:00–13:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:51:03.821Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 14:00–16:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:51:18.304Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 09:00–10:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:51:28.139Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:53:08.012Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 09:00–10:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:53:26.132Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 11:00–12:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:53:36.060Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 14:00–16:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:54:36.023Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-11 14:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T21:54:42.850Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 14:00–16:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:54:58.231Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-13 07:00–08:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:55:18.325Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 07:00–11:00 Formación F2 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:55:24.115Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 14:00–16:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T21:55:46.804Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:56:03.513Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-12 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:56:16.182Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:56:19.900Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-12 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:56:24.498Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:56:28.126Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:56:37.465Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-26 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:56:38.274Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-26 13:00–14:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:56:41.154Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:56:47.350Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:57:16.577Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 08:00–09:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:57:19.560Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 09:00–10:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T21:57:26.821Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 08:00–09:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T21:57:29.573Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 09:00–10:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:00:28.405Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-21 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:00:30.183Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-21 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:00:38.124Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:00:41.680Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:03:12.581Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 07:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:03:13.157Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:03:14.219Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:03:14.819Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:03:43.714Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 07:00–11:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:03:55.203Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:04:04.920Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:04:17.520Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:05:11.022Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 07:00–08:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:11.220Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 17:00–20:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:05:11.929Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:05:12.522Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:05:13.106Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:13.787Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-14 17:00–20:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:17.240Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-15 07:00–09:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:17.854Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-15 10:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:18.803Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-15 14:00–17:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:21.658Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-16 09:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:05:22.196Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-16 12:00–14:00 Formación"
+    },
+    {
+      "t": "2026-10-10T22:06:14.023Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 07:00–09:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:06:21.954Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 09:00–10:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T22:06:25.637Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T22:06:44.170Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 14:00–17:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:07:17.241Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 07:00–09:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:07:29.998Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 10:00–12:00 Formación F6 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:07:39.942Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 14:00–17:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:08:19.566Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 09:00–10:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:08:32.019Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 12:00–14:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T22:08:50.354Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T22:08:52.754Z",
+      "a": "Sellar",
+      "d": "Horario sellado de nuevo"
     }
   ],
-  "exported": "2026-10-10T03:31:32.056Z",
+  "exported": "2026-10-10T22:08:55.643Z",
   "lock": {
     "v": 1,
     "alg": "ECDSA-P256-SHA256",
@@ -1570,8 +2780,8 @@
     },
     "iv": "xcL+v4W1/Rd8O8QM",
     "key": "ep+A+qfkBzKZcmcsIqaPnYQhNJ9kQBlIMqKzmiVnpF6QSUvLHYwALCOsOp8f/Bi2DlQcT1t2pXw7Dp+KuleSJzxJ5bMCJqBNB/EmJxbO0Yrp6UETzsqVabNf98wUac7siWDsrqLn+I3JRAa4yvNys6SWkXJfxDeIfKEaSDhUVM+BQELlgPpGun2CBq3uIuxsGoGQv5vQF8hq3Q==",
-    "sig": "Z8tKfqQGRzm6Lsm1SeACM2pEmO9NazxsPnoCq4goOBbSPnTrzca75yYWkltY03gRdNJfPjj4Kky2VxQegvObcQ==",
-    "at": "2026-10-10T03:30:38.061Z",
+    "sig": "WokJ7j1i+lTki9kiDp2tl8F0Zs5MQSZfC8jYQOwMQ/meMnTtVZQw0gb9d/UNFLBZN3OB+sM47kf1De/2X+ynrw==",
+    "at": "2026-10-10T22:08:52.759Z",
     "adm": {
       "v": 1,
       "fp": "1DAB 7A75 7F29 AB65",
