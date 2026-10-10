@@ -1,0 +1,2312 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "rev": 1,
+  "por": "instructor",
+  "file": "ramiro-daniel-caldera-llorente-d93b3a.json",
+  "profile": {
+    "name": "RAMIRO DANIEL CALDERA LLORENTE",
+    "cargo": "INSTRUCTOR PAM",
+    "centro": "SENA",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 3,
+    "maxProgramas": 2
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "240201530 - Resultado de Aprendizaje de la Inducción.",
+        "phva": "P"
+      },
+      {
+        "n": 2,
+        "name": "280101160 - Montar componentes eléctricos de acuerdo con procedimiento técnico",
+        "phva": "P"
+      },
+      {
+        "n": 3,
+        "name": "280101175 - Montar instalaciones eléctricas internas de acuerdo con normativa",
+        "phva": "H"
+      },
+      {
+        "n": 4,
+        "name": "280101172 - Montar sistemas de puesta a tierra de acuerdo con normativa",
+        "phva": "H"
+      },
+      {
+        "n": 5,
+        "name": "280101173 - Instalar acometidas eléctricas de acuerdo con reglamento técnico.",
+        "phva": "V"
+      },
+      {
+        "n": 6,
+        "name": "220601043 - Implementar requisitos normativos de acuerdo con parámetros técnicos",
+        "phva": "V"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "638249 - Identificar la dinámica organizacional del SENA y el rol de la formación profesional integral de acuerdo con su proyecto de vida y el desarrollo profesional.",
+        "comp": 1,
+        "nc": 1
+      },
+      {
+        "n": 2,
+        "name": "638282 - RAP1: Comprender los principios y simbología eléctrica de acuerdo con la normatividad y estándares internacionales vigentes.",
+        "comp": 2,
+        "nc": 1
+      },
+      {
+        "n": 3,
+        "name": "638284 - RAP2: Conectar los componentes del circuito eléctrico y equipos de medida, acorde con las especificaciones.",
+        "comp": 2,
+        "nc": 2
+      },
+      {
+        "n": 4,
+        "name": "638283 - RAP3: Interpretar la respuesta del circuito eléctrico, y plantear opciones de mejora de acuerdo con parámetros técnicos definidos.",
+        "comp": 2,
+        "nc": 3
+      },
+      {
+        "n": 5,
+        "name": "RAP1: Comprender las características técnicas de los componentes del sistema domótico e inmótico requeridos en la automatización de las instalaciones eléctricas residencial y comercial según el diseño propuesto.",
+        "comp": 3,
+        "nc": 1
+      },
+      {
+        "n": 6,
+        "name": "638275 - RAP2: Alistar materiales, herramientas, equipos de protección, accesorios e insumos de la instalación eléctrica residencial y comercial según especificaciones del diseño y normatividad vigente.",
+        "comp": 3,
+        "nc": 2
+      },
+      {
+        "n": 7,
+        "name": "638272 - RAP3: Construir la instalación eléctrica residencial y comercial de acuerdo con los planos de diseño, y la normatividad vigente.",
+        "comp": 3,
+        "nc": 3
+      },
+      {
+        "n": 8,
+        "name": "638277 - RAP4: Realizar el acoplamiento de los elementos eléctricos en un sistema domótico según el diseño eléctrico establecido.",
+        "comp": 3,
+        "nc": 4
+      },
+      {
+        "n": 9,
+        "name": "638276 - RAP5: Instalar equipos de medición, diagnóstico y control para la calidad y eficiencia de la energía eléctrica de acuerdo con el diseño.",
+        "comp": 3,
+        "nc": 5
+      },
+      {
+        "n": 10,
+        "name": "638273 - RAP6: Verificar el funcionamiento de la instalación eléctrica residencial y comercial de acuerdo con la normatividad vigente.",
+        "comp": 3,
+        "nc": 6
+      },
+      {
+        "n": 11,
+        "name": "638264 - RAP1: Comprender las necesidades y requisitos en la construcción del sistema de puesta a tierra de acuerdo con procedimientos técnicos.",
+        "comp": 4,
+        "nc": 1
+      },
+      {
+        "n": 12,
+        "name": "638262 - RAP2: Realizar sistemas de puesta a tierra de acuerdo con la normatividad vigente y los procedimientos de seguridad y ambientales.",
+        "comp": 4,
+        "nc": 2
+      },
+      {
+        "n": 13,
+        "name": "638265 - RAP3: Verificar la instalación del sistema de puesta a tierra de acuerdo con la normativa vigente.",
+        "comp": 4,
+        "nc": 3
+      },
+      {
+        "n": 14,
+        "name": "638303 - RAP 1 – Determinar los parámetros de instalación de la acometida y el sistema de medición de energía eléctrica acorde a los requerimientos del operador de red.",
+        "comp": 5,
+        "nc": 1
+      },
+      {
+        "n": 15,
+        "name": "638301 - RAP2: Ejecutar la instalación de la acometida y el sistema de medición de energía de acuerdo con los diagramas de conexión del fabricante y normas técnicas vigentes.",
+        "comp": 5,
+        "nc": 2
+      },
+      {
+        "n": 16,
+        "name": "638300 - RAP3: Verificar la instalación de acometidas y sistemas de medición de energía eléctrica de acuerdo con el tipo de carga eléctrica a instalar.",
+        "comp": 5,
+        "nc": 3
+      },
+      {
+        "n": 17,
+        "name": "638267 - RAP1: Identificar los conceptos de uso racional y eficiente de la energía de acuerdo con las condiciones geográficas y tipos de usuarios.",
+        "comp": 6,
+        "nc": 1
+      },
+      {
+        "n": 18,
+        "name": "638266 - RAP2: Realizar la medición de consumos energéticos de acuerdo con procedimientos técnicos.",
+        "comp": 6,
+        "nc": 2
+      },
+      {
+        "n": 19,
+        "name": "638268 - RAP3: Elaborar reportes de eficiencia energética de acuerdo con protocolos técnicos y tipos de usuario.",
+        "comp": 6,
+        "nc": 3
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3168836",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. José Joaquín Ortiz"
+      },
+      {
+        "n": 2,
+        "name": "3168838",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. Nuestra Señora de la Paz"
+      },
+      {
+        "n": 3,
+        "name": "3442184",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. José Joaquín Ortiz"
+      },
+      {
+        "n": 4,
+        "name": "3442208",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "T",
+        "inst": "I.E.T. Nuestra Señora de la Paz"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "INSTALACIÓN DE SISTEMAS ELÉCTRICOS RESIDENCIALES Y COMERCIALES"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-01",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-01",
+      "start": 12,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-01",
+      "start": 13,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-02",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 16,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-02",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-02",
+      "start": 12,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-05",
+      "start": 9,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-06",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 16,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-06",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-08",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 16,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-08",
+      "start": 15,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-09",
+      "start": 9,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-09",
+      "start": 10,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-09",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-13",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-14",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 17,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-14",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-15",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-15",
+      "start": 15,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-16",
+      "start": 9,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 17,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-16",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-19",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-20",
+      "start": 10,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 15,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-20",
+      "start": 13,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-21",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-22",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 16,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-22",
+      "start": 15,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-23",
+      "start": 8,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-23",
+      "start": 9,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-23",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-26",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 5,
+      "rap": 16,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-27",
+      "start": 8,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-27",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-28",
+      "start": 8,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 17,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-29",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 6,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-29",
+      "start": 12,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-30",
+      "start": 8,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 17,
+      "ficha": 2
+    },
+    {
+      "date": "2026-10-30",
+      "start": 9,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-30",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-03",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-03",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-04",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 18,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-04",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-05",
+      "start": 15,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-05",
+      "start": 17,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-06",
+      "start": 9,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 18,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-06",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-09",
+      "start": 8,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-09",
+      "start": 9,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-10",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 19,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-10",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-11",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-11",
+      "start": 15,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 14,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 15,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 19,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-13",
+      "start": 8,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-17",
+      "start": 13,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 6,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-17",
+      "start": 16,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-18",
+      "start": 7,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 18,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-18",
+      "start": 10,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-19",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-19",
+      "start": 12,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-20",
+      "start": 8,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 18,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-20",
+      "start": 10,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-23",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-23",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-24",
+      "start": 10,
+      "hours": 3,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 19,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-24",
+      "start": 13,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-25",
+      "start": 10,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-26",
+      "start": 13,
+      "hours": 2,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 19,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-26",
+      "start": 15,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-27",
+      "start": 8,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 3,
+      "rap": 7,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-27",
+      "start": 9,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-30",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 6,
+      "rap": 19,
+      "ficha": 2
+    },
+    {
+      "date": "2026-11-30",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-30",
+      "start": 12,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    }
+  ],
+  "log": [
+    {
+      "t": "2026-10-09T22:26:45.446Z",
+      "a": "Inicio",
+      "d": "Programación creada"
+    },
+    {
+      "t": "2026-10-10T02:14:11.118Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-10T02:14:19.864Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-10T02:14:26.494Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-10T02:14:47.112Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 3 h"
+    },
+    {
+      "t": "2026-10-10T02:15:00.663Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 2 h"
+    },
+    {
+      "t": "2026-10-10T02:15:05.830Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 4 h"
+    },
+    {
+      "t": "2026-10-10T02:15:49.910Z",
+      "a": "Editar programa",
+      "d": "#1: INSTALACIÓN DE SISTEMAS ELÉCTRICOS RESIDENCIALES Y COMERCIALES"
+    },
+    {
+      "t": "2026-10-10T02:16:32.177Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T02:30:08.105Z",
+      "a": "Editar ficha",
+      "d": "#1: 3168836"
+    },
+    {
+      "t": "2026-10-10T02:30:08.317Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 11°"
+    },
+    {
+      "t": "2026-10-10T02:30:13.721Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Técnica"
+    },
+    {
+      "t": "2026-10-10T02:30:20.199Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E.T. José Joaquín Ortiz"
+    },
+    {
+      "t": "2026-10-10T02:30:37.880Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T03:19:54.675Z",
+      "a": "Editar competencia",
+      "d": "#1: COMPETENCIA 6 – IMPLEMENTAR REQUISITOS NORMATIVOS DE ACUERDO CON PARÁMETROS TÉCN"
+    },
+    {
+      "t": "2026-10-10T03:19:54.888Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-10T03:19:56.755Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Verificar"
+    },
+    {
+      "t": "2026-10-10T03:20:00.081Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Actuar"
+    },
+    {
+      "t": "2026-10-10T03:25:13.401Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-10T03:25:16.536Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-10T03:25:21.355Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Verificar"
+    },
+    {
+      "t": "2026-10-10T03:31:40.225Z",
+      "a": "Editar RAP",
+      "d": "#1: RAP1: IDENTIFICAR LOS CONCEPTOS DE USO RACIONAL Y EFICIENTE DE LA ENERGÍA DE ACU"
+    },
+    {
+      "t": "2026-10-10T03:31:40.445Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-10T03:31:41.717Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T03:31:45.204Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-10T03:31:55.543Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T03:32:29.615Z",
+      "a": "Editar RAP",
+      "d": "#2: RAP2: REALIZAR LA MEDICIÓN DE CONSUMOS ENERGÉTICOS DE ACUERDO CON PROCEDIMIENTOS"
+    },
+    {
+      "t": "2026-10-10T03:33:09.271Z",
+      "a": "Editar RAP",
+      "d": "#3: RAP3: ELABORAR REPORTES DE EFICIENCIA ENERGÉTICA DE ACUERDO CON PROTOCOLOS TÉCNI"
+    },
+    {
+      "t": "2026-10-10T03:33:14.762Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T03:42:21.755Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 13:00–16:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T03:42:41.363Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T03:44:03.069Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 13:00–15:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T03:44:18.305Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 1 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T03:45:02.831Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 06:00–08:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T03:45:23.007Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 1 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T03:45:42.239Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 13:00–15:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T03:45:58.256Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T03:46:22.190Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T03:49:32.688Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T03:50:20.202Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 09:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T03:51:09.006Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T03:55:48.493Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 13:00–16:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-10T03:56:02.975Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T03:59:01.184Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T03:59:11.399Z",
+      "a": "Quitar RAP",
+      "d": "#1: RAP1: IDENTIFICAR LOS CONCEPTOS DE USO RACIONAL Y EFICIENTE DE LA ENERGÍA DE ACU"
+    },
+    {
+      "t": "2026-10-10T03:59:19.824Z",
+      "a": "Quitar competencia",
+      "d": "#1: COMPETENCIA 6 – IMPLEMENTAR REQUISITOS NORMATIVOS DE ACUERDO CON PARÁMETROS TÉCN"
+    },
+    {
+      "t": "2026-10-10T03:59:23.006Z",
+      "a": "Quitar RAP",
+      "d": "#1: RAP2: REALIZAR LA MEDICIÓN DE CONSUMOS ENERGÉTICOS DE ACUERDO CON PROCEDIMIENTOS"
+    },
+    {
+      "t": "2026-10-10T03:59:24.718Z",
+      "a": "Quitar RAP",
+      "d": "#1: RAP3: ELABORAR REPORTES DE EFICIENCIA ENERGÉTICA DE ACUERDO CON PROTOCOLOS TÉCNI"
+    },
+    {
+      "t": "2026-10-10T04:08:27.231Z",
+      "a": "Editar competencia",
+      "d": "#1: 280101160 - Montar componentes eléctricos de acuerdo con procedimiento técnico"
+    },
+    {
+      "t": "2026-10-10T04:08:42.062Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-10T04:08:43.414Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Verificar"
+    },
+    {
+      "t": "2026-10-10T04:08:44.344Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Actuar"
+    },
+    {
+      "t": "2026-10-10T04:08:45.501Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-10T04:09:00.120Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-10T04:10:51.630Z",
+      "a": "Editar RAP",
+      "d": "#1: 638282 - RAP1: Comprender los principios y simbología eléctrica de acuerdo con l"
+    },
+    {
+      "t": "2026-10-10T04:11:00.057Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-10T04:11:00.854Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T04:11:01.479Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-10T04:11:01.919Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T04:11:31.414Z",
+      "a": "Quitar RAP",
+      "d": "#1: 638282 - RAP1: Comprender los principios y simbología eléctrica de acuerdo con l"
+    },
+    {
+      "t": "2026-10-10T04:11:34.022Z",
+      "a": "Quitar competencia",
+      "d": "#1: 280101160 - Montar componentes eléctricos de acuerdo con procedimiento técnico"
+    },
+    {
+      "t": "2026-10-10T04:17:52.174Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T04:17:59.102Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T04:19:11.706Z",
+      "a": "Editar competencia",
+      "d": "#1: 240201530 - Resultado de Aprendizaje de la Inducción."
+    },
+    {
+      "t": "2026-10-10T04:21:01.540Z",
+      "a": "Editar competencia",
+      "d": "#2: 280101160 - Montar componentes eléctricos de acuerdo con procedimiento técnico"
+    },
+    {
+      "t": "2026-10-10T04:23:29.979Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Hacer"
+    },
+    {
+      "t": "2026-10-10T04:23:32.102Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-10T04:24:10.720Z",
+      "a": "Pegar competencia",
+      "d": "2 líneas"
+    },
+    {
+      "t": "2026-10-10T04:24:16.101Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-10T04:24:17.405Z",
+      "a": "Quitar competencia",
+      "d": "#4: acuerdo con normativa"
+    },
+    {
+      "t": "2026-10-10T04:24:21.440Z",
+      "a": "Editar competencia",
+      "d": "#3: 280101175 - "
+    },
+    {
+      "t": "2026-10-10T04:24:27.306Z",
+      "a": "Quitar competencia",
+      "d": "#3: "
+    },
+    {
+      "t": "2026-10-10T04:24:27.307Z",
+      "a": "Editar competencia",
+      "d": "#0: "
+    },
+    {
+      "t": "2026-10-10T04:24:31.259Z",
+      "a": "Pegar competencia",
+      "d": "2 líneas"
+    },
+    {
+      "t": "2026-10-10T04:24:34.700Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-10T04:24:34.790Z",
+      "a": "Quitar competencia",
+      "d": "#4: acuerdo con normativa"
+    },
+    {
+      "t": "2026-10-10T04:24:57.125Z",
+      "a": "Editar competencia",
+      "d": "#3: 280101175 - Montar instalaciones eléctricas internas de acuerdo con normativa"
+    },
+    {
+      "t": "2026-10-10T04:26:30.335Z",
+      "a": "Editar competencia",
+      "d": "#4: 280101172 - Montar sistemas de puesta a tierra de acuerdo con normativa"
+    },
+    {
+      "t": "2026-10-10T04:28:05.892Z",
+      "a": "Editar competencia",
+      "d": "#5: 280101173 - Instalar acometidas eléctricas de acuerdo con reglamento técnico."
+    },
+    {
+      "t": "2026-10-10T04:28:06.013Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 3: Hacer"
+    },
+    {
+      "t": "2026-10-10T04:28:06.900Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 4: Hacer"
+    },
+    {
+      "t": "2026-10-10T04:28:10.566Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 5: Verificar"
+    },
+    {
+      "t": "2026-10-10T04:29:00.721Z",
+      "a": "Pegar competencia",
+      "d": "3 líneas"
+    },
+    {
+      "t": "2026-10-10T04:29:04.341Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-10T04:29:04.454Z",
+      "a": "Quitar competencia",
+      "d": "#8: TÉCNICOS"
+    },
+    {
+      "t": "2026-10-10T04:29:05.013Z",
+      "a": "Quitar competencia",
+      "d": "#7: NORMATIVOS DE ACUERDO CON PARÁMETROS"
+    },
+    {
+      "t": "2026-10-10T04:29:06.516Z",
+      "a": "Quitar competencia",
+      "d": "#6: 220601043 - IMPLEMENTAR REQUISITOS"
+    },
+    {
+      "t": "2026-10-10T04:29:37.094Z",
+      "a": "Editar competencia",
+      "d": "#6: 220601043 - Implementar requisitos normativos de acuerdo con parámetros técnicos"
+    },
+    {
+      "t": "2026-10-10T04:29:37.181Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 6: Verificar"
+    },
+    {
+      "t": "2026-10-10T04:31:43.255Z",
+      "a": "Editar RAP",
+      "d": "#1: 638267 - RAP1: Identificar los conceptos de uso racional y eficiente de la energ"
+    },
+    {
+      "t": "2026-10-10T04:31:47.205Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C6"
+    },
+    {
+      "t": "2026-10-10T04:33:46.875Z",
+      "a": "Editar RAP",
+      "d": "#2: 638266 - RAP2: Realizar la medición de consumos energéticos de acuerdo con proce"
+    },
+    {
+      "t": "2026-10-10T04:34:13.309Z",
+      "a": "Editar RAP",
+      "d": "#3: 638268 - RAP3: Elaborar reportes de eficiencia energética de acuerdo con protoco"
+    },
+    {
+      "t": "2026-10-10T04:36:57.566Z",
+      "a": "Quitar RAP",
+      "d": "#1: 638267 - RAP1: Identificar los conceptos de uso racional y eficiente de la energ"
+    },
+    {
+      "t": "2026-10-10T04:36:58.312Z",
+      "a": "Quitar RAP",
+      "d": "#1: 638266 - RAP2: Realizar la medición de consumos energéticos de acuerdo con proce"
+    },
+    {
+      "t": "2026-10-10T04:36:58.925Z",
+      "a": "Quitar RAP",
+      "d": "#1: 638268 - RAP3: Elaborar reportes de eficiencia energética de acuerdo con protoco"
+    },
+    {
+      "t": "2026-10-10T04:36:59.830Z",
+      "a": "Quitar RAP",
+      "d": "#1: "
+    },
+    {
+      "t": "2026-10-10T04:38:09.454Z",
+      "a": "Editar RAP",
+      "d": "#1: 638249 - Identificar la dinámica organizacional del SENA y el rol de la formació"
+    },
+    {
+      "t": "2026-10-10T04:38:09.541Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T04:40:13.758Z",
+      "a": "Editar RAP",
+      "d": "#2: 638282 - RAP1: Comprender los principios y simbología eléctrica de acuerdo con l"
+    },
+    {
+      "t": "2026-10-10T04:40:13.869Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-10T04:40:34.168Z",
+      "a": "Editar RAP",
+      "d": "#3: 638284 - RAP2: Conectar los componentes del circuito eléctrico y equipos de medi"
+    },
+    {
+      "t": "2026-10-10T04:41:01.677Z",
+      "a": "Editar RAP",
+      "d": "#4: 638283 - RAP3: Interpretar la respuesta del circuito eléctrico, y plantear opcio"
+    },
+    {
+      "t": "2026-10-10T04:45:44.790Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T04:46:23.798Z",
+      "a": "Editar RAP",
+      "d": "#5: RAP1: Comprender las características técnicas de los componentes del sistema dom"
+    },
+    {
+      "t": "2026-10-10T04:46:23.902Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C3"
+    },
+    {
+      "t": "2026-10-10T04:46:46.021Z",
+      "a": "Editar RAP",
+      "d": "#6: 638275 - RAP2: Alistar materiales, herramientas, equipos de protección, accesori"
+    },
+    {
+      "t": "2026-10-10T04:47:03.404Z",
+      "a": "Editar RAP",
+      "d": "#7: 638272 - RAP3: Construir la instalación eléctrica residencial y comercial de acu"
+    },
+    {
+      "t": "2026-10-10T04:47:19.200Z",
+      "a": "Editar RAP",
+      "d": "#8: 638277 - RAP4: Realizar el acoplamiento de los elementos eléctricos en un sistem"
+    },
+    {
+      "t": "2026-10-10T04:47:32.926Z",
+      "a": "Editar RAP",
+      "d": "#9: 638276 - RAP5: Instalar equipos de medición, diagnóstico y control para la calid"
+    },
+    {
+      "t": "2026-10-10T04:48:10.173Z",
+      "a": "Editar RAP",
+      "d": "#10: 638273 - RAP6: Verificar el funcionamiento de la instalación eléctrica residenci"
+    },
+    {
+      "t": "2026-10-10T04:51:03.454Z",
+      "a": "Quitar competencia",
+      "d": "#7: "
+    },
+    {
+      "t": "2026-10-10T04:51:10.045Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C4"
+    },
+    {
+      "t": "2026-10-10T04:51:20.771Z",
+      "a": "Editar RAP",
+      "d": "#11: 638264 - RAP1: Comprender las necesidades y requisitos en la construcción del si"
+    },
+    {
+      "t": "2026-10-10T04:51:37.886Z",
+      "a": "Editar RAP",
+      "d": "#12: 638262 - RAP2: Realizar sistemas de puesta a tierra de acuerdo con la normativid"
+    },
+    {
+      "t": "2026-10-10T04:51:51.695Z",
+      "a": "Editar RAP",
+      "d": "#13: 638265 - RAP3: Verificar la instalación del sistema de puesta a tierra de acuerd"
+    },
+    {
+      "t": "2026-10-10T04:54:07.805Z",
+      "a": "Editar RAP",
+      "d": "#14: 638303 - RAP 1 – Determinar los parámetros de instalación de la acometida y el s"
+    },
+    {
+      "t": "2026-10-10T04:54:21.205Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C5"
+    },
+    {
+      "t": "2026-10-10T04:54:22.621Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: C5"
+    },
+    {
+      "t": "2026-10-10T04:54:25.845Z",
+      "a": "Editar RAP",
+      "d": "#15: 638301 - RAP2: Ejecutar la instalación de la acometida y el sistema de medición "
+    },
+    {
+      "t": "2026-10-10T04:54:50.447Z",
+      "a": "Editar RAP",
+      "d": "#16: 638300 - RAP3: Verificar la instalación de acometidas y sistemas de medición de "
+    },
+    {
+      "t": "2026-10-10T04:56:30.518Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C6"
+    },
+    {
+      "t": "2026-10-10T04:56:33.912Z",
+      "a": "Editar RAP",
+      "d": "#17: 638267 - RAP1: Identificar los conceptos de uso racional y eficiente de la energ"
+    },
+    {
+      "t": "2026-10-10T04:56:46.007Z",
+      "a": "Editar RAP",
+      "d": "#18: 638266 - RAP2: Realizar la medición de consumos energéticos de acuerdo con proce"
+    },
+    {
+      "t": "2026-10-10T04:56:58.023Z",
+      "a": "Editar RAP",
+      "d": "#19: 638268 - RAP3: Elaborar reportes de eficiencia energética de acuerdo con protoco"
+    },
+    {
+      "t": "2026-10-10T04:57:30.193Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 3 h"
+    },
+    {
+      "t": "2026-10-10T04:57:43.927Z",
+      "a": "Cambiar regla",
+      "d": "Programas de formación máx.: 2"
+    },
+    {
+      "t": "2026-10-10T04:58:21.814Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T05:20:20.247Z",
+      "a": "Exportar",
+      "d": "JSON · 2026-10"
+    },
+    {
+      "t": "2026-10-10T13:49:29.316Z",
+      "a": "Editar ficha",
+      "d": "#2: 3168838"
+    },
+    {
+      "t": "2026-10-10T13:49:29.436Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 2: 11°"
+    },
+    {
+      "t": "2026-10-10T13:49:40.587Z",
+      "a": "Editar ficha",
+      "d": "#3: 3442184"
+    },
+    {
+      "t": "2026-10-10T13:49:50.931Z",
+      "a": "Editar ficha",
+      "d": "#4: 3442208"
+    },
+    {
+      "t": "2026-10-10T13:49:57.403Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 3: Técnica"
+    },
+    {
+      "t": "2026-10-10T13:49:58.707Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 4: Técnica"
+    },
+    {
+      "t": "2026-10-10T13:50:00.860Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 2: Técnica"
+    },
+    {
+      "t": "2026-10-10T13:50:26.383Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T13:54:10.060Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 13:00–18:00 Formación F3 C2 R4"
+    },
+    {
+      "t": "2026-10-10T13:54:29.717Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T13:54:50.348Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:08:51.348Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 13:00–18:00 Formación F1 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:09:21.444Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:09:31.149Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 06:00–07:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:14:24.492Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-05 09:00–11:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:14:24.493Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 09:00–11:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:14:24.493Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 09:00–11:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:15:03.818Z",
+      "a": "Vaciar días",
+      "d": "3 día(s), 3 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T14:17:14.892Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-05 09:00–11:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:18:51.604Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 13:00–15:00 Formación F3 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:20:31.564Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 13:00–15:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:21:30.501Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 1 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T14:22:18.741Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 09:00–10:00 Formación F1 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:23:23.172Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 1 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T14:23:45.469Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 3 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T14:23:52.853Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 3 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T14:27:41.101Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 09:00–10:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:27:54.341Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:28:02.452Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:31:35.757Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 13:00–18:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:32:06.701Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:32:15.164Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:34:47.764Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 06:00–11:00 Formación F1 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:35:02.636Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:35:06.709Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:37:05.429Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 13:00–16:00 Formación F1 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:37:28.388Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:38:19.861Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 13:00–15:00 Formación F1 C5 R16"
+    },
+    {
+      "t": "2026-10-10T14:38:36.525Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:42:07.085Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 13:00–16:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:42:31.012Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 06:00–07:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:42:35.861Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-13 06:00–07:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:42:43.412Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:43:28.571Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 13:00–15:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T14:43:38.132Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:46:29.188Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 13:00–16:00 Formación F1 C6 R17"
+    },
+    {
+      "t": "2026-10-10T14:46:43.189Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:47:38.085Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 09:00–11:00 Formación F1 C6 R17"
+    },
+    {
+      "t": "2026-10-10T14:47:49.676Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T14:49:04.827Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T14:57:50.653Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 13:00–15:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T14:58:27.725Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-21 10:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T14:59:02.317Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 08:00–09:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T14:59:11.629Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 09:00–10:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T14:59:17.356Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:15:51.662Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-20 10:00–13:00 Formación F2 C5 R15"
+    },
+    {
+      "t": "2026-10-10T15:16:30.181Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-20 13:00–14:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:17:24.677Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 14:00–16:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:17:51.589Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 13:00–14:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:17:57.884Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-22 14:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:18:00.661Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-22 13:00–14:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:18:09.198Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 13:00–16:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:18:13.245Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-22 13:00–16:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:18:18.573Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 13:00–15:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:18:38.037Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:19:00.101Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T15:23:54.349Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 10:00–11:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:23:56.101Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-26 10:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:24:02.996Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 10:00–13:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:25:43.214Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 07:00–09:00 Formación F2 C6 R17"
+    },
+    {
+      "t": "2026-10-10T15:26:06.757Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:26:12.958Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 08:00–09:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:27:05.189Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-30 07:00–08:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:27:05.727Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-30 08:00–09:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:28:10.550Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-26 10:00–13:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:34:19.551Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 10:00–12:00 Formación F2 C5 R16"
+    },
+    {
+      "t": "2026-10-10T15:34:57.525Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-28 07:00–09:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:35:02.244Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 08:00–10:00 Formación F2 C6 R17"
+    },
+    {
+      "t": "2026-10-10T15:35:23.901Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 08:00–09:00 Formación F2 C6 R17"
+    },
+    {
+      "t": "2026-10-10T15:35:29.732Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 09:00–10:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:35:42.037Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:44:40.118Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 08:00–10:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T15:45:32.750Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-29 10:00–12:00 Formación F4 C3 R6"
+    },
+    {
+      "t": "2026-10-10T15:46:04.766Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-27 08:00–10:00 Formación"
+    },
+    {
+      "t": "2026-10-10T15:46:09.925Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 08:00–11:00 Formación F4 C3 R6"
+    },
+    {
+      "t": "2026-10-10T15:46:23.717Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:46:44.950Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-29 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:47:35.421Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T15:48:48.388Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 13:00–16:00 Formación F4 C3 R6"
+    },
+    {
+      "t": "2026-10-10T15:49:25.581Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:50:11.671Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 10:00–12:00 Formación F4 C3 R7"
+    },
+    {
+      "t": "2026-10-10T15:50:33.821Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:50:59.325Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 17:00–18:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:51:41.893Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-17 17:00–18:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:53:11.550Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 07:00–10:00 Formación F2 C6 R18"
+    },
+    {
+      "t": "2026-10-10T15:53:31.285Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 10:00–11:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:54:41.998Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 08:00–10:00 Formación F2 C6 R18"
+    },
+    {
+      "t": "2026-10-10T15:54:50.237Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 10:00–11:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T15:57:18.789Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 13:00–15:00 Formación F2 C6 R18"
+    },
+    {
+      "t": "2026-10-10T15:57:35.326Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:58:10.561Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-10T15:58:36.861Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 13:00–15:00 Formación F4 C3 R7"
+    },
+    {
+      "t": "2026-10-10T15:58:50.837Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T15:59:31.637Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 10:00–12:00 Formación F4 C3 R7"
+    },
+    {
+      "t": "2026-10-10T15:59:52.845Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-27 08:00–09:00 Formación F4 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:00:16.718Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-27 09:00–10:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:01:34.982Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 10:00–11:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:01:39.141Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-24 10:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T16:01:46.534Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 10:00–12:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:02:10.853Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 06:00–09:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:02:13.677Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-24 06:00–09:00 Formación"
+    },
+    {
+      "t": "2026-10-10T16:02:14.973Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-24 10:00–12:00 Formación"
+    },
+    {
+      "t": "2026-10-10T16:02:22.950Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 10:00–13:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:02:34.663Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 13:00–14:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:03:06.532Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 13:00–15:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:03:14.046Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:05:49.886Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-30 06:00–11:00 Formación F2 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:05:58.934Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-30 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:06:03.598Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-30 12:00–13:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:12:56.662Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 13:00–16:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:13:10.366Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:13:58.703Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 15:00–17:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:14:15.805Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 17:00–18:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:15:21.038Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 13:00–16:00 Formación F1 C6 R18"
+    },
+    {
+      "t": "2026-10-10T16:15:29.406Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:16:00.590Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-06 09:00–11:00 Formación F1 C6 R18"
+    },
+    {
+      "t": "2026-10-10T16:16:13.135Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-06 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:19:54.910Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 08:00–09:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:20:05.230Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 09:00–10:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:20:38.150Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 13:00–15:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:20:48.158Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 15:00–16:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:22:22.230Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-13 08:00–10:00 Formación F3 C3 R7"
+    },
+    {
+      "t": "2026-10-10T16:23:24.566Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 13:00–16:00 Formación F1 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:23:32.520Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 16:00–17:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T16:23:58.918Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 15:00–17:00 Formación F1 C6 R19"
+    },
+    {
+      "t": "2026-10-10T16:24:17.774Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 14:00–15:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T16:28:24.415Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 2: I.E.T. Nuestra Señora de la Paz"
+    },
+    {
+      "t": "2026-10-10T16:28:33.617Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 3: I.E.T. José Joaquín Ortiz"
+    },
+    {
+      "t": "2026-10-10T16:28:37.000Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 4: I.E.T. Nuestra Señora de la Paz"
+    },
+    {
+      "t": "2026-10-10T16:29:23.293Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T16:38:24.110Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-27 08:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T16:38:49.038Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 08:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T16:43:39.086Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T16:45:20.696Z",
+      "a": "Exportar",
+      "d": "JSON · 2026-10"
+    },
+    {
+      "t": "2026-10-10T16:45:29.649Z",
+      "a": "Exportar",
+      "d": "XLSX · 2026-10"
+    },
+    {
+      "t": "2026-10-10T16:48:04.760Z",
+      "a": "Sellar",
+      "d": "Horario sellado con contraseña"
+    }
+  ],
+  "exported": "2026-10-10T16:48:40.680Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEqz4UPT7RsDPULBecnIdBMaj3UIGSvJTIR+iZReMKrPhx/OAwS0Pgixa5QxgYMoaRQvd2udL4Rru/MLp0u1/iJA==",
+    "fp": "D93B 3AAE 8463 2292",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "hITZKj46Xm1TtdpNom5aUQ=="
+    },
+    "iv": "4a8+YlFgmnwfCX8I",
+    "key": "8z/xd8z8JFsIv+pgWw+LGfoxjRdNnsyUp4qfKu7sYdbv4RSNaF9Z/xVMejfhq+0qNJfIpP0wYcFCiNpsXhmUizEwDECOLzbTEOkBzEIqs4ZJWrf6tOrT15bqdWSVE2ZagvmRS/BW09i8A+JosuJk1KY8ebflsa294hLSq/rCYahwH8eQmRRrQ+OzLfBdkHy8XFi1E84gi5CMmg==",
+    "sig": "z2AoyEf+318qeVlxWN8nntevIer3hB4NybzRYsLDy6qmvHXXHYRkd0WkZsnAChMwIhMjmybOuyWhCQu5nCUuvA==",
+    "at": "2026-10-10T16:48:04.763Z",
+    "adm": {
+      "v": 1,
+      "fp": "1DAB 7A75 7F29 AB65",
+      "eph": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEhMzs28SAPNlIi2/QEYZSVukeNFLvElLqnhKgGqhxUOZk++lUeZxO2AZSq7T/EtSBOPex+K859ZGJqF7xNa99lQ==",
+      "iv": "m8G9RW+NS2LB593K",
+      "ct": "+6beR8h9eFFrG44einrsWb7aitgFm6sExw2VrWPCvIfijcO2lBh88MGbjtEHmlDgDZILzmAFfQHN7wifqxxB/UhzR9O4HkmPPAaL+67K1kWKK2Ob/gYXDKarzkLxd7UvUFtkzfbO6nZLVO+REpcJw7yk69N39ArMurUZ90nVxjPzKMKQiOGW/xkKPIw8pjE9hZRgk2qoVWN1Cw=="
+    }
+  }
+}
