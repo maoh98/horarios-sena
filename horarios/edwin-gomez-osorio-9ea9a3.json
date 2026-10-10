@@ -1,0 +1,2026 @@
+{
+  "schema": 2,
+  "app": "horario-sena",
+  "author": "Ing. Manuel Alejandro Ordóñez Hernández",
+  "rev": 1,
+  "por": "instructor",
+  "file": "edwin-gomez-osorio-9ea9a3.json",
+  "profile": {
+    "name": "EDWIN GÓMEZ OSORIO",
+    "cargo": "INSTRUCTOR/PAM",
+    "centro": "CFQ",
+    "photo": ""
+  },
+  "settings": {
+    "maxApoyo": 3,
+    "maxProgramas": 2
+  },
+  "catalog": {
+    "comps": [
+      {
+        "n": 1,
+        "name": "OPERACIÓN DE HERRAMIENTAS INFORMÁTICAS",
+        "phva": "P"
+      },
+      {
+        "n": 2,
+        "name": "MANTENIMIENTO DE LOS EQUIPOS DE COMPUTO",
+        "phva": "A"
+      }
+    ],
+    "raps": [
+      {
+        "n": 1,
+        "name": "RAP 03 PLANIFICAR LA INFORMACIÓN SEGÚN CRITERIOS DE CIBERSEGURIDAD",
+        "comp": 1,
+        "nc": 1
+      },
+      {
+        "n": 2,
+        "name": "RAP 04 DOCUMENTAR LA GESTIÓN DE LA INFORMACIÓN DE ACUERDO A PROTOCOLOS ESTABLECIDOS",
+        "comp": 1,
+        "nc": 2
+      },
+      {
+        "n": 3,
+        "name": "RAP 03 VERIFICAR LA OPERACIÓN DEL SISTEMA COMPUTACIONAL DE ACUERDO CON LOS PROCEDIMIENTOS TÉCNICOS",
+        "comp": 2,
+        "nc": 1
+      },
+      {
+        "n": 4,
+        "name": "RAP 04 DOCUMENTAR EL MANTENIMIENTO DEL EQUIPO DE CÓMPUTO SEGÚN PROCEDIMIENTO TÉCNICO",
+        "comp": null,
+        "nc": 1
+      }
+    ],
+    "fichas": [
+      {
+        "n": 1,
+        "name": "3439388",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "A",
+        "inst": "I.E. San Pedro Claver"
+      },
+      {
+        "n": 2,
+        "name": "",
+        "grado": "10",
+        "programa": 1,
+        "tipo": null,
+        "inst": ""
+      },
+      {
+        "n": 3,
+        "name": "3440180",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "A",
+        "inst": "I.E. Antonia Santos"
+      },
+      {
+        "n": 4,
+        "name": "3168445",
+        "grado": "11",
+        "programa": 1,
+        "tipo": "A",
+        "inst": "I.E. San Pedro Claver"
+      },
+      {
+        "n": 5,
+        "name": "3441945",
+        "grado": "10",
+        "programa": 1,
+        "tipo": "P",
+        "inst": "Liceo Pestalozzi"
+      }
+    ],
+    "programas": [
+      {
+        "n": 1,
+        "name": "Técnico en Sistemas Teleinformaticos"
+      }
+    ]
+  },
+  "blocks": [
+    {
+      "date": "2026-10-01",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-01",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-01",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-02",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 5
+    },
+    {
+      "date": "2026-10-02",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-05",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-05",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-06",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 3,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-06",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-06",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-07",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 3,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-07",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-08",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-08",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-09",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 5
+    },
+    {
+      "date": "2026-10-09",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 3,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-13",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-13",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-14",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 3,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-14",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-15",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-15",
+      "start": 11,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-15",
+      "start": 12,
+      "hours": 10,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-16",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 1,
+      "ficha": 5
+    },
+    {
+      "date": "2026-10-16",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-19",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-19",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-20",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-20",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-20",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-21",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-21",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-22",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-22",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-22",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-23",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-10-23",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-26",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-26",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-27",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-27",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-27",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-28",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-10-28",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-29",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-10-29",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-10-29",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-10-30",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-10-30",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-03",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-03",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-03",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-04",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-04",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-05",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-05",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-05",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-06",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-06",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-09",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-09",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-10",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-10",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-10",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-11",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-11",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-12",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-12",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-13",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-13",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-17",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-17",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-17",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-18",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-18",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-19",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-19",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-19",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-20",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-20",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-23",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-23",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-24",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-24",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-24",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-25",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 2,
+      "rap": 4,
+      "ficha": 4
+    },
+    {
+      "date": "2026-11-25",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-26",
+      "start": 6,
+      "hours": 6,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-26",
+      "start": 12,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-26",
+      "start": 13,
+      "hours": 9,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 3
+    },
+    {
+      "date": "2026-11-27",
+      "start": 14,
+      "hours": 1,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 5
+    },
+    {
+      "date": "2026-11-27",
+      "start": 15,
+      "hours": 1,
+      "type": "seguimiento",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    },
+    {
+      "date": "2026-11-30",
+      "start": 6,
+      "hours": 5,
+      "type": "formacion",
+      "comp": 1,
+      "rap": 2,
+      "ficha": 1
+    },
+    {
+      "date": "2026-11-30",
+      "start": 11,
+      "hours": 1,
+      "type": "planeacion",
+      "comp": null,
+      "rap": null,
+      "ficha": null
+    }
+  ],
+  "log": [
+    {
+      "t": "2026-10-09T21:13:24.865Z",
+      "a": "Inicio",
+      "d": "Programación creada"
+    },
+    {
+      "t": "2026-10-09T21:38:57.834Z",
+      "a": "Editar perfil",
+      "d": "name"
+    },
+    {
+      "t": "2026-10-09T21:47:35.967Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-09T21:47:54.337Z",
+      "a": "Editar perfil",
+      "d": "cargo"
+    },
+    {
+      "t": "2026-10-09T21:48:01.498Z",
+      "a": "Editar perfil",
+      "d": "centro"
+    },
+    {
+      "t": "2026-10-09T22:36:08.625Z",
+      "a": "Cambiar regla",
+      "d": "Programas de formación máx.: 2"
+    },
+    {
+      "t": "2026-10-09T22:37:02.304Z",
+      "a": "Editar programa",
+      "d": "#1: Técnico en Sistemas Teleinfotmaticos"
+    },
+    {
+      "t": "2026-10-09T22:37:20.866Z",
+      "a": "Editar programa",
+      "d": "#1: Técnico en Sistemas Teleinformaticos"
+    },
+    {
+      "t": "2026-10-09T22:38:32.189Z",
+      "a": "Editar ficha",
+      "d": "#1: 3439388"
+    },
+    {
+      "t": "2026-10-09T22:38:32.282Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: Sin grado"
+    },
+    {
+      "t": "2026-10-09T22:38:41.738Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 1: 10°"
+    },
+    {
+      "t": "2026-10-09T22:38:54.354Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 1: Académica"
+    },
+    {
+      "t": "2026-10-09T22:39:11.236Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 1: I.E. San Pedro Claver"
+    },
+    {
+      "t": "2026-10-09T22:40:11.969Z",
+      "a": "Editar ficha",
+      "d": "#3: 3440180"
+    },
+    {
+      "t": "2026-10-09T22:40:12.100Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 3: Sin grado"
+    },
+    {
+      "t": "2026-10-09T22:40:14.532Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 3: Académica"
+    },
+    {
+      "t": "2026-10-09T22:40:17.912Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 3: I.E. San Pedro Claver"
+    },
+    {
+      "t": "2026-10-09T22:40:35.228Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 3: 10°"
+    },
+    {
+      "t": "2026-10-09T22:41:28.198Z",
+      "a": "Quitar ficha",
+      "d": "#3: 3440180"
+    },
+    {
+      "t": "2026-10-09T22:43:23.472Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-09T22:44:52.925Z",
+      "a": "Editar competencia",
+      "d": "#1: OPERACIÓN DE HERRAMIENTAS INFORMÁTICAS"
+    },
+    {
+      "t": "2026-10-09T22:44:53.082Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 1: Planear"
+    },
+    {
+      "t": "2026-10-09T22:46:21.487Z",
+      "a": "Editar RAP",
+      "d": "#1: RAP 03 PLANIFICAR LA INFORMACIÓN SEGÚN CRITERIOS DE CIBERSEGURIDAD"
+    },
+    {
+      "t": "2026-10-09T22:47:29.113Z",
+      "a": "Editar RAP",
+      "d": "#2: RAP 04 DOCUMENTAR LA GESTIÓN DE LA INFORMACIÓN DE ACUERDO A PROTOCOLOS ESTABLECI"
+    },
+    {
+      "t": "2026-10-09T22:51:38.313Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 06:00–07:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T22:56:04.052Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 1 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T22:56:25.452Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 06:00–12:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T22:56:37.444Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T22:57:53.311Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T22:59:07.183Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:00:54.801Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 06:00–12:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T23:01:04.753Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:01:04.753Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:03:09.762Z",
+      "a": "Vaciar días",
+      "d": "3 día(s), 5 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:03:47.171Z",
+      "a": "Vaciar días",
+      "d": "2 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:04:40.460Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:04:44.373Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: C1"
+    },
+    {
+      "t": "2026-10-09T23:04:45.604Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:05:00.373Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:05:06.556Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-09T23:05:26.196Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-09T23:05:51.893Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T23:05:51.893Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T23:05:59.965Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:05:59.965Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:06:14.005Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:06:18.597Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:06:19.773Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-09T23:07:14.029Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-09T23:07:19.766Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:13:20.065Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:13:41.073Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 06:00–11:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:13:56.978Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-19 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:14:46.810Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:14:58.210Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:15:14.987Z",
+      "a": "Vaciar días",
+      "d": "1 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:15:42.394Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 06:00–11:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:15:49.075Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-26 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:16:23.291Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-29 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:16:29.027Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-29 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:17:06.260Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:17:11.628Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:17:29.228Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 06:00–11:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:19:29.069Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-09 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:19:52.006Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:19:57.934Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:20:17.941Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:20:25.214Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:20:49.366Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 06:00–11:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:20:53.414Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-23 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:21:08.950Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 06:00–12:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:21:14.942Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:21:38.270Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-30 06:00–11:00 Formación F1 C1 R2"
+    },
+    {
+      "t": "2026-10-09T23:21:41.054Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-30 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:22:31.692Z",
+      "a": "Editar ficha",
+      "d": "#3: 3440180"
+    },
+    {
+      "t": "2026-10-09T23:22:31.838Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 3: Sin grado"
+    },
+    {
+      "t": "2026-10-09T23:22:33.423Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 3: 10°"
+    },
+    {
+      "t": "2026-10-09T23:22:46.038Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 3: Académica"
+    },
+    {
+      "t": "2026-10-09T23:22:48.498Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 3: I.E. San Pedro Claver"
+    },
+    {
+      "t": "2026-10-09T23:27:12.228Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 3: I.E. Antonia Santos"
+    },
+    {
+      "t": "2026-10-09T23:29:09.249Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 13:00–22:00 Formación F3 C1 R1"
+    },
+    {
+      "t": "2026-10-09T23:31:15.093Z",
+      "a": "Editar ficha",
+      "d": "#4: 3168445"
+    },
+    {
+      "t": "2026-10-09T23:31:15.154Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 4: 11°"
+    },
+    {
+      "t": "2026-10-09T23:31:19.322Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 4: Académica"
+    },
+    {
+      "t": "2026-10-09T23:31:23.429Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 4: I.E. San Pedro Claver"
+    },
+    {
+      "t": "2026-10-09T23:32:52.804Z",
+      "a": "Editar competencia",
+      "d": "#2: MANTENIMIENTO DE LOS EQUIPOS DE COMPUTO"
+    },
+    {
+      "t": "2026-10-09T23:33:32.651Z",
+      "a": "Etapa PHVA",
+      "d": "Competencia 2: Actuar"
+    },
+    {
+      "t": "2026-10-09T23:34:21.332Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-09T23:36:06.416Z",
+      "a": "Editar RAP",
+      "d": "#3: RAP 03 VERIFICAR LA OPERACIÓN DEL SISTEMA COMPUTACIONAL DE ACUERDO CON LOS PROCE"
+    },
+    {
+      "t": "2026-10-09T23:36:14.229Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 2: sin competencia"
+    },
+    {
+      "t": "2026-10-09T23:37:05.052Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-09T23:41:12.822Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 06:00–11:00 Formación F4 C2 R3"
+    },
+    {
+      "t": "2026-10-09T23:41:17.118Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:41:50.622Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 06:00–11:00 Formación F4 C2 R3"
+    },
+    {
+      "t": "2026-10-09T23:41:54.686Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-14 11:00–12:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:43:20.344Z",
+      "a": "Editar RAP",
+      "d": "#4: RAP 04 DOCUMENTAR EL MANTENIMIENTO DEL EQUIPO DE CÓMPUTO SEGÚN PROCEDIMIENTO TÉC"
+    },
+    {
+      "t": "2026-10-09T23:45:15.375Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-20 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:45:20.495Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-20 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:45:48.887Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-21 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:45:52.191Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-13 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:45:52.191Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-20 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:45:52.191Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-21 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:46:12.808Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:46:15.983Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:46:37.199Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:46:43.135Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-27 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:46:43.135Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-28 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:47:29.919Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:47:33.775Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:47:55.336Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:47:58.503Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:47:58.503Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:48:15.032Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:48:18.287Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:48:40.551Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:48:44.688Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:48:44.688Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:52:54.841Z",
+      "a": "Vaciar días",
+      "d": "3 día(s), 8 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:53:12.690Z",
+      "a": "Vaciar días",
+      "d": "4 día(s), 2 bloque(s)"
+    },
+    {
+      "t": "2026-10-09T23:54:53.897Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:55:48.874Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:56:23.530Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:56:29.505Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-03 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:56:29.505Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-04 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-09T23:56:56.146Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:57:00.354Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-09T23:57:33.874Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-09T23:58:08.058Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:00:15.075Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-11 06:00–11:00 Formación"
+    },
+    {
+      "t": "2026-10-10T00:00:17.594Z",
+      "a": "Quitar bloque",
+      "d": "2026-11-11 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:00:36.274Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T00:00:42.635Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-10 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:00:42.635Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-11 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:01:10.323Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T00:01:28.243Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:02:14.515Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T00:02:27.155Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-17 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:02:27.155Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-18 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:02:50.027Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 06:00–11:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T00:02:53.419Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:03:32.763Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 06:00–12:00 Formación F4 C2 R4"
+    },
+    {
+      "t": "2026-10-10T00:03:35.907Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-24 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:03:35.907Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-25 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:11:02.965Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T00:13:52.570Z",
+      "a": "Editar ficha",
+      "d": "#5: 3441945"
+    },
+    {
+      "t": "2026-10-10T00:13:52.676Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 5: Sin grado"
+    },
+    {
+      "t": "2026-10-10T00:13:53.660Z",
+      "a": "Grado de ficha",
+      "d": "Ficha 5: 10°"
+    },
+    {
+      "t": "2026-10-10T00:14:00.581Z",
+      "a": "Tipo de institución",
+      "d": "Ficha 5: Privada"
+    },
+    {
+      "t": "2026-10-10T00:14:04.584Z",
+      "a": "Institución de ficha",
+      "d": "Ficha 5: Liceo Pestalozzi"
+    },
+    {
+      "t": "2026-10-10T00:15:35.670Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C1"
+    },
+    {
+      "t": "2026-10-10T00:15:58.773Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 3: C1"
+    },
+    {
+      "t": "2026-10-10T00:16:05.677Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: sin competencia"
+    },
+    {
+      "t": "2026-10-10T00:18:28.561Z",
+      "a": "Cambiar regla",
+      "d": "Apoyo máx. por día: 3 h"
+    },
+    {
+      "t": "2026-10-10T00:20:21.221Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 14:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:22:11.789Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 06:00–07:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:22:19.926Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-16 14:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:23:00.869Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:23:36.013Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-16 06:00–07:00 Formación"
+    },
+    {
+      "t": "2026-10-10T00:23:55.213Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-16 14:00–15:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:24:54.885Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 14:00–15:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:25:05.774Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:25:26.901Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 14:00–15:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:25:38.126Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:26:29.293Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-23 14:00–15:00 Formación"
+    },
+    {
+      "t": "2026-10-10T00:27:41.934Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-23 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:28:17.958Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-30 14:00–15:00 Formación"
+    },
+    {
+      "t": "2026-10-10T00:28:26.070Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-30 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:28:56.013Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-06 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:29:13.598Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-06 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:31:02.461Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-13 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:31:17.646Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-13 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:31:49.366Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:31:59.590Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-20 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:32:14.030Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-27 14:00–15:00 Formación F5 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:32:24.662Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-27 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:36:40.302Z",
+      "a": "Quitar bloque",
+      "d": "2026-10-15 13:00–22:00 Formación"
+    },
+    {
+      "t": "2026-10-10T00:38:07.958Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-15 12:00–22:00 Formación F3 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:39:50.486Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-22 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:40:29.398Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-29 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:40:56.118Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-05 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:41:30.262Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-12 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:41:50.894Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-19 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:42:13.014Z",
+      "a": "Agregar bloque",
+      "d": "2026-11-26 13:00–22:00 Formación F3 C1 R2"
+    },
+    {
+      "t": "2026-10-10T00:43:09.231Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T00:45:54.127Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 14:00–15:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:46:19.854Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-09 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:46:39.423Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 14:00–15:00 Formación F5 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:47:00.198Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-02 15:00–16:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:48:06.287Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-05 06:00–11:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:48:31.439Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-05 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:49:17.790Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 06:00–12:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:49:26.631Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:49:57.750Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 06:00–12:00 Formación F1 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:50:17.575Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:51:32.167Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-01 13:00–22:00 Formación F3 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:52:17.510Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-08 13:00–22:00 Formación F3 C1 R1"
+    },
+    {
+      "t": "2026-10-10T00:57:40.945Z",
+      "a": "Competencia del RAP",
+      "d": "RAP 1: C2"
+    },
+    {
+      "t": "2026-10-10T00:58:15.686Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 06:00–11:00 Formación F4 C2 R3"
+    },
+    {
+      "t": "2026-10-10T00:58:19.615Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 11:00–12:00 Planeación"
+    },
+    {
+      "t": "2026-10-10T00:58:47.327Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 06:00–12:00 Formación F4 C2 R3"
+    },
+    {
+      "t": "2026-10-10T00:58:53.334Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-06 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:58:53.334Z",
+      "a": "Agregar bloque",
+      "d": "2026-10-07 12:00–13:00 Seguimiento"
+    },
+    {
+      "t": "2026-10-10T00:59:01.791Z",
+      "a": "Guardar",
+      "d": "Guardado manual"
+    },
+    {
+      "t": "2026-10-10T01:00:07.164Z",
+      "a": "Sellar",
+      "d": "Horario sellado con contraseña"
+    }
+  ],
+  "exported": "2026-10-10T01:00:50.264Z",
+  "lock": {
+    "v": 1,
+    "alg": "ECDSA-P256-SHA256",
+    "pub": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAESvlzINhqc+ZJx7oRwMt2GmyIH4jck3nhg17T2qvxIobKHpqEAvJnCo83EdzNicqfi4tqUGc9SMllIhKe8n5JIA==",
+    "fp": "9EA9 A3E2 FAF0 E241",
+    "kdf": {
+      "alg": "PBKDF2-SHA256",
+      "iter": 600000,
+      "salt": "ILU7+61hMYP3w0ui3Yitaw=="
+    },
+    "iv": "mVpCutj0MnQAVVFu",
+    "key": "fdw4HeAaQjGpDG88P6+mK0idnU4QPZO0LIeXPSWGEhjzykT4tDUlz0/uM3pw7eQ4hgO7lwLJBvXvcO8u9wKHCo55DfIBMZRZXGIKyU5F/mkJiXnkG2ZeE0bKj9Vh3OkKn5oqrwNDIhmfBg+nGZcmtZinUPagJ1Fk54HVot82b3gPEbeQ0F01bI+MYzPViJeG2986RD6GOb6whw==",
+    "sig": "jK0RYe8LGxhGn0f8OlJ9oyRX5ulXMza0HhdPnOqzy16uF07ocg7GhNFhxA1qYs7Pz7//nmTynqOaRk9809iUyw==",
+    "at": "2026-10-10T01:00:07.175Z",
+    "adm": {
+      "v": 1,
+      "fp": "1DAB 7A75 7F29 AB65",
+      "eph": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEGJWW5XQhis56bLORbl/SVqZ4flZ/2me0oF1e0mwWl8PbhxgXrRTJtvy8GO+ivwNoaRu+nKHYCkC7B1R5cR9fBQ==",
+      "iv": "iKiVZT78dd0F1tBS",
+      "ct": "C2O7aE90fwu4S2ucWkPf2l8sv3kAwivJsXUjZRmSXckKS27RQTTAYDllhqsh6YAHs+09kOoNHpZdJ1+thl4XhpQCj/R1ePKTWX16I+qzgrEm/Y7+32JK/5XNDyiORXF8WQrhbS1ln+4MCXSUAuEwMOUiMcG5PrsvRICwUtonp6h9wOrZwd4XY8Usq1/PNYT3Cb0KTkxJgkxTsw=="
+    }
+  }
+}
